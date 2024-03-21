@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import '../styles/component-styles/navbar.css';
 
-const NavbarComponent = () => {
+import '../styles/component-styles/before-login-navbar.css';
+import { Button } from 'react-bootstrap';
+
+const NavbarAfterLogin = () => {
 	const [changeColor, setChangeColor] = useState(false);
 
 	const changeBackgroundColor = () => {
@@ -22,20 +23,33 @@ const NavbarComponent = () => {
 		window.addEventListener('scroll', changeBackgroundColor);
 	});
 
+	const handleLogout = () => {
+		localStorage.removeItem('userToken');
+		window.location.href = '/login';
+	};
+
 	return (
-		<Navbar expand="lg" className={changeColor ? 'color-active' : ''}>
+		<Navbar
+			expand="lg"
+			className={changeColor ? 'color-active' : ''}
+			fixed="top">
 			<Container>
 				<Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav ">
 					<Nav className="mx-auto text-center">
-						<Nav.Link href="#home">Home</Nav.Link>
-						<Nav.Link href="#link">Link</Nav.Link>
-						<Nav.Link href="#link">Link</Nav.Link>
+						<Nav.Link href="#home" className="p-3 ">
+							Dashboard User
+						</Nav.Link>
+						<Nav.Link href="#link" className="p-3">
+							Link
+						</Nav.Link>
+						<Nav.Link href="#link" className="p-3">
+							Link
+						</Nav.Link>
 					</Nav>
-					<Button className="btn btn-danger">Registrasi</Button>
-					<Button className="ms-3" variant="warning">
-						Login
+					<Button variant="outline-danger" onClick={handleLogout}>
+						Logout
 					</Button>
 				</Navbar.Collapse>
 			</Container>
@@ -43,4 +57,4 @@ const NavbarComponent = () => {
 	);
 };
 
-export default NavbarComponent;
+export default NavbarAfterLogin;
