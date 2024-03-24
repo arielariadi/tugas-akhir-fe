@@ -1,14 +1,11 @@
-const DashboardAdmin = () => {
-	const handleLogout = () => {
-		localStorage.removeItem('adminToken');
-		window.location.href = '/login';
-	};
+/* eslint-disable react/prop-types */
 
+const DashboardAdmin = () => {
 	return (
-		<>
+		<div className="container-main">
 			<h1>Dashboard Admin</h1>
-			<button onClick={handleLogout}>Logoutn</button>
-		</>
+			<h3>test</h3>
+		</div>
 	);
 };
 

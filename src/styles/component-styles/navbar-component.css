@@ -1,0 +1,83 @@
+.navbar {
+	width: 100%;
+	padding: 10px 0;
+	transition: background-color 0.2s ease, color 0.2s ease;
+	animation: fadeInDown;
+	animation-duration: 2s;
+	z-index: 9999;
+	background-color: transparent;
+}
+
+.navbar.color-active {
+	background-color: white;
+	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.navbar .nav-link a {
+	padding-inline: 1rem;
+	padding-block: 1rem;
+	text-decoration: none;
+	color: var(--textcolor);
+
+	min-width: 44px;
+	min-height: 44px;
+}
+
+.navbar .nav-link:hover {
+	color: red;
+}
+
+.navbar .nav-link .active {
+	color: red;
+}
+
+.button {
+	border: none;
+}
+
+.button-register:hover {
+	background-color: var(--secondary-color);
+}
+
+.button-login {
+	background-color: var(--primary-color);
+	width: 82px;
+	height: 38px;
+	margin-left: 10px;
+	border: none;
+}
+
+.button-login:hover {
+	background-color: var(--secondary-color);
+}
+
+@media screen and (max-width: 992px) {
+	.navbar {
+		background-color: white;
+	}
+}
+
+@media screen and (max-width: 575px) {
+	.navbar {
+		background-color: white;
+	}
+}
+
+@media screen and (max-width: 475px) {
+	.navbar {
+		background-color: white;
+	}
+
+	.button-register {
+		margin-left: 50px;
+	}
+
+	.button-login {
+		margin-left: 30px;
+	}
+}
+
+@media screen and (max-width: 375px) {
+}

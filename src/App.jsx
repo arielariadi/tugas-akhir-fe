@@ -4,16 +4,48 @@ import DashboardUser from './pages/DashboardUser';
 import DashboardAdmin from './pages/admin/DashboardAdmin';
 import FormLogin from './pages/FormLogin';
 import FormRegister from './pages/FormRegister';
+import NavbarComponent from './components/NavbarComponent';
+import JadwalDonorDarah from './pages/JadwalDonorDarah';
+
+import SidebarAdmin from './components/SidebarAdmin';
+import BankDarah from './pages/admin/BankDarah';
+
+// import 'bootstrap';
+
+function getUserToken() {
+	// Gantikan dengan implementasi sesuai kebutuhan
+	return localStorage.getItem('userToken');
+}
+
+function getAdminToken() {
+	// Gantikan dengan implementasi sesuai kebutuhan
+	return localStorage.getItem('adminToken');
+}
 
 function App() {
+	const userToken = getUserToken(); // Gantikan dengan implementasi sesuai kebutuhan
+	const adminToken = getAdminToken(); // Gantikan dengan implementasi sesuai kebutuhan
+
 	return (
 		<div>
+			{adminToken ? <SidebarAdmin /> : <NavbarComponent />}
+
 			<Routes>
-				<Route path="/" element={<LandingPage />}></Route>
-				<Route path="/login" element={<FormLogin />}></Route>
-				<Route path="/register" element={<FormRegister />}></Route>
-				<Route path="/dashboard-user" element={<DashboardUser />}></Route>
-				<Route path="/dashboard-admin" element={<DashboardAdmin />}></Route>
+				<Route path="/" element={<LandingPage />} />
+				<Route path="/login" element={<FormLogin />} />
+				<Route path="/register" element={<FormRegister />} />
+				{userToken && (
+					<>
+						<Route path="/dashboard-user" element={<DashboardUser />} />
+						<Route path="/jadwal-donor-darah" element={<JadwalDonorDarah />} />
+					</>
+				)}
+				{adminToken && (
+					<>
+						<Route path="/dashboard-admin" element={<DashboardAdmin />} />
+						<Route path="/bank-darah" element={<BankDarah />} />
+					</>
+				)}
 			</Routes>
 		</div>
 	);

@@ -1,0 +1,117 @@
+section.hero-section {
+	background: rgb(255, 255, 255);
+	background: linear-gradient(
+		131deg,
+		rgba(255, 255, 255, 1) 21%,
+		rgb(248, 143, 143) 68%,
+		rgb(238, 192, 192) 100%
+	);
+
+	font-family: 'poppins', sans-serif;
+}
+
+.homepage .header-box {
+	padding-top: 4rem;
+}
+
+.homepage .header-box h1 {
+	font-size: 2.8rem;
+	font-weight: 600;
+	animation: fadeInUp;
+	animation-duration: 1s;
+	--animate-delay: 0.6s;
+}
+
+.homepage .header-box h5 {
+	font-size: 1.5rem;
+	font-weight: bold;
+	animation: fadeInUp;
+	animation-duration: 2s;
+	--animate-delay: 1.4s;
+}
+
+.homepage .header-box h1 span {
+	font-size: 3.2rem;
+	font-weight: 700;
+	color: var(--primary);
+}
+
+.homepage .header-box h1 .slogan-1 {
+	color: var(--primary-color);
+}
+
+.homepage .header-box h1 .slogan-2 {
+	color: var(--secondary-color);
+}
+
+.homepage .header-box p {
+	line-height: 2;
+	font-weight: 500;
+	animation: fadeInUp;
+	animation-duration: 2s;
+	--animate-delay: 0.6s;
+	color: var(--secondary-color);
+}
+
+.homepage .header-box button {
+	animation: fadeInUp;
+	animation-duration: 2s;
+	--animate-delay: 1.4s;
+	background-color: var(--primary-color);
+	border: solid 1px var(--primary-color);
+}
+
+.homepage .header-box img {
+	width: 32rem;
+	animation: fadeInUp;
+	animation-duration: 2s;
+}
+
+.homepage .header-box h5 {
+	color: var(--secondary-color);
+}
+
+@media screen and (max-width: 992px) {
+	.homepage .header-box {
+		padding-top: 8rem;
+	}
+	.homepage .header-box img {
+		width: 400px;
+		display: block;
+		margin-inline: auto;
+	}
+}
+
+@media screen and (max-width: 575px) {
+	.homepage .header-box h1 {
+		font-size: 3rem;
+	}
+}
+
+@media screen and (max-width: 475px) {
+	.homepage .header-box h1 {
+		font-size: 2.4rem;
+	}
+
+	.homepage .header-box p {
+		font-size: 14px;
+	}
+
+	.homepage .header-box img {
+		width: 300px;
+	}
+}
+
+@media screen and (max-width: 375px) {
+	.homepage .header-box h1 {
+		font-size: 2rem;
+	}
+
+	.homepage .header-box p {
+		font-size: 12px;
+	}
+
+	.homepage .header-box img {
+		width: 200px;
+	}
+}
