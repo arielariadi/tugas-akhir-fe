@@ -99,10 +99,14 @@ const FormRegister = () => {
 							name="golonganDarah"
 							aria-label="Default select example">
 							<option>Pilih Golongan Darah</option>
-							<option value="QKqRv">A-</option>
 							<option value="o9bsy">A+</option>
-							<option value="6pGuJ">B-</option>
+							<option value="QKqRv">A-</option>
+							<option value="mhkrK">AB+</option>
+							<option value="uSuMT">AB-</option>
 							<option value="kv-71">B+</option>
+							<option value="6pGuJ">B-</option>
+							<option value="kMO7s">O+</option>
+							<option value="N7Fls">O-</option>
 						</Form.Select>
 					</Form.Group>
 

@@ -33,7 +33,7 @@ const DashboardUser = () => {
 	}, []);
 
 	return (
-		<div className="dashboard-wrapper">
+		<div className="main-wrapper">
 			<Container>
 				<h1 className="text-center">Dashboard</h1>
 

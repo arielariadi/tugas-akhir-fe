@@ -1,22 +1,22 @@
-.jadwal-wrapper {
+.main-wrapper {
 	margin-top: 100px;
 }
 
-.jadwal-wrapper .map-wrapper {
+.main-wrapper .map-wrapper {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.jadwal-wrapper .map-wrapper iframe {
+.main-wrapper .map-wrapper iframe {
 	height: 17rem;
 }
 
-.jadwal-wrapper .map-wrapper .card {
+.main-wrapper .map-wrapper .card {
 	width: 70%;
 }
 
-.jadwal-wrapper .map-wrapper .card-text {
+.main-wrapper .map-wrapper .card-text {
 	margin-bottom: 5px;
 }
 

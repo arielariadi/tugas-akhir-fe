@@ -78,7 +78,7 @@ function NavbarComponent() {
 						)}
 
 						{userToken && (
-							<Nav.Link href="#home" className="p-3 ">
+							<Nav.Link href="/cari-sukarelawan" className="p-3 ">
 								Cari Sukarelawan
 							</Nav.Link>
 						)}
