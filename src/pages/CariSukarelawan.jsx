@@ -25,7 +25,7 @@ const CariSukarelawan = () => {
 				Swal.fire({
 					icon: 'error',
 					title: 'Sukarelawan tidak ditemukan',
-					text: 'Maaf, tidak ada sukarelawan yang ditemukan dengan kriteria yang dimasukkan.',
+					text: 'Maaf, tidak ada sukarelawan yang ditemukan dengan kriteria yang dimasukkan!',
 				});
 			} else {
 				setIsSukarelawanFound(true);

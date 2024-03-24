@@ -9,7 +9,9 @@ import JadwalDonorDarah from './pages/JadwalDonorDarah';
 
 import SidebarAdmin from './components/SidebarAdmin';
 import BankDarah from './pages/admin/BankDarah';
+
 import CariSukarelawan from './pages/CariSukarelawan';
+import ProfileUser from './pages/ProfileUser';
 
 // import 'bootstrap';
 
@@ -40,6 +42,7 @@ function App() {
 						<Route path="/dashboard-user" element={<DashboardUser />} />
 						<Route path="/jadwal-donor-darah" element={<JadwalDonorDarah />} />
 						<Route path="/cari-sukarelawan" element={<CariSukarelawan />} />
+						<Route path="/profile-user" element={<ProfileUser />} />
 					</>
 				)}
 				{adminToken && (

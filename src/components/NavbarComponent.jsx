@@ -84,8 +84,8 @@ function NavbarComponent() {
 						)}
 
 						{userToken && (
-							<Nav.Link href="#home" className="p-3 ">
-								Profile{' '}
+							<Nav.Link href="/profile-user" className="p-3 ">
+								Profile
 							</Nav.Link>
 						)}
 					</Nav>

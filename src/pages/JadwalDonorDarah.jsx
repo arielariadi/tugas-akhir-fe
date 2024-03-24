@@ -7,6 +7,8 @@ import { useEffect } from 'react';
 import getJadwalDonor from '../services/getJadwalDonor';
 import profileUser from '../services/profileUser.service';
 
+import Swal from 'sweetalert2';
+
 const JadwalDonorDarah = () => {
 	const [donorData, setDonorData] = useState([]);
 	const [dataPmi, setDataPmi] = useState(null);
@@ -57,6 +59,20 @@ const JadwalDonorDarah = () => {
 			};
 			console.log('tanggal-donor', postData);
 			const response = await daftarDonor(postData);
+
+			if (response) {
+				Swal.fire({
+					icon: 'success',
+					title: 'Pendaftaran donor darah berhasil!',
+					text: 'Selamat anda berhasil mendaftarkan diri untuk donor darah.',
+				});
+			} else {
+				Swal.fire({
+					icon: 'error',
+					title: 'Pendaftaran donor darah gagal!',
+					text: 'Maaf anda gagal mendaftarkan diri untuk donor darah.',
+				});
+			}
 
 			setDataPmi(response); // Set state dataPmi dengan respons dari daftarDonor
 		} catch (error) {
