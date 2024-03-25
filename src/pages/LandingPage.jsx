@@ -1,10 +1,11 @@
 import { Container, Row, Col, Button, Badge, Card } from 'react-bootstrap';
-import HeroImg from '../assets/img/hero-fix.png';
 import '../styles/landing-page.css';
+import Lottie from 'lottie-react';
+import HeroLottie from '../assets/lottie/heroLottie.json';
 
 const LandingPage = () => {
 	return (
-		<div className="homepage">
+		<div className="homepage" id="home">
 			<section className="w-100 min-vh-100 d-flex align-items-center overflow-hidden hero-section">
 				<Container>
 					<Row className="header-box d-flex align-items-center">
@@ -27,18 +28,26 @@ const LandingPage = () => {
 								<h5 className="">Layanan Kami</h5>
 								<span className="services-badge ">
 									<Badge bg="danger" className="me-2 mb-xs-0 mb-2 ">
-										Pendaftaran Donor Darah
+										Daftar Donor Darah
+									</Badge>
+								</span>
+								<span className="services-badge ">
+									<Badge bg="danger" className="me-2 mb-xs-0 mb-2 ">
+										Jadwal Donor Darah
 									</Badge>
 								</span>
 								<span className="services-badge">
 									<Badge bg="danger" className="me-2 mb-xs-0 mb-2">
-										Cari Sukarelawan Donor Darah Terdekat
+										Cari Sukarelawan
 									</Badge>
 								</span>
 							</div>
 						</Col>
 						<Col lg="6" className="pt-lg-0 pt-5 d-flex justify-content-end">
-							<img src={HeroImg} alt="hero-img" />
+							<Lottie
+								animationData={HeroLottie}
+								loop={true}
+								className="hero-lottie"></Lottie>
 						</Col>
 					</Row>
 				</Container>

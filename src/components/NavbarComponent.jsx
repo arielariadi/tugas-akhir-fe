@@ -5,8 +5,12 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
+import Logo from '../assets/img/logo.png';
+
 import '../styles/component-styles/navbar-component.css';
 import { Button } from 'react-bootstrap';
+
+import { Link } from 'react-router-dom';
 
 function NavbarComponent() {
 	// Simpan token pengguna (userToken atau adminToken) di sini
@@ -49,45 +53,31 @@ function NavbarComponent() {
 			className={changeColor ? 'color-active' : ''}
 			fixed="top">
 			<Container>
-				<Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+				<Navbar.Brand href="#home">
+					<img src={Logo} className="logo" alt="Logo" />
+				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav ">
-					<Nav className="mx-auto text-center">
-						{!userToken && (
-							<Nav.Link href="#home" className="p-3 ">
-								Home
-							</Nav.Link>
-						)}
+					<Nav className="mx-auto text-center ">
+						{!userToken && <Nav.Link href="#home">Home</Nav.Link>}
 
-						{!userToken && (
-							<Nav.Link href="#home" className="p-3 ">
-								Services
-							</Nav.Link>
+						{!userToken && <Nav.Link href="#homeee">Services</Nav.Link>}
+
+						{!userToken && <Nav.Link href="#home">Services</Nav.Link>}
+
+						{!userToken && <Nav.Link href="#home">Services</Nav.Link>}
+
+						{userToken && <Nav.Link href="/dashboard-user">Dashboard</Nav.Link>}
+
+						{userToken && (
+							<Nav.Link href="/jadwal-donor-darah">Jadwal Donor Darah</Nav.Link>
 						)}
 
 						{userToken && (
-							<Nav.Link href="/dashboard-user" className="p-3 ">
-								Dashboard
-							</Nav.Link>
+							<Nav.Link href="/cari-sukarelawan">Cari Sukarelawan</Nav.Link>
 						)}
 
-						{userToken && (
-							<Nav.Link href="/jadwal-donor-darah" className="p-3 ">
-								Jadwal Donor Darah
-							</Nav.Link>
-						)}
-
-						{userToken && (
-							<Nav.Link href="/cari-sukarelawan" className="p-3 ">
-								Cari Sukarelawan
-							</Nav.Link>
-						)}
-
-						{userToken && (
-							<Nav.Link href="/profile-user" className="p-3 ">
-								Profile
-							</Nav.Link>
-						)}
+						{userToken && <Nav.Link href="/profile-user">Profile</Nav.Link>}
 					</Nav>
 
 					{userToken && (

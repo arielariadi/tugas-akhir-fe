@@ -15,23 +15,26 @@
 	flex-shrink: 0;
 }
 
-.navbar .nav-link a {
+.logo {
+	width: 8rem;
+}
+
+.navbar .container .nav-link {
 	padding-inline: 1rem;
 	padding-block: 1rem;
 	text-decoration: none;
-	color: var(--textcolor);
-
+	color: black;
 	min-width: 44px;
 	min-height: 44px;
 }
 
-.navbar .nav-link:hover {
+.navbar .container .nav-link:hover {
 	color: red;
 }
 
-.navbar .nav-link .active {
+/* .navbar .container .nav-link.active {
 	color: red;
-}
+} */
 
 .button {
 	border: none;
@@ -57,25 +60,44 @@
 	.navbar {
 		background-color: white;
 	}
+
+	.navbar .container .navbar-nav {
+		margin-top: 20px;
+	}
+
+	.navbar .container .nav-link {
+		text-align: start;
+		padding: 3px;
+		font-size: 1.1rem;
+	}
+
+	.button a {
+		margin-top: 20px;
+	}
 }
 
 @media screen and (max-width: 575px) {
 	.navbar {
 		background-color: white;
 	}
+
+	.logo {
+		width: 5rem;
+	}
+
+	.navbar .container .navbar-nav {
+		margin-top: 20px;
+	}
+
+	.navbar .container .nav-link {
+		text-align: start;
+		padding: 3px;
+	}
 }
 
 @media screen and (max-width: 475px) {
 	.navbar {
 		background-color: white;
-	}
-
-	.button-register {
-		margin-left: 50px;
-	}
-
-	.button-login {
-		margin-left: 30px;
 	}
 }
 

@@ -1,11 +1,11 @@
 section.hero-section {
-	background: rgb(255, 255, 255);
-	background: linear-gradient(
+	/* background: rgb(255, 255, 255); */
+	/* background: linear-gradient(
 		131deg,
 		rgba(255, 255, 255, 1) 21%,
 		rgb(248, 143, 143) 68%,
 		rgb(238, 192, 192) 100%
-	);
+	); */
 
 	font-family: 'poppins', sans-serif;
 }
@@ -79,6 +79,10 @@ section.hero-section {
 		width: 400px;
 		display: block;
 		margin-inline: auto;
+	}
+
+	.hero-lottie {
+		display: none;
 	}
 }
 
