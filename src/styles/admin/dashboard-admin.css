@@ -1,9 +1,9 @@
-.main-wrapper-admin h1 {
+.dashboard-admin-wrapper h1 {
 	margin-top: 60px;
 	margin-left: 35rem;
 }
 
-.main-wrapper-admin .content {
+.dashboard-admin-wrapper .content {
 	width: 50rem;
-	margin-left: 23rem;
+	margin-left: 20rem;
 }

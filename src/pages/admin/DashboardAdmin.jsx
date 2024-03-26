@@ -79,7 +79,7 @@ const DashboardAdmin = () => {
 
 	return (
 		<>
-			<div className="main-wrapper-admin">
+			<div className="dashboard-admin-wrapper">
 				<h1>Dashboard Admin</h1>
 
 				<div className="content">
