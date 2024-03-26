@@ -1,10 +1,11 @@
 import axios from 'axios';
+import config from './config-api/config';
 
 const getDashboardUser = async () => {
 	const userToken = localStorage.getItem('userToken');
 	try {
 		const response = await axios.get(
-			'http://127.0.0.1:3000/v1/user/dashboardUser/',
+			`${config.API_URL}/v1/user/dashboardUser/`,
 			{
 				headers: {
 					Authorization: `${userToken}`,

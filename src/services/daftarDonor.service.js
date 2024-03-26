@@ -1,11 +1,12 @@
 import axios from 'axios';
+import config from './config-api/config';
 
 const daftarDonor = async data => {
 	const userToken = localStorage.getItem('userToken');
 
 	try {
 		const response = await axios.post(
-			'http://127.0.0.1:3000/v1/user/jadwal/daftar',
+			`${config.API_URL}/v1/user/jadwal/daftar`,
 			data,
 			{
 				headers: {

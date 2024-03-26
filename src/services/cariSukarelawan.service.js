@@ -1,10 +1,11 @@
 import axios from 'axios';
+import config from './config-api/config';
 
 const cariSukarelawan = async data => {
 	const userToken = localStorage.getItem('userToken');
 	try {
 		const response = await axios.get(
-			'http://127.0.0.1:3000/v1/user/volunteer/search',
+			`${config.API_URL}/v1/user/volunteer/search`,
 			{
 				headers: {
 					Authorization: `${userToken}`,

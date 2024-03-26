@@ -1,9 +1,10 @@
 import axios from 'axios';
+import config from './config-api/config';
 
 const register = async data => {
 	try {
 		const response = await axios.post(
-			'http://127.0.0.1:3000/v1/auth/register',
+			`${config.API_URL}/v1/auth/register`,
 			data
 		);
 		return response.data; // Mengembalikan respons dari panggilan API

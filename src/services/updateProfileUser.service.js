@@ -1,11 +1,12 @@
 import axios from 'axios';
+import config from './config-api/config';
 
 const updateProfileUser = async data => {
 	const userToken = localStorage.getItem('userToken');
 
 	try {
 		const response = await axios.put(
-			'http://127.0.0.1:3000/v1/user/userProfile/update',
+			`${config.API_URL}/v1/user/userProfile/update`,
 			data,
 			{
 				headers: {

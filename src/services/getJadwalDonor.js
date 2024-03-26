@@ -1,9 +1,10 @@
 import axios from 'axios';
+import config from './config-api/config';
 
 const getJadwalDonor = async () => {
 	const userToken = localStorage.getItem('userToken');
 	try {
-		const response = await axios.get('http://127.0.0.1:3000/v1/user/jadwal/', {
+		const response = await axios.get(`${config.API_URL}/v1/user/jadwal/`, {
 			headers: {
 				Authorization: `${userToken}`,
 			},

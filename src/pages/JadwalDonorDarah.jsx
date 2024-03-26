@@ -53,7 +53,7 @@ const JadwalDonorDarah = () => {
 
 			const postData = {
 				id_user: idUser,
-				id_lokasi_pmi: 'Rq1D9',
+				id_lokasi_pmi: '4xzFX',
 				id_gol_darah: idGolDarah,
 				tgl_donor: new Date(),
 			};

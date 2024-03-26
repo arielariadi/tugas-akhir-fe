@@ -7,7 +7,11 @@ section.hero-section {
 		rgb(238, 192, 192) 100%
 	); */
 
-	font-family: 'poppins', sans-serif;
+	font-family: system-ui, sans-serif;
+}
+
+.homepage .hero-lottie {
+	width: 32rem;
 }
 
 .homepage .header-box {
