@@ -28,7 +28,7 @@ const SidebarAdmin = () => {
 							<span>Stok Bank Darah</span>
 						</a>
 
-						<a className="list-group-item py-2" href="">
+						<a className="list-group-item py-2" href="/pendonor-darah">
 							<i className="bi bi-table fs-5 me-3"></i>
 							<span>Pendonor Darah</span>
 						</a>

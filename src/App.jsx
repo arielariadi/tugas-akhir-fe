@@ -12,6 +12,7 @@ import BankDarah from './pages/admin/BankDarah';
 
 import CariSukarelawan from './pages/CariSukarelawan';
 import ProfileUser from './pages/ProfileUser';
+import PendonorDarah from './pages/admin/PendonorDarah';
 
 // import 'bootstrap';
 
@@ -49,6 +50,7 @@ function App() {
 					<>
 						<Route path="/dashboard-admin" element={<DashboardAdmin />} />
 						<Route path="/bank-darah" element={<BankDarah />} />
+						<Route path="/pendonor-darah" element={<PendonorDarah />} />
 					</>
 				)}
 			</Routes>

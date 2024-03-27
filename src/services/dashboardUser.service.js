@@ -8,7 +8,7 @@ const getDashboardUser = async () => {
 			`${config.API_URL}/v1/user/dashboardUser/`,
 			{
 				headers: {
-					Authorization: `${userToken}`,
+					Authorization: userToken,
 				},
 			}
 		);
