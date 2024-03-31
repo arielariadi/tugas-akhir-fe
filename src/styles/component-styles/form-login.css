@@ -1,0 +1,124 @@
+.button-back-wrapper {
+	font-size: 2.5rem;
+	margin: 1rem 0 0 2rem;
+	color: white;
+}
+
+.button-back-wrapper a {
+	color: black;
+}
+
+.button-back-wrapper a:hover {
+	color: white;
+}
+
+.container-fluid .image-wrapper {
+	background-color: rgba(214, 28, 28, 0.781);
+}
+
+.container-fluid .image-wrapper img {
+	margin: 0 0 0 4.5rem;
+}
+
+.container-fluid .form-wrapper form {
+	width: 60%;
+}
+
+.container-fluid .form-wrapper .text-login-wrapper h1 {
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 34px;
+}
+
+.container-fluid .form-wrapper .text-login-wrapper {
+	margin-bottom: 2rem;
+	color: var(--tertiary-color);
+}
+
+.container-fluid .form-wrapper form .form-label {
+	font-weight: 500;
+}
+
+.container-fluid .form-wrapper button {
+	background-color: var(--tertiary-color);
+	border-color: var(--tertiary-color);
+}
+
+@media screen and (min-width: 992px) {
+	.button-back-responsive-wrapper {
+		display: none; /* Menghilangkan elemen pada lebar layar yang lebih besar dari 992px */
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.button-back-responsive-wrapper {
+		font-size: 2.5rem;
+		color: white;
+		position: absolute;
+		top: 2rem;
+		left: 2.5rem;
+	}
+
+	.button-back-responsive-wrapper a {
+		color: var(--tertiary-color);
+	}
+
+	.button-back-responsive-wrapper a:hover {
+		color: black;
+	}
+
+	.container-fluid .image-wrapper {
+		display: none;
+	}
+
+	.container-fluid .form-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.container-fluid .form-wrapper form {
+		width: 60%;
+	}
+}
+
+@media screen and (max-width: 575px) {
+	.container-fluid .form-wrapper form {
+		width: 65%;
+	}
+
+	.button-back-responsive-wrapper {
+		font-size: 2.2rem;
+	}
+}
+
+@media screen and (max-width: 475px) {
+	.container-fluid .form-wrapper form {
+		width: 85%;
+	}
+
+	.button-back-responsive-wrapper {
+		font-size: 1.9rem;
+	}
+}
+
+@media screen and (max-width: 375px) {
+	.container-fluid .form-wrapper form {
+		width: 85%;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.container-fluid .form-wrapper form {
+		width: 80%;
+	}
+
+	.container-fluid .form-wrapper .text-login-wrapper h1 {
+		font-size: 1.5rem;
+		font-weight: 700;
+		line-height: 24px;
+	}
+}

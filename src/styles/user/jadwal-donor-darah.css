@@ -1,23 +1,50 @@
-.main-wrapper {
+.jadwal-donor-wrapper {
 	margin-top: 100px;
 }
 
-.main-wrapper .map-wrapper {
+.jadwal-donor-wrapper .map-wrapper {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.main-wrapper .map-wrapper iframe {
+.jadwal-donor-wrapper .map-wrapper iframe {
 	height: 17rem;
 }
 
-.main-wrapper .map-wrapper .card {
+.jadwal-donor-wrapper .map-wrapper .card {
 	width: 70%;
 }
 
-.main-wrapper .map-wrapper .card-text {
+.jadwal-donor-wrapper .map-wrapper .card-text {
 	margin-bottom: 5px;
+}
+
+@media screen and (max-width: 375px) {
+	.jadwal-donor-wrapper {
+		margin-top: 4rem;
+	}
+
+	.jadwal-donor-wrapper h1 {
+		font-size: 1.2rem;
+	}
+
+	.jadwal-donor-wrapper .map-wrapper iframe {
+		height: 13rem;
+	}
+
+	.jadwal-donor-wrapper .map-wrapper .card .card-title {
+		font-size: 1rem;
+		text-align: center;
+	}
+
+	.jadwal-donor-wrapper .map-wrapper .card .card-text {
+		font-size: 0.6rem;
+	}
+
+	.jadwal-donor-wrapper .map-wrapper .card button {
+		font-size: 0.6rem;
+	}
 }
 
 /* .jadwal-wrapper .detail-wrapper .text-wrapper {

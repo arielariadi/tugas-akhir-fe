@@ -27,18 +27,19 @@ const LandingPage = () => {
 							<div className="services">
 								<h5 className="">Layanan Kami</h5>
 								<span className="services-badge ">
-									<Badge bg="danger" className="me-2 mb-xs-0 mb-2 ">
+									<Badge bg="danger" className="me-2 mb-xs-0 mb-2">
 										Daftar Donor Darah
 									</Badge>
 								</span>
-								<span className="services-badge ">
-									<Badge bg="danger" className="me-2 mb-xs-0 mb-2 ">
-										Jadwal Donor Darah
-									</Badge>
-								</span>
+
 								<span className="services-badge">
 									<Badge bg="danger" className="me-2 mb-xs-0 mb-2">
 										Cari Sukarelawan
+									</Badge>
+								</span>
+								<span className="services-badge ">
+									<Badge bg="danger" className="me-2 mb-xs-0 mb-2">
+										Jadwal Donor Darah
 									</Badge>
 								</span>
 							</div>

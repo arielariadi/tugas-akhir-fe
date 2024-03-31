@@ -53,8 +53,9 @@ function NavbarComponent() {
 			className={changeColor ? 'color-active' : ''}
 			fixed="top">
 			<Container>
-				<Navbar.Brand href="#home">
-					<img src={Logo} className="logo" alt="Logo" />
+				<Navbar.Brand href="#home" className="text-danger fw-bold">
+					{/* <img src={Logo} className="logo" alt="Logo" /> */}
+					UDD PMI Lebak
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav ">

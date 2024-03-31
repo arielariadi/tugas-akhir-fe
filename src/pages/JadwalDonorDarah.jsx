@@ -82,7 +82,7 @@ const JadwalDonorDarah = () => {
 
 	return (
 		<>
-			<div className="main-wrapper">
+			<div className="jadwal-donor-wrapper">
 				<h1 className="text-center">Jadwal Donor Darah</h1>
 
 				<div className="map-wrapper mt-4">

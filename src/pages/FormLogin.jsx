@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { Button, Row, Col, Form, Container } from 'react-bootstrap';
 import { login } from '../services/auth.service';
+import { Link } from 'react-router-dom';
+
+import '../styles/component-styles/form-login.css';
 
 const FormLogin = () => {
 	const [email, setEmail] = useState('');
@@ -35,41 +37,58 @@ const FormLogin = () => {
 
 	return (
 		<>
-			{' '}
-			<a href="/">Back</a>
-			<Form onSubmit={handleLogin}>
-				<Form.Group className="mb-3" controlId="formBasicEmail">
-					<Form.Label>Email address</Form.Label>
-					<Form.Control
-						type="email"
-						placeholder="Enter email"
-						onChange={e => setEmail(e.target.value)}
-						name="email"
-						value={email}
-					/>
-					<Form.Text className="text-muted">
-						never share your email with anyone else.
-					</Form.Text>
-				</Form.Group>
+			<Container fluid>
+				<Row>
+					<Col className="image-wrapper w-100 min-vh-100 p-0">
+						<div className="button-back-wrapper">
+							<a href="/">
+								<i className="bi bi-arrow-left-circle-fill"></i>
+							</a>
+						</div>
+						<img src="src/assets/img/login-image.png" alt="" />
+					</Col>
 
-				<Form.Group className="mb-3" controlId="formBasicPassword">
-					<Form.Label>Password</Form.Label>
-					<Form.Control
-						type="password"
-						placeholder="Password"
-						onChange={e => setPassword(e.target.value)}
-						name="password"
-						value={password}
-					/>
-				</Form.Group>
+					<Col className="form-wrapper d-flex flex-column justify-content-center align-items-center">
+						<div className="button-back-responsive-wrapper">
+							<a href="/">
+								<i className="bi bi-arrow-left-circle-fill"></i>
+							</a>
+						</div>
+						<Form onSubmit={handleLogin}>
+							<div className="text-login-wrapper">
+								<h1>Hello,</h1>
+								<h1>Welcome Back</h1>
+							</div>
+							<Form.Group className="mb-3" controlId="formBasicEmail">
+								<Form.Label>Email address</Form.Label>
+								<Form.Control
+									type="email"
+									placeholder="example@gmail.com"
+									onChange={e => setEmail(e.target.value)}
+									name="email"
+									value={email}
+								/>
+							</Form.Group>
 
-				<Button variant="primary" type="submit">
-					Submit
-				</Button>
-				{loginFailed && (
-					<p className="text-danger text-center">{loginFailed}</p>
-				)}
-			</Form>
+							<Form.Group className="mb-3" controlId="formBasicPassword">
+								<Form.Label>Password</Form.Label>
+								<Form.Control
+									type="password"
+									placeholder="************"
+									onChange={e => setPassword(e.target.value)}
+									name="password"
+									value={password}
+								/>
+							</Form.Group>
+
+							<Button type="submit">Submit</Button>
+							{loginFailed && (
+								<p className="text-danger text-center">{loginFailed}</p>
+							)}
+						</Form>
+					</Col>
+				</Row>
+			</Container>
 		</>
 	);
 };

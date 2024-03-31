@@ -104,4 +104,7 @@
 }
 
 @media screen and (max-width: 375px) {
+	.navbar .container .nav-link {
+		font-size: 0.8rem;
+	}
 }

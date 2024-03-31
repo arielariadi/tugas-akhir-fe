@@ -14,6 +14,8 @@ import CariSukarelawan from './pages/CariSukarelawan';
 import ProfileUser from './pages/ProfileUser';
 import PendonorDarah from './pages/admin/PendonorDarah';
 
+import FooterComponent from './components/FooterComponent';
+
 // import 'bootstrap';
 
 function getUserToken() {
@@ -54,6 +56,8 @@ function App() {
 					</>
 				)}
 			</Routes>
+
+			{!adminToken && <FooterComponent />}
 		</div>
 	);
 }
