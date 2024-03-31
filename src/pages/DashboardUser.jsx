@@ -57,12 +57,18 @@ const DashboardUser = () => {
 	const changePage = ({ selected }) => {
 		setPage(selected);
 		if (selected === 4) {
-			setMsg(
-				'Jika tidak menemukan data yang Anda cari, silahkan cari data dengan kata kunci spesifik!'
-			);
+			setMsg('Data tidak ditemukan');
 		} else {
 			setMsg('');
 		}
+	};
+
+	const formatData = dateString => {
+		const date = new Date(dateString);
+		const day = date.getDate();
+		const month = date.getMonth() + 1;
+		const year = date.getFullYear();
+		return `${day}-${month}-${year}`;
 	};
 
 	return (
@@ -87,7 +93,7 @@ const DashboardUser = () => {
 									<tr key={index + page * limit}>
 										<td>{index + 1 + page * limit}</td>
 										<td>{donor.lokasi_pmi}</td>
-										<td>{donor.tanggal_donor}</td>
+										<td>{formatData(donor.tanggal_donor)}</td>
 										<td>{donor.gol_darah}</td>
 										<td>
 											<Button
