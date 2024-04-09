@@ -56,8 +56,8 @@ const FormLogin = () => {
 						</div>
 						<Form onSubmit={handleLogin}>
 							<div className="text-login-wrapper">
-								<h1>Hello,</h1>
-								<h1>Welcome Back</h1>
+								<h1>Halo,</h1>
+								<h1>Selamat Datang</h1>
 							</div>
 							<Form.Group className="mb-3" controlId="formBasicEmail">
 								<Form.Label>Email address</Form.Label>

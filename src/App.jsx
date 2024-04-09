@@ -6,6 +6,7 @@ import FormLogin from './pages/FormLogin';
 import FormRegister from './pages/FormRegister';
 import NavbarComponent from './components/NavbarComponent';
 import JadwalDonorDarah from './pages/JadwalDonorDarah';
+import PermintaanDarah from './pages/PermintaanDarah';
 
 import SidebarAdmin from './components/SidebarAdmin';
 import BankDarah from './pages/admin/BankDarah';
@@ -44,6 +45,7 @@ function App() {
 					<>
 						<Route path="/dashboard-user" element={<DashboardUser />} />
 						<Route path="/jadwal-donor-darah" element={<JadwalDonorDarah />} />
+						<Route path="/permintaan-darah" element={<PermintaanDarah />} />
 						<Route path="/cari-sukarelawan" element={<CariSukarelawan />} />
 						<Route path="/profile-user" element={<ProfileUser />} />
 					</>

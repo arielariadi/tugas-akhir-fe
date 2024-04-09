@@ -75,6 +75,10 @@ function NavbarComponent() {
 						)}
 
 						{userToken && (
+							<Nav.Link href="/permintaan-darah">Permintaan Darah</Nav.Link>
+						)}
+
+						{userToken && (
 							<Nav.Link href="/cari-sukarelawan">Cari Sukarelawan</Nav.Link>
 						)}
 

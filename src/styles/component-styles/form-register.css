@@ -1,0 +1,56 @@
+.container-fluid .form-register-wrapper {
+	width: 85%;
+}
+
+.container-fluid .form-register-wrapper .button-back-register-wrapper {
+	font-size: 2.5rem;
+	margin-bottom: 1rem;
+	color: white;
+}
+
+.container-fluid .form-register-wrapper .button-back-register-wrapper a {
+	color: var(--tertiary-color);
+}
+
+.container-fluid .form-register-wrapper .button-back-register-wrapper a:hover {
+	color: black;
+}
+
+.container-fluid .form-register-wrapper .text-register-wrapper {
+	margin-bottom: 1.5rem;
+}
+
+.container-fluid .form-register-wrapper .text-register-wrapper h1 {
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 34px;
+	color: var(--tertiary-color);
+}
+
+.container-fluid .form-register-wrapper .form-label {
+	font-weight: 500;
+}
+
+.container-fluid .form-register-wrapper .button-wrapper {
+	background-color: var(--tertiary-color);
+	border-color: var(--tertiary-color);
+	transition: background-color 0.3s, border-color 0.3s;
+	padding: 5px 15px;
+	border-radius: 5px;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.container-fluid .form-register-wrapper .button-wrapper:hover {
+	background-color: rgb(194, 97, 97);
+	border-color: rgb(194, 97, 97);
+}
+
+.container-fluid .image-wrapper-register {
+	background-color: var(--tertiary-color);
+}
+
+.container-fluid .image-wrapper-register img {
+	margin: 2.5rem 0 0 5.5rem;
+}

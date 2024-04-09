@@ -13,7 +13,7 @@
 }
 
 .container-fluid .image-wrapper {
-	background-color: rgba(214, 28, 28, 0.781);
+	background-color: var(--tertiary-color);
 }
 
 .container-fluid .image-wrapper img {
@@ -42,6 +42,17 @@
 .container-fluid .form-wrapper button {
 	background-color: var(--tertiary-color);
 	border-color: var(--tertiary-color);
+	transition: background-color 0.3s, border-color 0.3s;
+	padding: 5px 15px;
+	border-radius: 5px;
+	color: white;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.container-fluid .form-wrapper button:hover {
+	background-color: rgb(194, 97, 97);
+	border-color: rgb(194, 97, 97);
 }
 
 @media screen and (min-width: 992px) {
