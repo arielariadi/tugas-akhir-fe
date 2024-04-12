@@ -92,8 +92,9 @@ const PendonorDarah = () => {
 				</Table>
 
 				<div className="pagination-wrapper-get-pendonors">
+					<p>Jumlah data: {rows}</p>
 					<p>
-						Total Rows: {rows} Page: {rows ? page + 1 : 0} of {pages}
+						Halaman {rows ? page + 1 : 0} dari {pages}
 					</p>
 					<ReactPaginate
 						pageCount={pages || 0} // Menggunakan nilai pages atau 0 jika pages adalah falsy

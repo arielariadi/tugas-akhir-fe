@@ -10,6 +10,7 @@ import PermintaanDarah from './pages/PermintaanDarah';
 
 import SidebarAdmin from './components/SidebarAdmin';
 import BankDarah from './pages/admin/BankDarah';
+import DaftarPermintaanDarah from './pages/admin/DaftarPermintaanDarah';
 
 import CariSukarelawan from './pages/CariSukarelawan';
 import ProfileUser from './pages/ProfileUser';
@@ -55,6 +56,10 @@ function App() {
 						<Route path="/dashboard-admin" element={<DashboardAdmin />} />
 						<Route path="/bank-darah" element={<BankDarah />} />
 						<Route path="/pendonor-darah" element={<PendonorDarah />} />
+						<Route
+							path="/permintaan-darah"
+							element={<DaftarPermintaanDarah />}
+						/>
 					</>
 				)}
 			</Routes>

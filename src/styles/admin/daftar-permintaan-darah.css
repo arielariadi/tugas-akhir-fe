@@ -1,0 +1,73 @@
+.permintaan-darah-wrapper h1 {
+	margin-top: 60px;
+	margin-left: 35rem;
+}
+
+.permintaan-darah-wrapper .table-wrapper .table {
+	margin-left: 19rem;
+}
+
+.permintaan-darah-wrapper .table-wrapper .table thead th {
+	text-align: center;
+}
+
+.permintaan-darah-wrapper .table-wrapper .table tbody td {
+	text-align: center;
+}
+
+.permintaan-darah-wrapper .table-wrapper .table tbody .surat-permohonan img {
+	width: 100%;
+	height: auto;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.permintaan-darah-wrapper
+	.table-wrapper
+	.table
+	tbody
+	.surat-permohonan
+	img:hover {
+	transform: scale(1.1);
+}
+
+.modal-body img {
+	width: 100%;
+}
+
+.pagination-wrapper-get-blood-requests {
+	margin-left: 19rem;
+}
+
+.permintaan-darah-wrapper .table-wrapper .table tbody .action-buttons {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.permintaan-darah-wrapper
+	.table-wrapper
+	.table
+	tbody
+	.action-buttons
+	.rejected-button {
+	width: 150px;
+}
+
+.permintaan-darah-wrapper
+	.table-wrapper
+	.table
+	tbody
+	.action-buttons
+	.accepted-button,
+.permintaan-darah-wrapper
+	.table-wrapper
+	.table
+	tbody
+	.action-buttons
+	.rejected-button {
+	flex: 0 0 45%; /* agar tombol memiliki lebar yang sama */
+	margin: 5px; /* memberikan jarak antar tombol */
+	align-self: flex-end; /* mengatur posisi tombol di bagian bawah */
+}

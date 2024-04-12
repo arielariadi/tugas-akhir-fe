@@ -10,7 +10,9 @@ const SidebarAdmin = () => {
 
 	return (
 		<div className="row">
-			<div className="col-4 col-md-2 bg-white vh-100 position-fixed">
+			<div
+				className="col-4 col-md-2 bg-white vh-100 position-fixed"
+				style={{ width: '250px', zIndex: '999' }}>
 				<div className="bg-white sidebar p-2">
 					<div className="m-2">
 						<i className="bi bi-bootstrap-fill me-3 fs-4"></i>
@@ -31,6 +33,11 @@ const SidebarAdmin = () => {
 						<a className="list-group-item py-2" href="/pendonor-darah">
 							<i className="bi bi-table fs-5 me-3"></i>
 							<span>Pendonor Darah</span>
+						</a>
+
+						<a className="list-group-item py-2" href="/permintaan-darah">
+							<i className="bi bi-speedometer2 fs-5 me-3"></i>
+							<span>Permintaan Darah</span>
 						</a>
 
 						<a className="list-group-item py-2" href="">
