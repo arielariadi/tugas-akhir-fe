@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -7,6 +8,11 @@ import config from '../../services/config-api/config';
 import { Table, Button, Modal } from 'react-bootstrap';
 
 import ReactPaginate from 'react-paginate';
+
+import acceptedBloodRequestService from '../../services/admin/acceptedBloodRequest.service';
+import rejectedBloodRequestService from '../../services/admin/rejectedBloodRequest.service';
+
+import Swal from 'sweetalert2';
 import '../../styles/admin/daftar-permintaan-darah.css';
 
 const DaftarPermintaanDarah = () => {
@@ -21,27 +27,31 @@ const DaftarPermintaanDarah = () => {
 
 	const [show, setShow] = useState(false);
 
-	useEffect(() => {
-		const getPermintaanDarahData = async () => {
-			try {
-				const response = await axios.get(
-					`${config.API_URL}/v1/admin/requestDarah?page=${page}&limit=${limit}`,
-					{
-						headers: {
-							Authorization: `${localStorage.getItem('adminToken')}`,
-						},
-					}
-				);
-				const responseData = response.data.bloodRequestsData;
-				setPermintaanDarahData(responseData);
-				setPages(response.data.totalPage);
-				setRows(response.data.totalRows);
+	const [isButtonDisabled, setIsButtonDisabled] = useState({});
+	const [activeRequestId, setActiveRequestId] = useState(null);
 
-				console.log('Berhasil menemukan data permintaan darah', responseData);
-			} catch (error) {
-				console.log('Gagal menemukan data permintaan darah', error);
-			}
-		};
+	const getPermintaanDarahData = async () => {
+		try {
+			const response = await axios.get(
+				`${config.API_URL}/v1/admin/requestDarah?page=${page}&limit=${limit}`,
+				{
+					headers: {
+						Authorization: `${localStorage.getItem('adminToken')}`,
+					},
+				}
+			);
+			const responseData = response.data.bloodRequestsData;
+			setPermintaanDarahData(responseData);
+			setPages(response.data.totalPage);
+			setRows(response.data.totalRows);
+
+			console.log('Berhasil menemukan data permintaan darah', responseData);
+		} catch (error) {
+			console.log('Gagal menemukan data permintaan darah', error);
+		}
+	};
+
+	useEffect(() => {
 		getPermintaanDarahData();
 	}, [page, limit]);
 
@@ -70,6 +80,71 @@ const DaftarPermintaanDarah = () => {
 	const handleCloseImage = () => {
 		setSelectedImage(null);
 		setShow(false);
+	};
+
+	useEffect(() => {
+		// muat status tombol dari localStorage saat komponen dimuat
+		const savedButtonStatus = localStorage.getItem('isButtonDisabled');
+		if (savedButtonStatus) {
+			setIsButtonDisabled(JSON.parse(savedButtonStatus));
+		}
+	}, []);
+
+	useEffect(() => {
+		// simpan status tombol ke localStorage setiap kali berubah
+		localStorage.setItem('isButtonDisabled', JSON.stringify(isButtonDisabled));
+	}, [isButtonDisabled]);
+
+	const handleAcceptedRequest = async idRequestDarah => {
+		try {
+			// Simpan status tombol
+			setIsButtonDisabled(prevStatus => ({
+				...prevStatus,
+				[idRequestDarah]: true, // nonaktifkan tombol
+			}));
+			setActiveRequestId(idRequestDarah);
+
+			const data = { id_request_darah: idRequestDarah };
+			const response = await acceptedBloodRequestService(data);
+			console.log('Accepted request:', response);
+
+			Swal.fire({
+				icon: 'success',
+				title: 'Permintaan darah berhasil diterima!',
+				text: 'Anda menerima permintaan darah',
+			});
+
+			// Refresh data permintaan darah setelah menerima permintaan
+			getPermintaanDarahData();
+		} catch (error) {
+			console.error('Gagal menerima permintaan darah', error);
+		}
+	};
+
+	const handleRejectedRequest = async idRequestDarah => {
+		try {
+			// Simpan status tombol
+			setIsButtonDisabled(prevStatus => ({
+				...prevStatus,
+				[idRequestDarah]: true, // nonaktifkan tombol
+			}));
+			setActiveRequestId(idRequestDarah);
+
+			const data = { id_request_darah: idRequestDarah };
+			const response = await rejectedBloodRequestService(data);
+			console.log('Rejected request:', response);
+
+			Swal.fire({
+				icon: 'success',
+				title: 'Permintaan darah berhasil ditolak!',
+				text: 'Anda menolak permintaan darah',
+			});
+
+			// Refresh data permintaan darah setelah menolak permintaan
+			getPermintaanDarahData();
+		} catch (error) {
+			console.error('Gagal menolak permintaan darah', error);
+		}
 	};
 
 	return (
@@ -127,10 +202,26 @@ const DaftarPermintaanDarah = () => {
 									</td>
 
 									<td colSpan="10" className="action-buttons">
-										<Button variant="primary" className="accepted-button">
+										<Button
+											variant="primary"
+											className="accepted-button"
+											onClick={() =>
+												handleAcceptedRequest(permintaanDarah.id_request_darah)
+											}
+											disabled={
+												isButtonDisabled[permintaanDarah.id_request_darah]
+											}>
 											Terima
 										</Button>
-										<Button variant="secondary" className="rejected-button">
+										<Button
+											variant="secondary"
+											className="rejected-button"
+											onClick={() =>
+												handleRejectedRequest(permintaanDarah.id_request_darah)
+											}
+											disabled={
+												isButtonDisabled[permintaanDarah.id_request_darah]
+											}>
 											Tolak
 										</Button>
 									</td>
