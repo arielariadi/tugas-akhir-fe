@@ -8,6 +8,43 @@
 	margin-left: 20rem;
 }
 
+.pendonor-darah-wrapper
+	.table-wrapper
+	.table
+	tbody
+	.action-buttons-registration {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.pendonor-darah-wrapper
+	.table-wrapper
+	.table
+	tbody
+	.action-buttons-registration
+	.rejected-button {
+	width: 75px;
+}
+
+.pendonor-darah-wrapper
+	.table-wrapper
+	.table
+	tbody
+	.action-buttons-registration
+	.accepted-button,
+.permintaan-darah-wrapper
+	.table-wrapper
+	.table
+	tbody
+	.action-buttons-registration
+	.rejected-button {
+	flex: 0 0 45%;
+	margin: 5px;
+	align-self: flex-end;
+}
+
 .pagination-wrapper-get-pendonors {
 	margin-left: 0;
 }

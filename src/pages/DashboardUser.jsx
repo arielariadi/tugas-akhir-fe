@@ -158,6 +158,7 @@ const DashboardUser = () => {
 								<th>Lokasi Donor Darah</th>
 								<th>Tanggal Donor</th>
 								<th>Golongan Darah</th>
+								<th>Status</th>
 								<th>Bukti Pendaftaran</th>
 							</tr>
 						</thead>
@@ -169,6 +170,7 @@ const DashboardUser = () => {
 										<td>{donor.lokasi_pmi}</td>
 										<td>{formatData(donor.tanggal_donor)}</td>
 										<td>{donor.gol_darah}</td>
+										<td>{renderStatus(donor.status)}</td>
 										<td>
 											<Button
 												className="button-bukti"

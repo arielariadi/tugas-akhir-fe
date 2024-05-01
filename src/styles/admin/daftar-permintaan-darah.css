@@ -67,7 +67,7 @@
 	tbody
 	.action-buttons
 	.rejected-button {
-	flex: 0 0 45%; /* agar tombol memiliki lebar yang sama */
-	margin: 5px; /* memberikan jarak antar tombol */
-	align-self: flex-end; /* mengatur posisi tombol di bagian bawah */
+	flex: 0 0 45%;
+	margin: 5px;
+	align-self: flex-end;
 }

@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 // import pendonorDarahService from '../../services/admin/pendonorDarah.service';
 
 import '../../styles/admin/pendonor-darah.css';
@@ -9,6 +10,10 @@ import axios from 'axios';
 import config from '../../services/config-api/config';
 
 import ReactPaginate from 'react-paginate';
+import Swal from 'sweetalert2';
+
+import acceptedBloodDonorRegistrationService from '../../services/admin/acceptedBloodDonorRegistration.service';
+import rejectedBloodDonorRegistrationService from '../../services/admin/rejectedBloodDonorRegistration.service';
 
 const PendonorDarah = () => {
 	const [pendonorData, setPendonorData] = useState([]);
@@ -19,26 +24,31 @@ const PendonorDarah = () => {
 	const [rows, setRows] = useState(0);
 	const [msg, setMsg] = useState('');
 
+	const [isButtonDisabledRegistration, setIsButtonDisabledRegistration] =
+		useState({});
+	const [activeRequestId, setActiveRequestId] = useState(null);
+
+	const getPendonorData = async () => {
+		try {
+			const response = await axios.get(
+				`${config.API_URL}/v1/admin/pendonorDarah?page=${page}&limit=${limit}`,
+				{
+					headers: {
+						Authorization: `${localStorage.getItem('adminToken')}`,
+					},
+				}
+			);
+			const responseData = response.data;
+			setPendonorData(responseData.pendonor);
+			setPages(responseData.totalPage);
+			setRows(responseData.totalRows);
+			console.log('Berhasil menampilkan data pendonor', responseData);
+		} catch (error) {
+			console.log('Gagal menampilkan data pendonor', error);
+		}
+	};
+
 	useEffect(() => {
-		const getPendonorData = async () => {
-			try {
-				const response = await axios.get(
-					`${config.API_URL}/v1/admin/pendonorDarah?page=${page}&limit=${limit}`,
-					{
-						headers: {
-							Authorization: `${localStorage.getItem('adminToken')}`,
-						},
-					}
-				);
-				const responseData = response.data;
-				setPendonorData(responseData.pendonor);
-				setPages(responseData.totalPage);
-				setRows(responseData.totalRows);
-				console.log('Berhasil menampilkan data pendonor', responseData);
-			} catch (error) {
-				console.log('Gagal menampilkan data pendonor', error);
-			}
-		};
 		getPendonorData();
 	}, [page, limit]);
 
@@ -59,6 +69,78 @@ const PendonorDarah = () => {
 		return `${day}-${month}-${year}`;
 	};
 
+	// fungsi untuk menonaktifkan tombol
+	useEffect(() => {
+		// muat status tombol dari localStorage saat komponen dimuat
+		const savedButtonStatus = localStorage.getItem(
+			'isButtonDisabledRegistration'
+		);
+		if (savedButtonStatus) {
+			setIsButtonDisabledRegistration(JSON.parse(savedButtonStatus));
+		}
+	}, []);
+
+	useEffect(() => {
+		// simpan status tombol ke localStorage setiap kali berubah
+		localStorage.setItem(
+			'isButtonDisabledRegistration',
+			JSON.stringify(isButtonDisabledRegistration)
+		);
+	}, [isButtonDisabledRegistration]);
+
+	// accept button
+	const handleAcceptedRequest = async idTraDonor => {
+		try {
+			// Simpan status tombol
+			setIsButtonDisabledRegistration(prevStatus => ({
+				...prevStatus,
+				[idTraDonor]: true, // nonaktifkan tombol
+			}));
+			setActiveRequestId(idTraDonor);
+
+			const data = { id_tra_donor: idTraDonor };
+			const response = await acceptedBloodDonorRegistrationService(data);
+			console.log('Accepted registration: ', response);
+
+			Swal.fire({
+				icon: 'success',
+				title: 'Pendaftaran donor darah diterima!',
+				text: 'Anda menerima pendaftaran donor darah',
+			});
+
+			// Refresh data permintaan darah setelah menerima permintaan
+			getPendonorData();
+		} catch (error) {
+			console.error('Gagal menerima pendaftaran donor darah', error);
+		}
+	};
+
+	const handleRejectedRequest = async idTraDonor => {
+		try {
+			// Simpan status tombol
+			setIsButtonDisabledRegistration(prevStatus => ({
+				...prevStatus,
+				[idTraDonor]: true, // nonaktifkan tombol
+			}));
+			setActiveRequestId(idTraDonor);
+
+			const data = { id_tra_donor: idTraDonor };
+			const response = await rejectedBloodDonorRegistrationService(data);
+			console.log('Rejected registration: ', response);
+
+			Swal.fire({
+				icon: 'success',
+				title: 'Pendaftaran donor darah berhasil ditolak!',
+				text: 'Anda menolak pendaftaran donor darah',
+			});
+
+			// Refresh data permintaan darah setelah menolak permintaan
+			getPendonorData();
+		} catch (error) {
+			console.error('Gagal menolak pendaftaran donor darah', error);
+		}
+	};
+
 	return (
 		<div className="pendonor-darah-wrapper">
 			<h1>Pendonor Darah</h1>
@@ -67,13 +149,14 @@ const PendonorDarah = () => {
 				<Table striped>
 					<thead>
 						<tr>
-							<th>No</th>
-							<th>Nama</th>
-							<th>Jenis Kelamin</th>
-							<th>Alamat</th>
-							<th>No Hp</th>
-							<th>Tanggal Donor</th>
-							<th>Golongan Darah</th>
+							<th style={{ width: '2%' }}>No</th>
+							<th style={{ width: '15%' }}>Nama</th>
+							<th style={{ width: '20%' }}>Jenis Kelamin</th>
+							<th style={{ width: '15%' }}>Alamat</th>
+							<th style={{ width: '10%' }}>No Hp</th>
+							<th style={{ width: '20%' }}>Tanggal Donor</th>
+							<th style={{ width: '10%' }}>Golongan Darah</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -86,6 +169,26 @@ const PendonorDarah = () => {
 								<td>{pendonor.User.no_hp}</td>
 								<td>{formatData(pendonor.tgl_donor)}</td>
 								<td>{pendonor.GolDarah.gol_darah}</td>
+								<td colSpan="10" className="action-buttons-registration">
+									<Button
+										variant="primary"
+										className="accepted-button"
+										onClick={() => handleAcceptedRequest(pendonor.id_tra_donor)}
+										disabled={
+											isButtonDisabledRegistration[pendonor.id_tra_donor]
+										}>
+										Terima
+									</Button>
+									<Button
+										variant="secondary"
+										className="rejected-button"
+										onClick={() => handleRejectedRequest(pendonor.id_tra_donor)}
+										disabled={
+											isButtonDisabledRegistration[pendonor.id_tra_donor]
+										}>
+										Tolak
+									</Button>
+								</td>
 							</tr>
 						))}
 					</tbody>

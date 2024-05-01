@@ -40,11 +40,6 @@ const SidebarAdmin = () => {
 							<span>Permintaan Darah</span>
 						</a>
 
-						<a className="list-group-item py-2" href="">
-							<i className="bi bi-clipboard-data fs-5 me-3"></i>
-							<span>Profile</span>
-						</a>
-
 						<a className="list-group-item py-2" href="" onClick={handleLogout}>
 							<i className="bi bi-power fs-5 me-3"></i>
 							<span>Logout</span>
