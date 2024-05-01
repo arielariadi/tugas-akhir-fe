@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Modal, Form } from 'react-bootstrap';
 import '../styles/user/jadwal-donor-darah.css';
 import daftarDonor from '../services/daftarDonor.service';
 import { useState } from 'react';
@@ -15,9 +15,21 @@ const JadwalDonorDarah = () => {
 
 	const [detailPmi, setDetailPmi] = useState(null);
 
+	// state modal
+	const [show, setShow] = useState(false);
+
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
+	const [selectedDate, setSelectedDate] = useState('');
+
 	const hariIni = new Date();
 	const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
 	const namaHariIni = hari[hariIni.getDay()];
+
+	const handleDateChange = event => {
+		setSelectedDate(event.target.value);
+	};
 
 	useEffect(() => {
 		const getDonorData = async () => {
@@ -47,6 +59,15 @@ const JadwalDonorDarah = () => {
 
 	const handleClick = async () => {
 		try {
+			if (!selectedDate) {
+				Swal.fire({
+					icon: 'error',
+					title: 'Tanggal donor belum dipilih!',
+					text: 'Harap pilih tanggal donor darah terlebih dahulu',
+				});
+				return;
+			}
+
 			const donorData = await profileUser(); // Ambil data donor dari API profileUser
 			const idUser = donorData.user.id_user;
 			const idGolDarah = donorData.user.id_gol_darah;
@@ -55,7 +76,7 @@ const JadwalDonorDarah = () => {
 				id_user: idUser,
 				id_lokasi_pmi: '4xzFX',
 				id_gol_darah: idGolDarah,
-				tgl_donor: new Date(),
+				tgl_donor: selectedDate,
 			};
 
 			Swal.fire({
@@ -119,13 +140,42 @@ const JadwalDonorDarah = () => {
 								<Card.Text>No HP : 08xxxxxxxx</Card.Text>
 							</div>
 
-							<Button variant="primary" className="mt-2" onClick={handleClick}>
+							<Button variant="primary" className="mt-2" onClick={handleShow}>
 								Daftar Sekarang
 							</Button>
 						</Card.Body>
 					</Card>
 				</div>
 			</div>
+
+			{/* modal */}
+			<Modal show={show} centered onHide={handleClose}>
+				<Modal.Header closeButton>
+					<Modal.Title>Pilih Tanggal Donor Darah</Modal.Title>
+				</Modal.Header>
+
+				<Modal.Body>
+					<Form.Group className="mb-3" controlId="tanggalDonorId">
+						<Form.Label>Tanggal Donor</Form.Label>
+						<Form.Control
+							type="date"
+							name="tanggalDonor"
+							value={selectedDate}
+							onChange={handleDateChange}
+						/>
+						<Form.Text className="text-muted"></Form.Text>
+					</Form.Group>
+				</Modal.Body>
+
+				<Modal.Footer>
+					<Button variant="secondary" onClick={handleClose}>
+						Batal
+					</Button>
+					<Button variant="primary" onClick={handleClick}>
+						Submit
+					</Button>
+				</Modal.Footer>
+			</Modal>
 		</>
 	);
 };
