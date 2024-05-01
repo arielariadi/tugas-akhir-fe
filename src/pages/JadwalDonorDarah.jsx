@@ -57,24 +57,29 @@ const JadwalDonorDarah = () => {
 				id_gol_darah: idGolDarah,
 				tgl_donor: new Date(),
 			};
-			console.log('tanggal-donor', postData);
-			const response = await daftarDonor(postData);
 
-			if (response) {
-				Swal.fire({
-					icon: 'success',
-					title: 'Pendaftaran donor darah berhasil!',
-					text: 'Selamat anda berhasil mendaftarkan diri untuk donor darah.',
-				});
-			} else {
-				Swal.fire({
-					icon: 'error',
-					title: 'Pendaftaran donor darah gagal!',
-					text: 'Maaf anda gagal mendaftarkan diri untuk donor darah.',
-				});
-			}
+			Swal.fire({
+				icon: 'warning',
+				title: 'Apakah kamu yakin ingin mendaftarkan diri untuk donor darah?',
+				text: 'Data yang terkirim adalah data diri kamu',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Ya, Saya yakin',
+			}).then(async result => {
+				if (result.isConfirmed) {
+					const response = await daftarDonor(postData);
 
-			setDataPmi(response); // Set state dataPmi dengan respons dari daftarDonor
+					Swal.fire({
+						icon: 'success',
+						title: 'Pendaftaran donor darah berhasil!',
+						text: 'Selamat anda berhasil mendaftarkan diri untuk donor darah',
+					});
+
+					setDataPmi(response); // Set state dataPmi dengan respons dari daftarDonor
+					console.log('tanggal-donor', postData);
+				}
+			});
 		} catch (error) {
 			console.error(error);
 		}

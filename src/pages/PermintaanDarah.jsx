@@ -1,9 +1,12 @@
+import { useState } from 'react';
+
 import { Button, Form, Container } from 'react-bootstrap';
 
 import permintaanDarahService from '../services/permintaanDarah.service';
 
+import Swal from 'sweetalert2';
+
 import '../styles/user/permintaan-darah.css';
-import { useState } from 'react';
 
 const PermintaanDarah = () => {
 	const [file, setFile] = useState();
@@ -18,8 +21,26 @@ const PermintaanDarah = () => {
 		data.append('surat_permohonan_image', file);
 
 		try {
-			const response = await permintaanDarahService(data);
-			console.log('response api', response);
+			Swal.fire({
+				icon: 'warning',
+				title: 'Apakah kamu yakin ingin request permintaan kantung darah?',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Ya, Saya Yakin',
+			}).then(async result => {
+				if (result.isConfirmed) {
+					const response = await permintaanDarahService(data);
+
+					Swal.fire({
+						icon: 'success',
+						title: 'Permintaan kantung darah berhasil!',
+						text: 'Mohon tunggu konfirmasi dari admin',
+					});
+
+					console.log('response api', response);
+				}
+			});
 		} catch (error) {
 			console.log(error);
 		}
@@ -32,7 +53,7 @@ const PermintaanDarah = () => {
 	return (
 		<>
 			<Container>
-				<div className="permintaan-darah-wrapper">
+				<div className="permintaan-darah-wrapper-user">
 					<h1 className="text-center">Permintaan Darah</h1>
 				</div>
 

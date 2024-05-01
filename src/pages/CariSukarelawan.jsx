@@ -45,11 +45,11 @@ const CariSukarelawan = () => {
 
 	return (
 		<>
-			<div className="main-wrapper">
-				<div className="form-wrapper">
+			<div className="volunteer-main-wrapper">
+				<div className="volunteer-form-wrapper">
 					<h1 className="text-center">Cari Sukarelawan</h1>
 
-					<Form.Group className="mb-3" controlId="golonganDarahId">
+					<Form.Group className="mb-3 mt-4" controlId="golonganDarahId">
 						<Form.Label>Golongan Darah</Form.Label>
 						<Form.Select
 							name="golonganDarah"
@@ -77,14 +77,15 @@ const CariSukarelawan = () => {
 					<Button
 						variant="primary"
 						type="submit"
+						className="search-button"
 						onClick={handleCariSukarelawan}>
 						Cari Sukarelawan
 					</Button>
 
 					{isSukareelawanFound && (
-						<div className="card-wrapper mt-3 d-flex justify-content-center">
+						<div className="card-wrapper">
 							{sukarelawanData.map((sukarelawan, index) => (
-								<Card key={index} style={{ width: '18rem', margin: '0 10px' }}>
+								<Card key={index}>
 									<Card.Body>
 										<Card.Title>{sukarelawan.nama}</Card.Title>
 										<Card.Subtitle className="mb-2 text-muted">

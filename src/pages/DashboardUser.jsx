@@ -210,7 +210,7 @@ const DashboardUser = () => {
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Nama Pemohon</th>
+								{/* <th>Nama Pemohon</th> */}
 								<th>Golongan Darah</th>
 								<th>Jumlah</th>
 								<th>Deskripsi</th>
@@ -223,7 +223,7 @@ const DashboardUser = () => {
 								bloodRequestData.map((bloodRequest, index) => (
 									<tr key={index + page * limit}>
 										<td>{index + 1 + page * limit}</td>
-										<td>{bloodRequest.nama_user}</td>
+										{/* <td>{bloodRequest.nama_user}</td> */}
 										<td>{bloodRequest.gol_darah}</td>
 										<td>{bloodRequest.jumlah_darah}</td>
 										<td>{bloodRequest.deskripsi}</td>
@@ -235,9 +235,9 @@ const DashboardUser = () => {
 					</Table>
 
 					<div className="pagination-wrapper">
-						<p>Jumlah data: {rows}</p>
+						<p>Jumlah data: {rows2}</p>
 						<p>
-							Halaman {rows ? page + 1 : 0} dari {pages}
+							Halaman {rows2 ? page + 1 : 0} dari {pages2}
 						</p>
 						<ReactPaginate
 							pageCount={pages2 || 0} // Menggunakan nilai pages atau 0 jika pages adalah falsy

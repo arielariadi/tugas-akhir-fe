@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 section.hero-section {
 	/* background: rgb(255, 255, 255); */
 	/* background: linear-gradient(
@@ -10,6 +14,7 @@ section.hero-section {
 	font-family: system-ui, sans-serif;
 }
 
+/* Home page */
 .homepage .hero-lottie {
 	width: 32rem;
 }
@@ -32,12 +37,14 @@ section.hero-section {
 	animation: fadeInUp;
 	animation-duration: 2s;
 	--animate-delay: 1.4s;
+	font-family: 'Rubik', sans-serif;
 }
 
 .homepage .header-box h1 span {
 	font-size: 3.2rem;
 	font-weight: 700;
 	color: var(--primary);
+	font-family: 'Rubik', sans-serif;
 }
 
 .homepage .header-box h1 .slogan-1 {
@@ -55,6 +62,7 @@ section.hero-section {
 	animation-duration: 2s;
 	--animate-delay: 0.6s;
 	color: var(--secondary-color);
+	font-family: 'Archivo', sans-serif;
 }
 
 .homepage .header-box button {
@@ -74,6 +82,37 @@ section.hero-section {
 .homepage .header-box h5 {
 	color: var(--secondary-color);
 }
+/* End home page */
+
+/* services */
+.services {
+	background-color: #fde2e2e5;
+}
+
+.services .services-header h4 {
+	color: #2a1751;
+	font-weight: 600;
+	font-family: 'Archivo', sans-serif;
+	letter-spacing: 10px;
+	margin-top: 40px;
+}
+
+.services .services-header-detail h2 {
+	font-family: 'Rubik', sans-serif;
+	font-weight: 600;
+	line-height: 40px;
+}
+
+.services .services-header-detail p {
+	font-family: 'Archivo', sans-serif;
+	color: var(--secondary-color);
+	font-weight: 500;
+}
+
+.services .services-img img {
+	width: 50%;
+}
+/* End services */
 
 @media screen and (max-width: 992px) {
 	.homepage .header-box {

@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import { register } from '../services/register.service';
 import { useState } from 'react';
 
+import Swal from 'sweetalert2';
+
 import '../styles/component-styles/form-register.css';
 
 const FormRegister = () => {
@@ -27,6 +29,18 @@ const FormRegister = () => {
 		try {
 			const response = await register(data);
 			console.log(response);
+
+			Swal.fire({
+				icon: 'success',
+				title: 'Registrasi Berhasil!',
+				text: 'Silakan login untuk mengakses akun Anda',
+				showConfirmButton: true,
+				confirmButtonText: 'OK',
+			}).then(result => {
+				if (result.isConfirmed) {
+					window.location.href = '/login';
+				}
+			});
 		} catch (error) {
 			setRegisterFailed(error.message);
 		}

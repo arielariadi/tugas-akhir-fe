@@ -1,4 +1,4 @@
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 
 import '../styles/user/profile-user.css';
 import { useState, useEffect } from 'react';
@@ -95,151 +95,184 @@ const ProfileUser = () => {
 
 	return (
 		<>
-			<div className="main-wrapper">
-				<h1 className="text-center">Profile User</h1>
+			<Container>
+				<h1 className="text-center" style={{ marginTop: '100px' }}>
+					Profile User
+				</h1>
+				<Row className="mt-5 border">
+					<Col style={{ borderRight: '1px solid #ccc' }}>
+						<div className="profile-main-wrapper-left">
+							<div className="user-image d-flex justify-content-center mt-5">
+								<img
+									src="src/assets/img/user-default-icon.jpg"
+									alt="User Image"
+									className="img-fluid"
+								/>
+							</div>
 
-				<Form.Group className="mb-3" controlId="namaLengkapId">
-					<Form.Label>Nama Lengkap</Form.Label>
-					<Form.Control
-						type="text"
-						placeholder="John Doe"
-						name="namaLengkap"
-						value={userData.nama || ''}
-						onChange={e => setUserData({ ...userData, nama: e.target.value })}
-					/>
-					<Form.Text className="text-muted"></Form.Text>
-				</Form.Group>
-
-				<Form.Group className="mb-3" controlId="emailId">
-					<Form.Label>Email</Form.Label>
-					<Form.Control
-						type="email"
-						placeholder="example@example.com"
-						name="email"
-						value={userData.email || ''}
-						onChange={e => setUserData({ ...userData, email: e.target.value })}
-					/>
-					<Form.Text className="text-muted"></Form.Text>
-				</Form.Group>
-
-				<Form.Group className="mb-3" controlId="desaId">
-					<Form.Label>Desa</Form.Label>
-					<Form.Select
-						name="desa"
-						aria-label="Default select example"
-						value={userData.alamat || ''}
-						onChange={e =>
-							setUserData({ ...userData, alamat: e.target.value })
-						}>
-						<option>{userData.alamat || 'Pilih Desa'}</option>
-						<option value="Citeras">Citeras</option>
-						<option value="Rangkasbitung">Rangkasbitung</option>
-						<option value="Tutul">Tutul</option>
-					</Form.Select>
-				</Form.Group>
-
-				<Form.Group className="mb-3" controlId="jenisKelaminId">
-					<Form.Label>Jenis Kelamin</Form.Label>
-					<Form.Select
-						name="jenisKelamin"
-						aria-label="Default select example"
-						value={userData.jenis_kelamin || ''}
-						onChange={e =>
-							setUserData({ ...userData, jenis_kelamin: e.target.value })
-						}>
-						<option>{userData.jenis_kelamin || 'Pilih Jenis Kelamin'}</option>
-						<option value="Laki-Laki">Laki-Laki</option>
-						<option value="Perempuan">Perempuan</option>
-					</Form.Select>
-				</Form.Group>
-
-				<Form.Group className="mb-3" controlId="tanngalLahirId">
-					<Form.Label>Tanggal Lahir</Form.Label>
-					<Form.Control
-						type="date"
-						name="tanggalLahir"
-						value={userData.tanggal_lahir || ''}
-						onChange={e =>
-							setUserData({ ...userData, tanggal_lahir: e.target.value })
-						}
-					/>
-					<Form.Text className="text-muted"></Form.Text>
-				</Form.Group>
-
-				<Form.Group className="mb-3" controlId="golonganDarahId">
-					<Form.Label>Golongan Darah</Form.Label>
-					<Form.Select
-						name="golonganDarah"
-						aria-label="Default select example"
-						value={userData.id_gol_darah || ''}
-						onChange={e => {
-							const selectedBloodType =
-								e.target.options[e.target.selectedIndex].text;
-							const idGolonganDarah = e.target.value;
-
-							setUserData(prevUserData => ({
-								...prevUserData,
-								gol_darah: selectedBloodType,
-								id_gol_darah: idGolonganDarah,
-							}));
-						}}>
-						<option>{userData.gol_darah || 'Pilih Golongan Darah'}</option>
-						<option value="o9bsy">A+</option>
-						<option value="QKqRv">A-</option>
-						<option value="mhkrK">AB+</option>
-						<option value="uSuMT">AB-</option>
-						<option value="kv-71">B+</option>
-						<option value="6pGuJ">B-</option>
-						<option value="kMO7s">O+</option>
-						<option value="N7Fls">O-</option>
-					</Form.Select>
-				</Form.Group>
-
-				<Form.Group className="mb-3" controlId="noHpId">
-					<Form.Label>No Hp</Form.Label>
-					<Form.Control
-						type="text"
-						placeholder="08xxxxxxxxx"
-						name="noHp"
-						value={userData.no_hp || ''}
-						onChange={e => setUserData({ ...userData, no_hp: e.target.value })}
-					/>
-					<Form.Text className="text-muted"></Form.Text>
-				</Form.Group>
-
-				<Form.Group className="mb-3" controlId="noHpId">
-					<Form.Label>Status Sukarelawan</Form.Label>
-					{['radio'].map(type => (
-						<div key={`default-${type}`} className="mb-3">
-							<Form.Check
-								type={type}
-								name="statusSukarelawan"
-								id={'bersediaId'}
-								label={'Bersedia'}
-								checked={statusSukarelawan === 1}
-								onChange={() => handleChangeStatusSukarelawan(1)}
-							/>
-
-							<Form.Check
-								type={type}
-								name="statusSukarelawan"
-								id={'tidakBersediaId'}
-								label={'Tidak Bersedia'}
-								checked={statusSukarelawan === 0}
-								onChange={() => handleChangeStatusSukarelawan(0)}
-							/>
+							<div className="user-details">
+								<h2 className="text-center">{userData.nama || ''}</h2>
+							</div>
 						</div>
-					))}
-				</Form.Group>
+					</Col>
 
-				<Button
-					className="mt-4"
-					variant="primary"
-					type="submit"
-					onClick={handleSaveButtonClick}>
-					Simpan
-				</Button>
-			</div>
+					<Col className="mt-5">
+						<div className="profile-main-wrapper-right">
+							<Form.Group className="mb-3" controlId="namaLengkapId">
+								<Form.Label>Nama Lengkap</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="John Doe"
+									name="namaLengkap"
+									value={userData.nama || ''}
+									onChange={e =>
+										setUserData({ ...userData, nama: e.target.value })
+									}
+								/>
+								<Form.Text className="text-muted"></Form.Text>
+							</Form.Group>
+
+							<Form.Group className="mb-3" controlId="emailId">
+								<Form.Label>Email</Form.Label>
+								<Form.Control
+									type="email"
+									placeholder="example@example.com"
+									name="email"
+									value={userData.email || ''}
+									onChange={e =>
+										setUserData({ ...userData, email: e.target.value })
+									}
+								/>
+								<Form.Text className="text-muted"></Form.Text>
+							</Form.Group>
+
+							<Form.Group className="mb-3" controlId="desaId">
+								<Form.Label>Desa</Form.Label>
+								<Form.Select
+									name="desa"
+									aria-label="Default select example"
+									value={userData.alamat || ''}
+									onChange={e =>
+										setUserData({ ...userData, alamat: e.target.value })
+									}>
+									<option>{userData.alamat || 'Pilih Desa'}</option>
+									<option value="Citeras">Citeras</option>
+									<option value="Rangkasbitung">Rangkasbitung</option>
+									<option value="Tutul">Tutul</option>
+								</Form.Select>
+							</Form.Group>
+
+							<Form.Group className="mb-3" controlId="jenisKelaminId">
+								<Form.Label>Jenis Kelamin</Form.Label>
+								<Form.Select
+									name="jenisKelamin"
+									aria-label="Default select example"
+									value={userData.jenis_kelamin || ''}
+									onChange={e =>
+										setUserData({ ...userData, jenis_kelamin: e.target.value })
+									}>
+									<option>
+										{userData.jenis_kelamin || 'Pilih Jenis Kelamin'}
+									</option>
+									<option value="Laki-Laki">Laki-Laki</option>
+									<option value="Perempuan">Perempuan</option>
+								</Form.Select>
+							</Form.Group>
+
+							<Form.Group className="mb-3" controlId="tanngalLahirId">
+								<Form.Label>Tanggal Lahir</Form.Label>
+								<Form.Control
+									type="date"
+									name="tanggalLahir"
+									value={userData.tanggal_lahir || ''}
+									onChange={e =>
+										setUserData({ ...userData, tanggal_lahir: e.target.value })
+									}
+								/>
+								<Form.Text className="text-muted"></Form.Text>
+							</Form.Group>
+
+							<Form.Group className="mb-3" controlId="golonganDarahId">
+								<Form.Label>Golongan Darah</Form.Label>
+								<Form.Select
+									name="golonganDarah"
+									aria-label="Default select example"
+									value={userData.id_gol_darah || ''}
+									onChange={e => {
+										const selectedBloodType =
+											e.target.options[e.target.selectedIndex].text;
+										const idGolonganDarah = e.target.value;
+
+										setUserData(prevUserData => ({
+											...prevUserData,
+											gol_darah: selectedBloodType,
+											id_gol_darah: idGolonganDarah,
+										}));
+									}}>
+									<option>
+										{userData.gol_darah || 'Pilih Golongan Darah'}
+									</option>
+									<option value="o9bsy">A+</option>
+									<option value="QKqRv">A-</option>
+									<option value="mhkrK">AB+</option>
+									<option value="uSuMT">AB-</option>
+									<option value="kv-71">B+</option>
+									<option value="6pGuJ">B-</option>
+									<option value="kMO7s">O+</option>
+									<option value="N7Fls">O-</option>
+								</Form.Select>
+							</Form.Group>
+
+							<Form.Group className="mb-3" controlId="noHpId">
+								<Form.Label>No Hp</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="08xxxxxxxxx"
+									name="noHp"
+									value={userData.no_hp || ''}
+									onChange={e =>
+										setUserData({ ...userData, no_hp: e.target.value })
+									}
+								/>
+								<Form.Text className="text-muted"></Form.Text>
+							</Form.Group>
+
+							<Form.Group className="mb-3" controlId="noHpId">
+								<Form.Label>Status Sukarelawan</Form.Label>
+								{['radio'].map(type => (
+									<div key={`default-${type}`} className="mb-3">
+										<Form.Check
+											type={type}
+											name="statusSukarelawan"
+											id={'bersediaId'}
+											label={'Bersedia'}
+											checked={statusSukarelawan === 1}
+											onChange={() => handleChangeStatusSukarelawan(1)}
+										/>
+
+										<Form.Check
+											type={type}
+											name="statusSukarelawan"
+											id={'tidakBersediaId'}
+											label={'Tidak Bersedia'}
+											checked={statusSukarelawan === 0}
+											onChange={() => handleChangeStatusSukarelawan(0)}
+										/>
+									</div>
+								))}
+							</Form.Group>
+
+							<Button
+								className="mt-4 mb-4"
+								variant="primary"
+								type="submit"
+								onClick={handleSaveButtonClick}>
+								Simpan
+							</Button>
+						</div>
+					</Col>
+				</Row>
+			</Container>
 		</>
 	);
 };

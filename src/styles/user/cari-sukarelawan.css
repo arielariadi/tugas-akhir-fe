@@ -1,3 +1,104 @@
-.main-wrapper {
+.volunteer-main-wrapper {
 	margin-top: 100px;
+}
+
+.volunteer-main-wrapper .volunteer-form-wrapper .form-select {
+	width: 55%;
+	margin: 0 auto;
+}
+
+.volunteer-main-wrapper .volunteer-form-wrapper .card-wrapper {
+	margin-top: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.volunteer-main-wrapper .volunteer-form-wrapper .card-wrapper .card {
+	width: calc(30% - 40px);
+	margin: 0 10px 20px;
+}
+
+.volunteer-main-wrapper .volunteer-form-wrapper label {
+	margin-left: 307px;
+}
+
+.volunteer-main-wrapper .volunteer-form-wrapper .search-button {
+	margin-left: 307px;
+}
+
+@media screen and (max-width: 992px) {
+	.volunteer-main-wrapper .volunteer-form-wrapper label {
+		margin-left: 100px;
+	}
+
+	.volunteer-main-wrapper .volunteer-form-wrapper .form-select {
+		width: 80%;
+		margin: 0 auto;
+	}
+
+	.volunteer-main-wrapper .volunteer-form-wrapper .card-wrapper .card {
+		width: calc(41% - 20px);
+	}
+
+	.volunteer-main-wrapper .volunteer-form-wrapper .search-button {
+		margin-left: 100px;
+	}
+
+	.volunteer-main-wrapper .volunteer-form-wrapper .card-wrapper {
+		margin-top: 50px;
+	}
+}
+
+@media screen and (max-width: 575px) {
+	.volunteer-main-wrapper .volunteer-form-wrapper label {
+		margin-left: 60px;
+	}
+
+	.volunteer-main-wrapper .volunteer-form-wrapper .form-select {
+		width: 80%;
+		margin: 0 auto;
+	}
+
+	.volunteer-main-wrapper .volunteer-form-wrapper .card-wrapper .card {
+		width: calc(83% - 20px);
+	}
+
+	.volunteer-main-wrapper .volunteer-form-wrapper .search-button {
+		margin-left: 60px;
+	}
+}
+
+@media screen and (max-width: 475px) {
+	.volunteer-main-wrapper .volunteer-form-wrapper label {
+		margin-left: 45px;
+	}
+
+	.volunteer-main-wrapper .volunteer-form-wrapper .form-select {
+		width: 80%;
+		margin: 0 auto;
+	}
+
+	.volunteer-main-wrapper .volunteer-form-wrapper .card-wrapper .card {
+		width: calc(85% - 20px);
+	}
+
+	.volunteer-main-wrapper .volunteer-form-wrapper .search-button {
+		margin-left: 45px;
+	}
+}
+
+@media screen and (max-width: 375px) {
+	.volunteer-main-wrapper .volunteer-form-wrapper label {
+		margin-left: 35px;
+	}
+
+	.volunteer-main-wrapper .volunteer-form-wrapper .form-select {
+		width: 80%;
+		margin: 0 auto;
+	}
+
+	.volunteer-main-wrapper .volunteer-form-wrapper .search-button {
+		margin-left: 35px;
+	}
 }

@@ -106,7 +106,7 @@ const DaftarPermintaanDarah = () => {
 
 			const data = { id_request_darah: idRequestDarah };
 			const response = await acceptedBloodRequestService(data);
-			console.log('Accepted request:', response);
+			console.log('Accepted request: ', response);
 
 			Swal.fire({
 				icon: 'success',
@@ -132,7 +132,7 @@ const DaftarPermintaanDarah = () => {
 
 			const data = { id_request_darah: idRequestDarah };
 			const response = await rejectedBloodRequestService(data);
-			console.log('Rejected request:', response);
+			console.log('Rejected request: ', response);
 
 			Swal.fire({
 				icon: 'success',
