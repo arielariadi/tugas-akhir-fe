@@ -5,6 +5,7 @@
 
 .permintaan-darah-wrapper .table-wrapper .table {
 	margin-left: 19rem;
+	width: 1500px;
 }
 
 .permintaan-darah-wrapper .table-wrapper .table thead th {
@@ -15,8 +16,9 @@
 	text-align: center;
 }
 
-.permintaan-darah-wrapper .table-wrapper .table tbody .surat-permohonan img {
-	width: 100%;
+.permintaan-darah-wrapper .table-wrapper .table tbody .surat-permohonan img,
+.permintaan-darah-wrapper .table-wrapper .table tbody .bukti-foto img {
+	max-width: 90px;
 	height: auto;
 	cursor: pointer;
 	transition: transform 0.3s ease;
@@ -27,7 +29,8 @@
 	.table
 	tbody
 	.surat-permohonan
-	img:hover {
+	img:hover,
+.permintaan-darah-wrapper .table-wrapper .table tbody .bukti-foto img:hover {
 	transform: scale(1.1);
 }
 

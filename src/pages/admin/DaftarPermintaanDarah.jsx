@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import config from '../../services/config-api/config';
 
-import { Table, Button, Modal } from 'react-bootstrap';
+import { Table, Button, Modal, Form } from 'react-bootstrap';
 
 import ReactPaginate from 'react-paginate';
 
@@ -29,6 +29,11 @@ const DaftarPermintaanDarah = () => {
 
 	const [isButtonDisabled, setIsButtonDisabled] = useState({});
 	const [activeRequestId, setActiveRequestId] = useState(null);
+
+	// bukti foto
+	const [file, setFile] = useState();
+
+	const [selectedImageBuktiFoto, setSelectedImageBuktiFoto] = useState(null);
 
 	const getPermintaanDarahData = async () => {
 		try {
@@ -82,6 +87,16 @@ const DaftarPermintaanDarah = () => {
 		setShow(false);
 	};
 
+	const handleImageClickBuktiFoto = imageUrl => {
+		setSelectedImageBuktiFoto(imageUrl);
+		setShow(true);
+	};
+
+	const handleCloseImageBuktiFoto = () => {
+		setSelectedImageBuktiFoto(null);
+		setShow(false);
+	};
+
 	useEffect(() => {
 		// muat status tombol dari localStorage saat komponen dimuat
 		const savedButtonStatus = localStorage.getItem('isButtonDisabled');
@@ -95,8 +110,27 @@ const DaftarPermintaanDarah = () => {
 		localStorage.setItem('isButtonDisabled', JSON.stringify(isButtonDisabled));
 	}, [isButtonDisabled]);
 
+	const handleFile = event => {
+		const uploadedFile = event.target.files[0];
+		console.log('File yang diunggah:', uploadedFile.name);
+		setFile(uploadedFile);
+	};
+
 	const handleAcceptedRequest = async idRequestDarah => {
+		if (!file) {
+			Swal.fire({
+				icon: 'error',
+				title: 'Error',
+				text: 'Silahkan pilih foto untuk bukti penerimaan terlebih dahulu!',
+			});
+			return;
+		}
+
 		try {
+			const formData = new FormData();
+			formData.append('bukti_foto', file);
+			formData.append('id_request_darah', idRequestDarah);
+
 			// Simpan status tombol
 			setIsButtonDisabled(prevStatus => ({
 				...prevStatus,
@@ -104,8 +138,7 @@ const DaftarPermintaanDarah = () => {
 			}));
 			setActiveRequestId(idRequestDarah);
 
-			const data = { id_request_darah: idRequestDarah };
-			const response = await acceptedBloodRequestService(data);
+			const response = await acceptedBloodRequestService(formData);
 			console.log('Accepted request: ', response);
 
 			Swal.fire({
@@ -152,19 +185,20 @@ const DaftarPermintaanDarah = () => {
 			<h1>Permintaan Darah</h1>
 
 			<div className="table-wrapper" style={{ overflowX: 'auto' }}>
-				<Table striped style={{ minWidth: '1000px' }}>
+				<Table striped className="blood-request-table">
 					<thead>
 						<tr>
-							<th style={{ width: '2%' }}>No</th>
-							<th style={{ width: '15%' }}>Nama Pemohon</th>
-							<th style={{ width: '15%' }}>Alamat</th>
-							<th style={{ width: '10%' }}>Jenis Kelamin</th>
-							<th style={{ width: '10%' }}>Golongan Darah</th>
-							<th style={{ width: '5%' }}>Jumlah</th>
-							<th style={{ width: '25%' }}>Deskripsi</th>
-							<th style={{ width: '10%' }}>Tanggal Permintaan</th>
-							<th style={{ width: '10%' }}>Surat Permohonan</th>
-							<th style={{ width: '10%' }}>Aksi</th>
+							<th>No</th>
+							<th style={{ width: '100px' }}>Nama Pemohon</th>
+							<th>Alamat</th>
+							<th>Jenis Kelamin</th>
+							<th>Golongan Darah</th>
+							<th>Jumlah</th>
+							<th style={{ width: '200px' }}>Deskripsi</th>
+							<th>Tanggal Permintaan</th>
+							<th style={{ width: '100px' }}>Surat Permohonan</th>
+							<th>Bukti Penerimaan</th>
+							<th style={{ width: '100px' }}>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -200,6 +234,36 @@ const DaftarPermintaanDarah = () => {
 											/>
 										)}
 									</td>
+
+									{permintaanDarah.status === 2 && (
+										<td
+											key={`bukti_foto_${permintaanDarah.id_request_darah}`}
+											className="bukti-foto">
+											<img
+												src={
+													`http://127.0.0.1:3000/bukti-foto/` +
+													permintaanDarah.bukti_foto
+												}
+												alt="Bukti Penerimaan"
+												onClick={() =>
+													handleImageClickBuktiFoto(
+														`http://127.0.0.1:3000/bukti-foto/` +
+															permintaanDarah.bukti_foto
+													)
+												}
+											/>
+										</td>
+									)}
+									{permintaanDarah.status !== 2 && (
+										<td key={`bukti_foto_${permintaanDarah.id_request_darah}`}>
+											<Form.Control
+												type="file"
+												encType="multipart/form-data"
+												onChange={handleFile}
+												name="suratPermohonan"
+											/>
+										</td>
+									)}
 
 									<td colSpan="10" className="action-buttons">
 										<Button
@@ -264,7 +328,25 @@ const DaftarPermintaanDarah = () => {
 						</Modal.Header>
 
 						<Modal.Body>
-							<img src={selectedImage} alt="Selected Image" />
+							<img src={selectedImage} alt="Surat Permohonan" />
+						</Modal.Body>
+
+						<Modal.Footer>
+							<Button variant="secondary" onClick={handleCloseImage}>
+								Close
+							</Button>
+						</Modal.Footer>
+					</Modal>
+				)}
+
+				{selectedImageBuktiFoto && (
+					<Modal show={show} onHide={handleCloseImage} centered>
+						<Modal.Header closeButton>
+							<Modal.Title>Bukti Penerimaan</Modal.Title>
+						</Modal.Header>
+
+						<Modal.Body>
+							<img src={selectedImageBuktiFoto} alt="Bukti Penerimaan" />
 						</Modal.Body>
 
 						<Modal.Footer>

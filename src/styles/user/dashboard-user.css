@@ -12,14 +12,60 @@
 	text-align: center;
 }
 
+.dashboard-wrapper .table-wrapper-blood-request .table .bukti-penerimaan {
+	max-width: 90px;
+}
+
+.dashboard-wrapper .table-wrapper-blood-request .table .bukti-penerimaan img {
+	height: auto;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.dashboard-wrapper
+	.table-wrapper-blood-request
+	.table
+	.bukti-penerimaan
+	img:hover {
+	transform: scale(1.1);
+}
+
 .table-wrapper-blood-request {
 	margin-top: 5rem;
 }
 
+.modal {
+	margin-top: 3%;
+}
+
 @media screen and (max-width: 992px) {
+	.modal {
+		margin-top: 2%;
+	}
 }
 
 @media screen and (max-width: 575px) {
+	.dashboard-wrapper h1 {
+		font-size: 1.9rem;
+	}
+
+	.dashboard-wrapper h3 {
+		font-size: 1.3rem;
+	}
+
+	.dashboard-wrapper .table-wrapper .table {
+		width: 700px;
+	}
+
+	.dashboard-wrapper .table-wrapper-blood-request,
+	.dashboard-wrapper .table-wrapper {
+		overflow-x: auto;
+	}
+
+	.modal {
+		width: 50%;
+		margin-left: 25%;
+	}
 }
 
 @media screen and (max-width: 475px) {
@@ -27,8 +73,24 @@
 		font-size: 1.6rem;
 	}
 
+	.dashboard-wrapper h3 {
+		font-size: 1.1rem;
+	}
+
 	.table-wrapper-blood-request {
 		margin-top: 3rem;
+	}
+
+	.dashboard-wrapper .table-wrapper-blood-request {
+		overflow-x: auto;
+	}
+
+	.dashboard-wrapper .table-wrapper .table {
+		width: 500px;
+	}
+
+	.dashboard-wrapper .table-wrapper-blood-request .table .bukti-penerimaan {
+		max-width: 50px;
 	}
 
 	.dashboard-wrapper .table-wrapper .table th,
@@ -54,6 +116,11 @@
 		height: 30px;
 		font-size: 0.7rem;
 	}
+
+	.modal {
+		width: 60%;
+		margin-left: 20%;
+	}
 }
 
 @media screen and (max-width: 375px) {
@@ -62,11 +129,19 @@
 	}
 
 	.dashboard-wrapper h1 {
+		font-size: 1.7rem;
+	}
+
+	.dashboard-wrapper h3 {
 		font-size: 1.2rem;
 	}
 
 	.dashboard-wrapper .table-wrapper-blood-request .table {
-		width: 50px;
+		width: 150px;
+	}
+
+	.dashboard-wrapper .table-wrapper .table {
+		width: 500px;
 	}
 
 	.dashboard-wrapper .table-wrapper .table th,
@@ -74,7 +149,7 @@
 	.dashboard-wrapper .table-wrapper-blood-request .table th,
 	.dashboard-wrapper .table-wrapper-blood-request .table td {
 		text-align: center;
-		font-size: 0.5rem;
+		font-size: 0.8rem;
 	}
 
 	.dashboard-wrapper .pagination-wrapper p {
@@ -91,5 +166,10 @@
 		width: 80%;
 		height: 25px;
 		font-size: 0.5rem;
+	}
+
+	.modal {
+		width: 70%;
+		margin-left: 15%;
 	}
 }

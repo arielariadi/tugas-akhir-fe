@@ -11,6 +11,7 @@ const acceptedBloodRequestService = async data => {
 			{
 				headers: {
 					Authorization: adminToken,
+					'Content-Type': 'multipart/form-data',
 				},
 			}
 		);

@@ -18,22 +18,10 @@ const DashboardUser = () => {
 	const [limit2, setLimit2] = useState(5);
 	const [pages2, setPages2] = useState(0);
 	const [rows2, setRows2] = useState(0);
-
+	const [selectedImage, setSelectedImage] = useState(null);
 	const [show, setShow] = useState(false);
-	const [modalIndex, setModalIndex] = useState(null);
+
 	const [msg, setMsg] = useState('');
-
-	// Fungsi untuk menutup modal
-	const handleClose = () => {
-		setShow(false);
-		setModalIndex(null); // Reset indeks modal saat modal ditutup
-	};
-
-	// Fungsi untuk membuka modal dan mengatur indeks modal yang dipilih
-	const handleShow = index => {
-		setShow(true);
-		setModalIndex(index);
-	};
 
 	// Efek samping untuk memuat data pendonor saat komponen dimuat dan saat `page` atau `limit` berubah
 	useEffect(() => {
@@ -144,6 +132,16 @@ const DashboardUser = () => {
 		);
 	};
 
+	const handleImageClick = imageUrl => {
+		setSelectedImage(imageUrl);
+		setShow(true);
+	};
+
+	const handleCloseImage = () => {
+		setSelectedImage(null);
+		setShow(false);
+	};
+
 	return (
 		<div className="dashboard-wrapper">
 			<Container>
@@ -172,11 +170,7 @@ const DashboardUser = () => {
 										<td>{donor.gol_darah}</td>
 										<td>{renderStatus(donor.status)}</td>
 										<td>
-											<Button
-												className="button-bukti"
-												onClick={() => handleShow(index)}>
-												Bukti
-											</Button>
+											<Button className="button-bukti">Bukti</Button>
 										</td>
 									</tr>
 								))}
@@ -218,6 +212,7 @@ const DashboardUser = () => {
 								<th>Deskripsi</th>
 								<th>Tanggal Permintaan</th>
 								<th>Status</th>
+								<th>Bukti Penerimaan</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -231,6 +226,26 @@ const DashboardUser = () => {
 										<td>{bloodRequest.deskripsi}</td>
 										<td>{formatData(bloodRequest.tanggal_request_darah)}</td>
 										<td>{renderStatus(bloodRequest.status)}</td>
+										<td className="bukti-penerimaan">
+											{bloodRequest.bukti_foto ? (
+												<img
+													src={
+														`http://127.0.0.1:3000/bukti-foto/` +
+														bloodRequest.bukti_foto
+													}
+													alt="Bukti Penerimaan"
+													className="bukti-penerimaan"
+													onClick={() =>
+														handleImageClick(
+															`http://127.0.0.1:3000/bukti-foto/` +
+																bloodRequest.bukti_foto
+														)
+													}
+												/>
+											) : (
+												<span>Belum ada bukti penerimaan</span>
+											)}
+										</td>
 									</tr>
 								))}
 						</tbody>
@@ -260,32 +275,30 @@ const DashboardUser = () => {
 				</div>
 			</Container>
 
-			<Modal show={show} onHide={handleClose} centered>
-				<Modal.Header closeButton>
-					<Modal.Title>Data Calon Pendonor</Modal.Title>
-				</Modal.Header>
+			{selectedImage && (
+				<div className="modal-container">
+					<Modal
+						show={show}
+						onHide={handleCloseImage}
+						centered
+						size="sm"
+						className="modal">
+						<Modal.Header closeButton>
+							<Modal.Title>Bukti Penerimaan</Modal.Title>
+						</Modal.Header>
 
-				<Modal.Body>
-					<div>
-						<p>Tolong perlihatkan data ini kepada petugas :</p>
-						{modalIndex !== null && (
-							<>
-								<p>Nama Pendonor: {donorData[modalIndex].nama_user}</p>
-								<p>Email: {donorData[modalIndex].email_user}</p>
-							</>
-						)}
-					</div>
-				</Modal.Body>
+						<Modal.Body>
+							<img src={selectedImage} alt="Bukti Penerimaan" />
+						</Modal.Body>
 
-				<Modal.Footer>
-					<Button variant="secondary" onClick={handleClose}>
-						Close
-					</Button>
-					<Button variant="primary" onClick={handleClose}>
-						Save Changes
-					</Button>
-				</Modal.Footer>
-			</Modal>
+						<Modal.Footer>
+							<Button variant="secondary" onClick={handleCloseImage}>
+								Close
+							</Button>
+						</Modal.Footer>
+					</Modal>
+				</div>
+			)}
 		</div>
 	);
 };
