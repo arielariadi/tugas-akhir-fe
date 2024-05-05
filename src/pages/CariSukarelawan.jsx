@@ -88,12 +88,12 @@ const CariSukarelawan = () => {
 								<Card key={index}>
 									<Card.Body>
 										<Card.Title>{sukarelawan.nama}</Card.Title>
-										<Card.Subtitle className="mb-2 text-muted">
-											{sukarelawan.gol_darah}
-										</Card.Subtitle>
-										<Card.Text>{sukarelawan.alamat}</Card.Text>
-										<Card.Text>{sukarelawan.email}</Card.Text>
-										<Card.Text>{sukarelawan.no_hp}</Card.Text>
+										<Card.Text>
+											Golongan darah: {sukarelawan.gol_darah}
+										</Card.Text>
+										<Card.Text>Alamat: {sukarelawan.alamat}</Card.Text>
+										<Card.Text>Email: {sukarelawan.email}</Card.Text>
+										<Card.Text>No Hp: {sukarelawan.no_hp}</Card.Text>
 									</Card.Body>
 								</Card>
 							))}

@@ -17,6 +17,20 @@
 .volunteer-main-wrapper .volunteer-form-wrapper .card-wrapper .card {
 	width: calc(30% - 40px);
 	margin: 0 10px 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+}
+
+.volunteer-main-wrapper .volunteer-form-wrapper .card-wrapper .card-title {
+	font-size: 1.2rem;
+	font-weight: bold;
+	padding: 1rem;
+	border-bottom: 1px solid #ccc;
+	text-align: center;
+}
+
+.volunteer-main-wrapper .volunteer-form-wrapper .card-wrapper .card-text {
+	font-size: 0.9rem;
 }
 
 .volunteer-main-wrapper .volunteer-form-wrapper label {

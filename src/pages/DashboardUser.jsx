@@ -6,6 +6,15 @@ import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 import config from '../services/config-api/config';
 
+import {
+	Document,
+	Page,
+	Text,
+	View,
+	StyleSheet,
+	PDFDownloadLink,
+} from '@react-pdf/renderer';
+
 const DashboardUser = () => {
 	const [donorData, setDonorData] = useState([]); // state untuk menyimpan data pendonor
 	const [page, setPage] = useState(0);
@@ -22,6 +31,9 @@ const DashboardUser = () => {
 	const [show, setShow] = useState(false);
 
 	const [msg, setMsg] = useState('');
+
+	const [showPDF, setShowPDF] = useState(true);
+	const [selectedDonorId, setSelectedDonorId] = useState(null);
 
 	// Efek samping untuk memuat data pendonor saat komponen dimuat dan saat `page` atau `limit` berubah
 	useEffect(() => {
@@ -47,6 +59,75 @@ const DashboardUser = () => {
 		};
 		getDonorData();
 	}, [page, limit]);
+
+	const styles = StyleSheet.create({
+		header: {
+			fontSize: 30,
+			fontWeight: 'bold',
+			marginTop: 10,
+			textAlign: 'center',
+		},
+		headerChild: {
+			fontSize: 16,
+			marginTop: 10,
+			paddingBottom: 10,
+			textAlign: 'center',
+			borderBottom: '1px solid black',
+		},
+		textTitle: {
+			fontWeight: 'bold',
+			fontSize: 18,
+			marginTop: 16,
+		},
+		textData: {
+			fontSize: 16,
+			marginTop: 5,
+		},
+	});
+
+	const generatePDF = idPendonor => {
+		// Cari berdasarkan id_donor
+		const selectedDonor = donorData.find(
+			donor => donor.id_donor === idPendonor
+		);
+
+		// Jika data pendonor ditemukan, buat dokumen PDF
+		if (selectedDonor) {
+			return (
+				<Document>
+					<Page size="A6" style={styles.page}>
+						<View>
+							<Text style={styles.header}>Bukti Pendaftaran</Text>
+							<Text style={styles.headerChild}>
+								Tolong tunjukkan bukti pendaftaran ini kepada petugas
+							</Text>
+							<View key={selectedDonor.id_donor} style={{ marginLeft: 18 }}>
+								<Text style={[styles.textTitle, { marginTop: 20 }]}>Nama:</Text>
+								<Text style={styles.textData}>{selectedDonor.nama_user}</Text>
+								<Text style={styles.textTitle}>Tanggal Donor:</Text>
+								<Text style={styles.textData}>
+									{formatData(selectedDonor.tanggal_donor)}
+								</Text>
+								<Text style={styles.textTitle}>Golongan Darah:</Text>
+								<Text style={styles.textData}>{selectedDonor.gol_darah}</Text>
+								<Text style={styles.textTitle}>Status:</Text>
+								<Text style={styles.textData}>
+									{selectedDonor.status === 2 ? 'Diterima' : 'Ditolak'}
+								</Text>
+							</View>
+						</View>
+					</Page>
+				</Document>
+			);
+		} else {
+			return <Text>Data pendonor tidak ditemukan</Text>;
+		}
+	};
+
+	const handlePDFButtonClick = idPendonor => {
+		setSelectedDonorId(idPendonor);
+		setShowPDF(true);
+	};
 
 	useEffect(() => {
 		const getBloodRequestData = async () => {
@@ -170,7 +251,26 @@ const DashboardUser = () => {
 										<td>{donor.gol_darah}</td>
 										<td>{renderStatus(donor.status)}</td>
 										<td>
-											<Button className="button-bukti">Bukti</Button>
+											{donor.status === 0 ? (
+												<span>Tidak ada bukti pendaftaran</span>
+											) : donor.status === 2 ? (
+												<PDFDownloadLink
+													document={generatePDF(donor.id_donor)}
+													fileName={`bukti-pendaftaran-${donor.id_user}-idDonor-${donor.id_donor}.pdf`}
+													onClick={() => handlePDFButtonClick(donor.id_donor)}>
+													{({ loading }) =>
+														loading ? (
+															<Button className="button-bukti">
+																Memuat dokumen...
+															</Button>
+														) : (
+															<Button className="button-bukti">
+																Unduh Bukti Pendaftaran
+															</Button>
+														)
+													}
+												</PDFDownloadLink>
+											) : null}
 										</td>
 									</tr>
 								))}
