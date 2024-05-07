@@ -20,6 +20,78 @@
 	margin-bottom: 5px;
 }
 
+@media screen and (max-width: 992px) {
+	.modal-bank-darah {
+		width: 70%;
+		margin-top: 30px;
+		margin-left: 15%;
+	}
+
+	.modal-bank-darah .modal-title {
+		font-size: 22px;
+	}
+
+	.modal-bank-darah .modal-body h5 {
+		font-size: 20px;
+	}
+
+	.modal-bank-darah .modal-body .table {
+		font-size: 15px;
+	}
+
+	.modal-bank-darah .modal-footer button {
+		font-size: 13px;
+	}
+}
+
+@media screen and (max-width: 575px) {
+	.modal-bank-darah {
+		width: 70%;
+		margin-top: 30px;
+		margin-left: 15%;
+	}
+
+	.modal-bank-darah .modal-title {
+		font-size: 20px;
+	}
+
+	.modal-bank-darah .modal-body h5 {
+		font-size: 15px;
+	}
+
+	.modal-bank-darah .modal-body .table {
+		font-size: 12px;
+	}
+
+	.modal-bank-darah .modal-footer button {
+		font-size: 13px;
+	}
+}
+
+/* @media screen and (max-width: 475px) {
+	.modal-bank-darah {
+		width: 70%;
+		margin-top: 30px;
+		margin-left: 15%;
+	}
+
+	.modal-bank-darah .modal-title {
+		font-size: 20px;
+	}
+
+	.modal-bank-darah .modal-body h5 {
+		font-size: 15px;
+	}
+
+	.modal-bank-darah .modal-body .table {
+		font-size: 12px;
+	}
+
+	.modal-bank-darah .modal-footer button {
+		font-size: 13px;
+	}
+} */
+
 @media screen and (max-width: 375px) {
 	.jadwal-donor-wrapper {
 		margin-top: 4rem;
@@ -44,6 +116,27 @@
 
 	.jadwal-donor-wrapper .map-wrapper .card button {
 		font-size: 0.6rem;
+	}
+
+	.modal-bank-darah {
+		width: 70%;
+		margin-top: 30px;
+	}
+
+	.modal-bank-darah .modal-title {
+		font-size: 20px;
+	}
+
+	.modal-bank-darah .modal-body h5 {
+		font-size: 15px;
+	}
+
+	.modal-bank-darah .modal-body .table {
+		font-size: 12px;
+	}
+
+	.modal-bank-darah .modal-footer button {
+		font-size: 13px;
 	}
 }
 

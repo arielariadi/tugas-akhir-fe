@@ -5,12 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-import Logo from '../assets/img/logo.png';
-
 import '../styles/component-styles/navbar-component.css';
 import { Button } from 'react-bootstrap';
-
-import { Link } from 'react-router-dom';
 
 function NavbarComponent() {
 	// Simpan token pengguna (userToken atau adminToken) di sini
@@ -54,7 +50,6 @@ function NavbarComponent() {
 			fixed="top">
 			<Container>
 				<Navbar.Brand href="#home" className="text-danger fw-bold">
-					{/* <img src={Logo} className="logo" alt="Logo" /> */}
 					UDD PMI Lebak
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -62,7 +57,7 @@ function NavbarComponent() {
 					<Nav className="mx-auto text-center ">
 						{!userToken && <Nav.Link href="#home">Home</Nav.Link>}
 
-						{!userToken && <Nav.Link href="#homeee">Services</Nav.Link>}
+						{!userToken && <Nav.Link href="#services">Layanan</Nav.Link>}
 
 						{!userToken && <Nav.Link href="#home">Services</Nav.Link>}
 

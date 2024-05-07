@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
-import { Button, Card, Modal, Form } from 'react-bootstrap';
+import { Button, Card, Modal, Form, Table } from 'react-bootstrap';
 import '../styles/user/jadwal-donor-darah.css';
 import daftarDonor from '../services/daftarDonor.service';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import getJadwalDonor from '../services/getJadwalDonor';
 import profileUser from '../services/profileUser.service';
+
+import getBankDarahService from '../services/admin/getBankDarah.service';
 
 import Swal from 'sweetalert2';
 
@@ -15,11 +17,12 @@ const JadwalDonorDarah = () => {
 
 	const [detailPmi, setDetailPmi] = useState(null);
 
-	// state modal
+	// state modal daftar
 	const [show, setShow] = useState(false);
 
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+	// state stok kantung darah
+	const [bankDarah, SetBankDarah] = useState([]);
+	const [showBankDarah, setShowBankDarah] = useState(false);
 
 	const [selectedDate, setSelectedDate] = useState('');
 
@@ -30,6 +33,12 @@ const JadwalDonorDarah = () => {
 	const handleDateChange = event => {
 		setSelectedDate(event.target.value);
 	};
+
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
+	const handleCloseBankDarah = () => setShowBankDarah(false);
+	const handleShowBankDarah = () => setShowBankDarah(true);
 
 	useEffect(() => {
 		const getDonorData = async () => {
@@ -55,6 +64,24 @@ const JadwalDonorDarah = () => {
 			}
 		};
 		getJadwalDonorDarah();
+	}, []);
+
+	// Get data bank darah
+	useEffect(() => {
+		const getBankDarah = async () => {
+			try {
+				const response = await getBankDarahService();
+				const sortedBankDarah = response.stok_bank_darah.sort((a, b) => {
+					// Urutkan berdasarkan nama golongan darah
+					return a.gol_darah.localeCompare(b.gol_darah);
+				});
+				SetBankDarah(sortedBankDarah);
+				console.log('bank-darah', sortedBankDarah);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		getBankDarah();
 	}, []);
 
 	const handleClick = async () => {
@@ -143,12 +170,19 @@ const JadwalDonorDarah = () => {
 							<Button variant="primary" className="mt-2" onClick={handleShow}>
 								Daftar Sekarang
 							</Button>
+
+							<Button
+								variant="danger"
+								className="mt-2 ms-2"
+								onClick={handleShowBankDarah}>
+								Bank Darah
+							</Button>
 						</Card.Body>
 					</Card>
 				</div>
 			</div>
 
-			{/* modal */}
+			{/* modal daftar */}
 			<Modal show={show} centered onHide={handleClose}>
 				<Modal.Header closeButton>
 					<Modal.Title>Pilih Tanggal Donor Darah</Modal.Title>
@@ -173,6 +207,60 @@ const JadwalDonorDarah = () => {
 					</Button>
 					<Button variant="primary" onClick={handleClick}>
 						Submit
+					</Button>
+				</Modal.Footer>
+			</Modal>
+
+			{/* modal stok darah */}
+			<Modal
+				show={showBankDarah}
+				centered
+				onHide={handleCloseBankDarah}
+				className="modal-bank-darah">
+				<Modal.Header closeButton>
+					<Modal.Title>Informasi Bank Darah</Modal.Title>
+				</Modal.Header>
+
+				<Modal.Body>
+					<h5 className="text-center">Jumlah Stok Darah</h5>
+					<Table striped bordered hover className="text-center">
+						<thead>
+							<tr>
+								{bankDarah.slice(0, 4).map((bank, index) => (
+									<th key={index}>{bank.gol_darah}</th>
+								))}
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								{bankDarah.slice(0, 4).map((bank, index) => (
+									<td key={index}>{bank.jumlah_kantong_darah}</td>
+								))}
+							</tr>
+						</tbody>
+					</Table>
+
+					<Table striped bordered hover className="text-center">
+						<thead>
+							<tr>
+								{bankDarah.slice(4, 8).map((bank, index) => (
+									<th key={index}>{bank.gol_darah}</th>
+								))}
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								{bankDarah.slice(4, 8).map((bank, index) => (
+									<td key={index}>{bank.jumlah_kantong_darah}</td>
+								))}
+							</tr>
+						</tbody>
+					</Table>
+				</Modal.Body>
+
+				<Modal.Footer>
+					<Button variant="secondary" onClick={handleCloseBankDarah}>
+						Tutup
 					</Button>
 				</Modal.Footer>
 			</Modal>

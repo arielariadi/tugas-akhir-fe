@@ -17,13 +17,14 @@ const LandingPage = () => {
 									<br />
 									<span className="slogan-2">Sejuta Harapan</span>
 								</h1>
-								<Button className="cta mb-4 btn-md text-light">
+								<Button className="cta mb-4 text-light">
 									{' '}
 									Cari Tahu Sekarang !{' '}
 								</Button>
 								<p className="mb-4">
-									Pendaftaran donor darah dengan cepat dan cari sukarelawan
-									donor darah terdekat
+									Selamat datang di <strong>UDD PMI Kabupaten Lebak</strong> -
+									di mana setiap tetes darah menjadi sumber kehidupan. Bersama,
+									kita tebarkan semangat solidaritas untuk membantu sesama.
 								</p>
 
 								<div className="keunggulan">
@@ -66,7 +67,7 @@ const LandingPage = () => {
 					</Container>
 				</section>
 			</div>
-			<div className="services" id="profile">
+			<div className="services" id="services">
 				<section className="w-100 min-vh-100 d-flex overflow-hidden hero-section">
 					<Container>
 						<div className="services-header">
@@ -74,93 +75,89 @@ const LandingPage = () => {
 						</div>
 
 						<div className="services-header-detail">
-							<h2 style={{ width: '35rem' }}>
-								Memberikan Pelayanan Terbaik Dengan Fasilitas Yang Nyaman
-							</h2>
+							<h2>Memberikan Pelayanan Terbaik Dengan Fasilitas Yang Nyaman</h2>
 
-							<p style={{ width: '30rem' }}>
+							<p>
 								Memberikan pelayanan terbaik dengan menyediakan Fasilitas dan
 								Layanan yang lengkap dan profesional
 							</p>
 						</div>
 
 						<div className="services-content d-flex justify-content-center gap-3">
-							<Card style={{ width: '18rem' }}>
+							<Card>
 								<Card.Body>
 									<Card.Img
 										variant="top"
 										src="src/assets/img/blood-donation-icon.png"
-										style={{ width: '5rem' }}
 										className="d-flex mx-auto"
 									/>
 
 									<Card.Title className="text-center mt-4">
-										Daftar Donor Darah
+										Pendaftaran Donor Darah Online
 									</Card.Title>
 
 									<Card.Text className="text-center mt-3">
-										Some quick example text to build on the card title and make
-										up the bulk of the content.
+										Jadwalkan sesi donor darah Anda dengan cepat dan mudah
+										melalui pendaftaran online, membantu kami merencanakan
+										persediaan darah yang dibutuhkan.
 									</Card.Text>
 								</Card.Body>
 							</Card>
 
-							<Card style={{ width: '18rem' }}>
+							<Card>
 								<Card.Body>
 									<Card.Img
 										variant="top"
-										src="src/assets/img/blood-donation-icon.png"
-										style={{ width: '5rem' }}
+										src="src/assets/img/blood-request-icon.png"
 										className="d-flex mx-auto"
 									/>
 
 									<Card.Title className="text-center mt-4">
-										Daftar Donor Darah
+										Request Permintaan Kantung Darah
 									</Card.Title>
 
 									<Card.Text className="text-center mt-3">
-										Some quick example text to build on the card title and make
-										up the bulk of the content.
+										Ajukan permintaan darah gawat darurat dengan cepat dan
+										efisien, kami akan memproses dengan prioritas tertinggi
+										untuk pasokan tepat waktu.
 									</Card.Text>
 								</Card.Body>
 							</Card>
 
-							<Card style={{ width: '18rem' }}>
+							<Card>
 								<Card.Body>
 									<Card.Img
 										variant="top"
-										src="src/assets/img/blood-donation-icon.png"
-										style={{ width: '5rem' }}
+										src="src/assets/img/search-volunteer-icon.png"
 										className="d-flex mx-auto"
 									/>
 
 									<Card.Title className="text-center mt-4">
-										Daftar Donor Darah
+										Cari Sukarelawan Donor Darah
 									</Card.Title>
 
 									<Card.Text className="text-center mt-3">
-										Some quick example text to build on the card title and make
-										up the bulk of the content.
+										Temukan sukarelawan donor darah yang sesuai dengan kebutuhan
+										Anda, bersama kita atasi krisis kekurangan darah.
 									</Card.Text>
 								</Card.Body>
 							</Card>
 
-							<Card style={{ width: '18rem' }}>
+							<Card>
 								<Card.Body>
 									<Card.Img
 										variant="top"
-										src="src/assets/img/blood-donation-icon.png"
-										style={{ width: '5rem' }}
+										src="src/assets/img/volunteer-icon.png"
 										className="d-flex mx-auto"
 									/>
 
 									<Card.Title className="text-center mt-4">
-										Daftar Donor Darah
+										Menjadi Sukarelawan Donor Darah
 									</Card.Title>
 
 									<Card.Text className="text-center mt-3">
-										Some quick example text to build on the card title and make
-										up the bulk of the content.
+										Bergabunglah menjadi pahlawan dengan menjadi sukarelawan
+										donor darah, berikan hadiah kehidupan yang tak ternilai.
 									</Card.Text>
 								</Card.Body>
 							</Card>

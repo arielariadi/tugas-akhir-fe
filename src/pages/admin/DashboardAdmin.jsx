@@ -53,28 +53,38 @@ const DashboardAdmin = () => {
 		}
 
 		// Create the chart
-		chartRef.current = new Chart(ctx, {
-			type: 'line',
-			data: {
-				labels: chartData.map(item => item.label),
-				datasets: [
-					{
-						label: 'Jumlah Kantong Darah',
-						data: chartData.map(item => item.value),
-						backgroundColor: 'rgba(75, 192, 192, 0.2)',
-						borderColor: 'rgba(75, 192, 192, 1)',
-						borderWidth: 1,
-					},
-				],
-			},
-			options: {
-				scales: {
-					y: {
-						beginAtZero: true,
-					},
+		if (!chartRef.current) {
+			chartRef.current = new Chart(ctx, {
+				type: 'pie',
+				data: {
+					labels: chartData.map(item => item.label),
+					datasets: [
+						{
+							label: 'Jumlah Kantong Darah',
+							data: chartData.map(item => item.value),
+							backgroundColor: [
+								'rgb(242, 34, 27)',
+								'rgb(27, 70, 242)',
+								'rgb(255, 205, 86)',
+								'rgb(93, 224, 56)',
+								'rgb(197, 45, 227)',
+								'rgb(23, 9, 26)',
+								'rgb(39, 226, 230)',
+								'rgb(242, 127, 27)',
+							],
+							borderColor: 'black',
+							borderWidth: 1,
+						},
+					],
 				},
-			},
-		});
+			});
+		} else {
+			chartRef.current.data.labels = chartData.map(item => item.label);
+			chartRef.current.data.datasets[0].data = chartData.map(
+				item => item.value
+			);
+			chartRef.current.update(); // Trigger chart update
+		}
 	}, [chartData]);
 
 	return (

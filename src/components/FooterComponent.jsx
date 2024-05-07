@@ -17,17 +17,44 @@ const FoterComponent = () => {
 				<div className="container">
 					<div className="row">
 						<div className="col-sm-6 col-md-3 item">
-							<h3>Services</h3>
+							<h3>Menu</h3>
 							<ul>
-								<li>
-									<a href="#">Web design</a>
-								</li>
-								<li>
-									<a href="#">Development</a>
-								</li>
-								<li>
-									<a href="#">Hosting</a>
-								</li>
+								{userToken && (
+									<li>
+										<a href="/dashboard-user">Dashboard</a>
+									</li>
+								)}
+								{userToken && (
+									<li>
+										<a href="/jadwal-donor-darah">Jadwal Donor Darah</a>
+									</li>
+								)}
+								{userToken && (
+									<li>
+										<a href="/permintaan-darah">Permintaan Darah</a>
+									</li>
+								)}
+								{userToken && (
+									<li>
+										<a href="/cari-sukarelawan">Cari Sukarelawan</a>
+									</li>
+								)}
+								{userToken && (
+									<li>
+										<a href="/profile-user">Profile</a>
+									</li>
+								)}
+
+								{!userToken && (
+									<li>
+										<a href="#home">Home</a>
+									</li>
+								)}
+								{!userToken && (
+									<li>
+										<a href="#services">Services</a>
+									</li>
+								)}
 							</ul>
 						</div>
 						<div className="col-sm-6 col-md-3 item">
