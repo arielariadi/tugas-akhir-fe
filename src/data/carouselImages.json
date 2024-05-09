@@ -1,0 +1,17 @@
+[
+	{
+		"image": "src/assets/img/image-carousel-1.jpg",
+		"title": "Slide 1",
+		"subTitle": "Subtitle 1"
+	},
+	{
+		"image": "https://source.unsplash.com/random",
+		"title": "Slide 2",
+		"subTitle": "Subtitle 2"
+	},
+	{
+		"image": "https://source.unsplash.com/random",
+		"title": "Slide 3",
+		"subTitle": "Subtitle 3"
+	}
+]

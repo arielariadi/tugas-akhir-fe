@@ -2,7 +2,6 @@ import '../styles/component-styles/footer-component.css';
 
 const FoterComponent = () => {
 	const userToken = localStorage.getItem('userToken');
-	const adminToken = localStorage.getItem('adminToken');
 
 	if (
 		window.location.pathname === '/login' ||
@@ -52,7 +51,12 @@ const FoterComponent = () => {
 								)}
 								{!userToken && (
 									<li>
-										<a href="#services">Services</a>
+										<a href="#layanan">Layanan</a>
+									</li>
+								)}
+								{!userToken && (
+									<li>
+										<a href="#syarat">Syarat</a>
 									</li>
 								)}
 							</ul>

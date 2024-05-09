@@ -32,6 +32,7 @@
 	color: black;
 	min-width: 44px;
 	min-height: 44px;
+	font-weight: 600;
 }
 
 .navbar .container .nav-link:hover {
