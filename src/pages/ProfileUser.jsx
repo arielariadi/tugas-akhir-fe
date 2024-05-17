@@ -1,4 +1,5 @@
 import { Button, Form, Container, Row, Col } from 'react-bootstrap';
+import { debounce } from 'lodash';
 
 import '../styles/user/profile-user.css';
 import { useState, useEffect } from 'react';
@@ -13,6 +14,21 @@ const ProfileUser = () => {
 
 	// State untuk menyimpan status sukarelawan
 	const [statusSukarelawan, setStatusSukarelawan] = useState('');
+
+	// State untuk menyimpan pekerjaan lainnya
+	const [pekerjaanLainnya, setPekerjaanLainnya] = useState('');
+
+	const handlePekerjaanLainnyaChange = event => {
+		setPekerjaanLainnya(event.target.value);
+		debouncedUpdateUserData(event.target.value);
+	};
+
+	const debouncedUpdateUserData = debounce(value => {
+		setUserData(prevState => ({
+			...prevState,
+			pekerjaan: value,
+		}));
+	}, 5000);
 
 	useEffect(() => {
 		const getUserData = async () => {
@@ -67,11 +83,20 @@ const ProfileUser = () => {
 				default:
 					idGolonganDarah = '';
 			}
+			// Tentukan pekerjaan final
+			const finalPekerjaan =
+				userData.pekerjaan === 'Lain-lain'
+					? pekerjaanLainnya
+					: userData.pekerjaan;
 
-			// perbarui userData dengan id_gol_darah yang baru
-			setUserData({ ...userData, id_gol_darah: idGolonganDarah });
+			// Perbarui userData dengan id_gol_darah yang baru
+			setUserData({
+				...userData,
+				id_gol_darah: idGolonganDarah,
+				pekerjaan: finalPekerjaan,
+			});
 
-			// kirim permintaan pembaruan data user dengan updateProfileUser
+			// Kirim permintaan pembaruan data user dengan updateProfileUser
 			const response = await updateProfileUser(userData);
 
 			if (response.lenght === 0) {
@@ -146,20 +171,57 @@ const ProfileUser = () => {
 								<Form.Text className="text-muted"></Form.Text>
 							</Form.Group>
 
+							<Form.Group className="mb-3" controlId="alamatRumahId">
+								<Form.Label>Alamat Rumah</Form.Label>
+								<Form.Control
+									type="text"
+									name="alamatRumah"
+									value={userData.alamat_rumah || ''}
+									onChange={e =>
+										setUserData({ ...userData, alamat_rumah: e.target.value })
+									}
+								/>
+								<Form.Text className="text-muted"></Form.Text>
+							</Form.Group>
+
 							<Form.Group className="mb-3" controlId="desaId">
 								<Form.Label>Desa</Form.Label>
-								<Form.Select
+								<Form.Control
+									type="text"
 									name="desa"
 									aria-label="Default select example"
 									value={userData.desa || ''}
 									onChange={e =>
 										setUserData({ ...userData, desa: e.target.value })
+									}></Form.Control>
+							</Form.Group>
+
+							<Form.Group className="mb-3" controlId="kecamatanId">
+								<Form.Label>Kecamatan</Form.Label>
+								<Form.Select
+									name="kecamatan"
+									aria-label="Default select example"
+									value={userData.kecamatan || ''}
+									onChange={e =>
+										setUserData({ ...userData, kecamatan: e.target.value })
 									}>
-									<option>{userData.desa || 'Pilih Desa'}</option>
-									<option value="Citeras">Citeras</option>
-									<option value="Rangkasbitung">Rangkasbitung</option>
-									<option value="Tutul">Tutul</option>
+									<option>{userData.kecamatan || 'Pilih Kecamatan'}</option>
+									<option value="Banjarsari">Banjarsari</option>
+									<option value="Bayah">Bayah</option>
+									<option value="Bojongmanik">Bojongmanik</option>
 								</Form.Select>
+							</Form.Group>
+
+							<Form.Group className="mb-3" controlId="kotaId">
+								<Form.Label>Kabupaten / Kota</Form.Label>
+								<Form.Control
+									type="text"
+									name="kota"
+									aria-label="Default select example"
+									value={userData.kota || ''}
+									onChange={e =>
+										setUserData({ ...userData, kota: e.target.value })
+									}></Form.Control>
 							</Form.Group>
 
 							<Form.Group className="mb-3" controlId="jenisKelaminId">
@@ -192,6 +254,37 @@ const ProfileUser = () => {
 								<Form.Text className="text-muted"></Form.Text>
 							</Form.Group>
 
+							<Form.Group className="mb-3" controlId="pekerjaanId">
+								<Form.Label>Pekerjaan</Form.Label>
+								<Form.Select
+									name="pekerjaan"
+									aria-label="Default select example"
+									value={userData.pekerjaan || ''}
+									onChange={e =>
+										setUserData({ ...userData, pekerjaan: e.target.value })
+									}>
+									<option>{userData.pekerjaan || 'Pilih Pekerjaan'}</option>
+									<option value="TNI/POLRI">TNI / Polri</option>
+									<option value="Pegawai Negeri/Swasta">
+										Pegawai Negeri / Swasta
+									</option>
+									<option value="Petani/Buruh">Petani / Buruh</option>
+									<option value="Wiraswasta">Wiraswasta</option>
+									<option value="Mahasiswa">Mahasiswa</option>
+									<option value="Pedagang">Pedagang</option>
+									<option value="Lain-lain">Lain-lain</option>
+								</Form.Select>
+								{userData.pekerjaan === 'Lain-lain' && (
+									<Form.Control
+										type="text"
+										name="pekerjaanLainnya"
+										value={pekerjaanLainnya}
+										onChange={handlePekerjaanLainnyaChange}
+										className="mt-2"
+									/>
+								)}
+							</Form.Group>
+
 							<Form.Group className="mb-3" controlId="golonganDarahId">
 								<Form.Label>Golongan Darah</Form.Label>
 								<Form.Select
@@ -220,6 +313,7 @@ const ProfileUser = () => {
 									<option value="6pGuJ">B-</option>
 									<option value="kMO7s">O+</option>
 									<option value="N7Fls">O-</option>
+									<option value="W9vR1">Belum Mengetahui</option>
 								</Form.Select>
 							</Form.Group>
 

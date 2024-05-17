@@ -13,11 +13,11 @@ const CariSukarelawan = () => {
 			const golonganDarah = document.querySelector(
 				'[name="golonganDarah"]'
 			).value;
-			const desa = document.querySelector('[name="desa"]').value;
+			const kecamatan = document.querySelector('[name="kecamatan"]').value;
 
 			const response = await cariSukarelawan({
 				id_gol_darah: golonganDarah,
-				desa: desa,
+				kecamatan: kecamatan,
 			});
 
 			if (response.length === 0) {
@@ -65,13 +65,13 @@ const CariSukarelawan = () => {
 							<option value="N7Fls">O-</option>
 						</Form.Select>
 					</Form.Group>
-					<Form.Group className="mb-3" controlId="desaId">
-						<Form.Label>Desa</Form.Label>
-						<Form.Select name="desa" aria-label="Default select example">
-							<option>Pilih Desa</option>
-							<option value="Citeras">Citeras</option>
-							<option value="Rangkasbitung">Rangkasbitung</option>
-							<option value="Tutul">Tutul</option>
+					<Form.Group className="mb-3" controlId="kecamatanId">
+						<Form.Label>Kecamatan</Form.Label>
+						<Form.Select name="kecamatan" aria-label="Default select example">
+							<option>Pilih Kecamatan</option>
+							<option value="Banjarsari">Banjarsari</option>
+							<option value="Bayah">Bayah</option>
+							<option value="Bojongmanik">Bojongmanik</option>
 						</Form.Select>
 					</Form.Group>
 					<Button
@@ -91,7 +91,7 @@ const CariSukarelawan = () => {
 										<Card.Text>
 											Golongan darah: {sukarelawan.gol_darah}
 										</Card.Text>
-										<Card.Text>Alamat: {sukarelawan.desa}</Card.Text>
+										<Card.Text>Alamat: {sukarelawan.kecamatan}</Card.Text>
 										<Card.Text>Email: {sukarelawan.email}</Card.Text>
 										<Card.Text>No Hp: {sukarelawan.no_hp}</Card.Text>
 									</Card.Body>
