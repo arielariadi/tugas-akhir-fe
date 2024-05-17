@@ -165,7 +165,7 @@ const PendonorDarah = () => {
 								<td>{index + 1 + page * limit}</td>
 								<td>{pendonor.User.nama}</td>
 								<td>{pendonor.User.jenis_kelamin}</td>
-								<td>{pendonor.User.alamat}</td>
+								<td>{pendonor.User.desa}</td>
 								<td>{pendonor.User.no_hp}</td>
 								<td>{formatData(pendonor.tgl_donor)}</td>
 								<td>{pendonor.GolDarah.gol_darah}</td>

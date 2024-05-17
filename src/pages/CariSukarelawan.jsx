@@ -17,7 +17,7 @@ const CariSukarelawan = () => {
 
 			const response = await cariSukarelawan({
 				id_gol_darah: golonganDarah,
-				alamat: desa,
+				desa: desa,
 			});
 
 			if (response.length === 0) {
@@ -91,7 +91,7 @@ const CariSukarelawan = () => {
 										<Card.Text>
 											Golongan darah: {sukarelawan.gol_darah}
 										</Card.Text>
-										<Card.Text>Alamat: {sukarelawan.alamat}</Card.Text>
+										<Card.Text>Alamat: {sukarelawan.desa}</Card.Text>
 										<Card.Text>Email: {sukarelawan.email}</Card.Text>
 										<Card.Text>No Hp: {sukarelawan.no_hp}</Card.Text>
 									</Card.Body>

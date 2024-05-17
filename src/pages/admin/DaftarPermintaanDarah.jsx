@@ -210,7 +210,7 @@ const DaftarPermintaanDarah = () => {
 										{permintaanDarah.User.nama}
 									</td>
 									<td style={{ textAlign: 'center' }}>
-										{permintaanDarah.User.alamat}
+										{permintaanDarah.User.desa}
 									</td>
 									<td>{permintaanDarah.User.jenis_kelamin}</td>
 									<td>{permintaanDarah.GolDarah.gol_darah}</td>
@@ -322,7 +322,11 @@ const DaftarPermintaanDarah = () => {
 				</div>
 
 				{selectedImage && (
-					<Modal show={show} onHide={handleCloseImage} centered>
+					<Modal
+						show={show}
+						onHide={handleCloseImage}
+						centered
+						className="modal-surat-permohonan">
 						<Modal.Header closeButton>
 							<Modal.Title>Surat Permohonan</Modal.Title>
 						</Modal.Header>
@@ -340,7 +344,11 @@ const DaftarPermintaanDarah = () => {
 				)}
 
 				{selectedImageBuktiFoto && (
-					<Modal show={show} onHide={handleCloseImage} centered>
+					<Modal
+						show={show}
+						onHide={handleCloseImage}
+						centered
+						className="modal-bukti-foto">
 						<Modal.Header closeButton>
 							<Modal.Title>Bukti Penerimaan</Modal.Title>
 						</Modal.Header>

@@ -15,8 +15,8 @@ const SidebarAdmin = () => {
 				style={{ width: '250px', zIndex: '999' }}>
 				<div className="bg-white sidebar p-2">
 					<div className="m-2">
-						<i className="bi bi-bootstrap-fill me-3 fs-4"></i>
-						<span className="brand-name fs-4">Ariel</span>
+						<i className="bi bi-person-check-fill ms-2 fs-4"></i>
+						<span className="brand- ms-2 fs-4 fw-bold">Admin</span>
 					</div>
 					<hr className="text-dark" />
 					<div className="list-group list-group-flush">

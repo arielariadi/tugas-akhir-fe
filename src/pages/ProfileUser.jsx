@@ -151,11 +151,11 @@ const ProfileUser = () => {
 								<Form.Select
 									name="desa"
 									aria-label="Default select example"
-									value={userData.alamat || ''}
+									value={userData.desa || ''}
 									onChange={e =>
-										setUserData({ ...userData, alamat: e.target.value })
+										setUserData({ ...userData, desa: e.target.value })
 									}>
-									<option>{userData.alamat || 'Pilih Desa'}</option>
+									<option>{userData.desa || 'Pilih Desa'}</option>
 									<option value="Citeras">Citeras</option>
 									<option value="Rangkasbitung">Rangkasbitung</option>
 									<option value="Tutul">Tutul</option>

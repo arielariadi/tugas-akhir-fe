@@ -2,6 +2,8 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import getBankDarahService from '../../services/admin/getBankDarah.service';
 import updateBankDarahService from '../../services/admin/updateBankDarah.service';
+
+import Swal from 'sweetalert2';
 import '../../styles/admin/bank-darah.css';
 
 const BankDarah = () => {
@@ -44,9 +46,15 @@ const BankDarah = () => {
 					});
 				})
 			);
-			alert('Stok darah berhasil diperbarui!');
+			Swal.fire({
+				icon: 'success',
+				title: 'Stok darah berhasil diperbarui!',
+			});
 		} catch (error) {
-			alert('Terjadi kesalahan saat memperbarui stok darah.');
+			Swal.fire({
+				icon: 'error',
+				title: 'Stok darah gagal diperbarui!',
+			});
 			console.error(error);
 		}
 	};

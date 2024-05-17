@@ -34,6 +34,11 @@
 	transform: scale(1.1);
 }
 
+.modal-surat-permohonan,
+.modal-bukti-foto {
+	margin: 0;
+}
+
 .modal-body img {
 	width: 100%;
 }

@@ -51,6 +51,11 @@ const FoterComponent = () => {
 								)}
 								{!userToken && (
 									<li>
+										<a href="#profile">Profile</a>
+									</li>
+								)}
+								{!userToken && (
+									<li>
 										<a href="#layanan">Layanan</a>
 									</li>
 								)}
@@ -61,27 +66,22 @@ const FoterComponent = () => {
 								)}
 							</ul>
 						</div>
-						<div className="col-sm-6 col-md-3 item">
-							<h3>About</h3>
+						<div className="kontak col-sm-6 col-md-3 item">
+							<h3>Kontak</h3>
 							<ul>
-								<li>
-									<a href="#">Company</a>
+								<li className="bi bi-telephone-fill">
+									<p>0252 207229</p>
 								</li>
-								<li>
-									<a href="#">Team</a>
-								</li>
-								<li>
-									<a href="#">Careers</a>
+								<li className="bi bi-whatsapp">
+									<p>08-111-403-404</p>
 								</li>
 							</ul>
 						</div>
 						<div className="col-md-6 item text">
 							<h3>UDD PMI Kabupaten Lebak</h3>
 							<p>
-								Praesent sed lobortis mi. Suspendisse vel placerat ligula.
-								Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis
-								tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel
-								in justo.
+								Jl. Sentral No.2, Rangkasbitung Bar., Kec. Rangkasbitung,
+								Kabupaten Lebak, Banten 42312
 							</p>
 						</div>
 						<div className="col item social">
@@ -92,7 +92,7 @@ const FoterComponent = () => {
 								<i className="bi bi-twitter"></i>
 							</a>
 
-							<a href="#">
+							<a href="https://www.instagram.com/udd_pmilebak/" target="_blank">
 								<i className="bi bi-instagram"></i>
 							</a>
 						</div>

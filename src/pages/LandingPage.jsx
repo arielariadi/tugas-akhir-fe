@@ -17,7 +17,7 @@ const LandingPage = () => {
 									<br />
 									<span className="slogan-2">Sejuta Harapan</span>
 								</h1>
-								<a href="#layanan">
+								<a href="#profile">
 									<Button className="cta mb-4 text-light">
 										Cari Tahu Sekarang !
 									</Button>
@@ -81,19 +81,24 @@ const LandingPage = () => {
 
 						<div className="profile-content text-center">
 							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-								aliquam asperiores pariatur dolor atque ea iusto aperiam?
-								Perferendis velit, accusamus laudantium a doloremque
-								voluptatibus minus beatae tempora, id sequi iste qui sed
-								molestias obcaecati aliquid quisquam commodi dignissimos nisi
-								inventore, accusantium dicta. Quaerat debitis incidunt
-								distinctio accusantium amet qui ab quam deserunt aspernatur
-								dignissimos dolorem accusamus nesciunt, laudantium deleniti sunt
-								corrupti quis iusto repellendus libero facere laboriosam optio
-								at. Fuga, eius esse explicabo modi sequi delectus mollitia
-								perferendis officiis quae, itaque iste consequatur praesentium
-								voluptatem, sit cumque rem beatae harum voluptates rerum.
-								Repellat aspernatur, sapiente autem facere deserunt quia libero.
+								UDD PMI Kabupaten Lebak berdiri pada tanggal 2 Juni 1982 untuk
+								melayani kebutuhan darah masyarakat yang berada di kabupaten
+								Lebak. Pada tanggal 15 Oktober 2021 hari Jumat, Bupati Lebak Iti
+								Oktavia Jayabaya meresmikan gedung baru UDD PMI Lebak yang
+								beralamat di Jl Sentral No. 2 Rangkasbitung dengan ditandai
+								penandatanganan prasasti dan pengguntingan pita. Turut dihadiri
+								oleh Kepala UDD PMI Pusat, Ketua PMI Banten, Ketua PMI Lebak,
+								Konsultan UDD dari DKI Jakarta, Kepala UDD Lebak, Sekretaris
+								Daerah Kabupaten Lebak, Asda III, serta Kepala Dinas Kesehatan
+								Kabupaten. Pembangunan gedung baru memiliki fasilitas
+								diantaranya ruang tunggu kurir ataupun keluarga pasien yang
+								membutuhkan darah, ruang tunggu untuk pendonor, lahan parkir
+								yang memdai untuk kendaraan roda dua ataupun roda empat,
+								laboratorium untuk pemeriksaan uji saring IMLTD menggunakan
+								metode CLIA, ruang pengambilan darah yang nyaman, dan sudah
+								dapat memproduksi komponen TC. Ini semua bertujuan meningkatkan
+								pelayanan darah dan kualitas darah untuk masyarakat kabupaten
+								Lebak.
 							</p>
 						</div>
 
@@ -102,10 +107,8 @@ const LandingPage = () => {
 								<h4 className="text-center">VISI</h4>
 
 								<p>
-									Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-									Aliquid eum unde illum atque quia consequatur officiis dolores
-									molestiae laudantium obcaecati! Quaerat facere fuga hic
-									tenetur.
+									Mewujudkan kemandirian UDD, guna penguatan kapasitas, akses &
+									peningkatan kualitas pelayanan
 								</p>
 							</Col>
 
@@ -113,18 +116,18 @@ const LandingPage = () => {
 								<h4 className="text-center">MISI</h4>
 
 								<p>
-									(1). Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Aspernatur adipisci animi dolores odit quod quia.
+									(1). Memperkuat jalinan kemitraan sebagai upaya pengerahan &
+									pelestarian donor darah sukarela
 								</p>
 
 								<p>
-									(2). Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Aspernatur adipisci animi dolores odit quod quia.
+									(2). Menyediakan darah yang cukup, aman, bermutu, terjangkau &
+									berkesinambungan
 								</p>
 
 								<p>
-									(3). Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Aspernatur adipisci animi dolores odit quod quia.
+									(3). Mengadaptasi teknologi dalam mengembangkan kompetensi
+									SDM, standarisasi proses dan pemastian mutu
 								</p>
 							</Col>
 						</Row>

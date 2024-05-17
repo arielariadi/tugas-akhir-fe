@@ -57,11 +57,11 @@ function NavbarComponent() {
 					<Nav className="mx-auto text-center ">
 						{!userToken && <Nav.Link href="#home">Home</Nav.Link>}
 
+						{!userToken && <Nav.Link href="#profile">Profile</Nav.Link>}
+
 						{!userToken && <Nav.Link href="#layanan">Layanan</Nav.Link>}
 
 						{!userToken && <Nav.Link href="#syarat">Syarat</Nav.Link>}
-
-						{!userToken && <Nav.Link href="#home">Services</Nav.Link>}
 
 						{userToken && <Nav.Link href="/dashboard-user">Dashboard</Nav.Link>}
 

@@ -19,7 +19,7 @@ const FormRegister = () => {
 			nama: event.target.namaLengkap.value,
 			email: event.target.email.value,
 			password: event.target.password.value,
-			alamat: event.target.desa.value,
+			desa: event.target.desa.value,
 			jenis_kelamin: event.target.jenisKelamin.value,
 			tanggal_lahir: event.target.tanggalLahir.value,
 			id_gol_darah: event.target.golonganDarah.value,
