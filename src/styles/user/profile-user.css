@@ -1,3 +1,56 @@
 .profile-main-wrapper-left .user-image img {
 	width: 16rem;
 }
+
+.profile-row {
+	display: flex;
+	flex-direction: row;
+}
+
+@media screen and (max-width: 992px) {
+	.profile-row {
+		flex-direction: column;
+	}
+
+	.profile-col-left {
+		order: 1;
+		border-bottom: 1px solid #ccc;
+	}
+
+	.profile-col-right {
+		order: 2;
+	}
+}
+
+@media screen and (max-width: 575px) {
+	.profile-row {
+		flex-direction: column;
+	}
+
+	.profile-col-left {
+		order: 1;
+		border-bottom: 1px solid #ccc;
+	}
+
+	.profile-col-right {
+		order: 2;
+	}
+}
+
+@media screen and (max-width: 475px) {
+	.profile-row {
+		flex-direction: column;
+	}
+
+	.profile-col-left {
+		order: 1;
+		border-bottom: 1px solid #ccc;
+	}
+
+	.profile-col-right {
+		order: 2;
+	}
+}
+
+@media screen and (max-width: 375px) {
+}

@@ -76,11 +76,11 @@ const DashboardUser = () => {
 		},
 		textTitle: {
 			fontWeight: 'bold',
-			fontSize: 18,
+			fontSize: 13,
 			marginTop: 16,
 		},
 		textData: {
-			fontSize: 16,
+			fontSize: 12,
 			marginTop: 5,
 		},
 	});
@@ -91,11 +91,14 @@ const DashboardUser = () => {
 			donor => donor.id_donor === idPendonor
 		);
 
+		console.log('donor dataaaa:', donorData);
+
 		// Jika data pendonor ditemukan, buat dokumen PDF
 		if (selectedDonor) {
+			console.log('desa', selectedDonor.desa);
 			return (
 				<Document>
-					<Page size="A6" style={styles.page}>
+					<Page size="A5" style={styles.page}>
 						<View>
 							<Text style={styles.header}>Bukti Pendaftaran</Text>
 							<Text style={styles.headerChild}>
@@ -104,6 +107,20 @@ const DashboardUser = () => {
 							<View key={selectedDonor.id_donor} style={{ marginLeft: 18 }}>
 								<Text style={[styles.textTitle, { marginTop: 20 }]}>Nama:</Text>
 								<Text style={styles.textData}>{selectedDonor.nama_user}</Text>
+								<Text style={styles.textTitle}>Alamat Rumah:</Text>
+								<Text style={styles.textData}>
+									{selectedDonor.alamat_rumah}
+								</Text>
+								<Text style={styles.textTitle}>Desa:</Text>
+								<Text style={styles.textData}>{selectedDonor.desa}</Text>
+								<Text style={styles.textTitle}>Kecamatan:</Text>
+								<Text style={styles.textData}>{selectedDonor.kecamatan}</Text>
+								<Text style={styles.textTitle}>Kota:</Text>
+								<Text style={styles.textData}>{selectedDonor.kota}</Text>
+								<Text style={styles.textTitle}>Pekerjaan:</Text>
+								<Text style={styles.textData}>{selectedDonor.pekerjaan}</Text>
+								<Text style={styles.textTitle}>Lokasi Donor Darah:</Text>
+								<Text style={styles.textData}>{selectedDonor.lokasi_pmi}</Text>
 								<Text style={styles.textTitle}>Tanggal Donor:</Text>
 								<Text style={styles.textData}>
 									{formatData(selectedDonor.tanggal_donor)}
@@ -256,7 +273,7 @@ const DashboardUser = () => {
 											) : donor.status === 2 ? (
 												<PDFDownloadLink
 													document={generatePDF(donor.id_donor)}
-													fileName={`bukti-pendaftaran-${donor.id_user}-idDonor-${donor.id_donor}.pdf`}
+													fileName={`bukti-pendaftaran-${donor.nama_user}-${donor.id_user}.pdf`}
 													onClick={() => handlePDFButtonClick(donor.id_donor)}>
 													{({ loading }) =>
 														loading ? (
@@ -306,8 +323,10 @@ const DashboardUser = () => {
 						<thead>
 							<tr>
 								<th>No</th>
-								{/* <th>Nama Pemohon</th> */}
+								<th>Nama Pasien</th>
+								<th>Rumah Sakit</th>
 								<th>Golongan Darah</th>
+								<th>Jenis Komponen Darah</th>
 								<th>Jumlah</th>
 								<th>Deskripsi</th>
 								<th>Tanggal Permintaan</th>
@@ -320,8 +339,10 @@ const DashboardUser = () => {
 								bloodRequestData.map((bloodRequest, index) => (
 									<tr key={index + page * limit}>
 										<td>{index + 1 + page * limit}</td>
-										{/* <td>{bloodRequest.nama_user}</td> */}
+										<td>{bloodRequest.nama_pasien}</td>
+										<td>{bloodRequest.rumah_sakit}</td>
 										<td>{bloodRequest.gol_darah}</td>
+										<td>{bloodRequest.komponen_darah}</td>
 										<td>{bloodRequest.jumlah_darah}</td>
 										<td>{bloodRequest.deskripsi}</td>
 										<td>{formatData(bloodRequest.tanggal_request_darah)}</td>

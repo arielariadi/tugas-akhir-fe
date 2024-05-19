@@ -91,7 +91,7 @@ const CariSukarelawan = () => {
 										<Card.Text>
 											Golongan darah: {sukarelawan.gol_darah}
 										</Card.Text>
-										<Card.Text>Alamat: {sukarelawan.kecamatan}</Card.Text>
+										<Card.Text>Kecamatan: {sukarelawan.kecamatan}</Card.Text>
 										<Card.Text>Email: {sukarelawan.email}</Card.Text>
 										<Card.Text>No Hp: {sukarelawan.no_hp}</Card.Text>
 									</Card.Body>

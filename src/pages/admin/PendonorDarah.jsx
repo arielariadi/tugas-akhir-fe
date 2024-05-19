@@ -149,13 +149,17 @@ const PendonorDarah = () => {
 				<Table striped>
 					<thead>
 						<tr>
-							<th style={{ width: '2%' }}>No</th>
-							<th style={{ width: '15%' }}>Nama</th>
-							<th style={{ width: '20%' }}>Jenis Kelamin</th>
-							<th style={{ width: '15%' }}>Kecamatan</th>
-							<th style={{ width: '10%' }}>No Hp</th>
-							<th style={{ width: '20%' }}>Tanggal Donor</th>
-							<th style={{ width: '10%' }}>Golongan Darah</th>
+							<th>No</th>
+							<th style={{ width: '200px' }}>Nama</th>
+							<th style={{ width: '100px' }}>Jenis Kelamin</th>
+							<th style={{ width: '270px' }}>Alamat Rumah</th>
+							<th>Desa</th>
+							<th>Kecamatan</th>
+							<th>Kota</th>
+							<th style={{ width: '150px' }}>Pekerjaan</th>
+							<th>No Hp</th>
+							<th style={{ width: '200px' }}>Tanggal Donor</th>
+							<th>Golongan Darah</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
@@ -165,7 +169,11 @@ const PendonorDarah = () => {
 								<td>{index + 1 + page * limit}</td>
 								<td>{pendonor.User.nama}</td>
 								<td>{pendonor.User.jenis_kelamin}</td>
+								<td>{pendonor.User.alamat_rumah}</td>
+								<td>{pendonor.User.desa}</td>
 								<td>{pendonor.User.kecamatan}</td>
+								<td>{pendonor.User.kota}</td>
+								<td>{pendonor.User.pekerjaan}</td>
 								<td>{pendonor.User.no_hp}</td>
 								<td>{formatData(pendonor.tgl_donor)}</td>
 								<td>{pendonor.GolDarah.gol_darah}</td>

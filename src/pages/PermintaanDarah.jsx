@@ -15,7 +15,10 @@ const PermintaanDarah = () => {
 		event.preventDefault();
 
 		const data = new FormData();
+		data.append('nama_pasien', event.target.namaPasien.value);
+		data.append('rumah_sakit', event.target.rumahSakit.value);
 		data.append('id_gol_darah', event.target.golonganDarah.value);
+		data.append('komponen_darah', event.target.komponenDarah.value);
 		data.append('jumlah_darah', event.target.jumlahDarah.value);
 		data.append('deskripsi', event.target.deskripsi.value);
 		data.append('surat_permohonan_image', file);
@@ -58,6 +61,16 @@ const PermintaanDarah = () => {
 				</div>
 
 				<Form onSubmit={handleSubmit}>
+					<Form.Group className="mb-3" controlId="namaPasienId">
+						<Form.Label>Nama Pasien</Form.Label>
+						<Form.Control type="text" name="namaPasien" autoComplete="off" />
+					</Form.Group>
+
+					<Form.Group className="mb-3" controlId="rumahSakitId">
+						<Form.Label>Nama Rumah Sakit</Form.Label>
+						<Form.Control type="text" name="rumahSakit" autoComplete="off" />
+					</Form.Group>
+
 					<Form.Group className="mb-3" controlId="golonganDarahId">
 						<Form.Label>Golongan Darah</Form.Label>
 						<Form.Select
@@ -75,13 +88,30 @@ const PermintaanDarah = () => {
 						</Form.Select>
 					</Form.Group>
 
+					<Form.Group className="mb-3" controlId="komponenDarahId">
+						<Form.Label>Komponen Darah</Form.Label>
+						<Form.Select
+							name="komponenDarah"
+							aria-label="Default select example">
+							<option>Pilih Komponen Darah</option>
+							<option value="Packed Red Cell">Packed Red Cell (PRC)</option>
+							<option value="Trombocyte Concentrate">
+								Trombocyte Concentrate (TC)
+							</option>
+							<option value="Fresh Frozen Plasma">
+								Fresh Frozen Plasma (FFP)
+							</option>
+							<option value="Cryoprecipitate">Cryoprecipitate</option>
+						</Form.Select>
+					</Form.Group>
+
 					<Form.Group className="mb-3" controlId="jumlahKantongDarahId">
 						<Form.Label>Jumlah Kantong Darah</Form.Label>
 						<Form.Control type="number" name="jumlahDarah" />
 					</Form.Group>
 
 					<Form.Group className="mb-3" controlId="deskripsiId">
-						<Form.Label>Deskripsi</Form.Label>
+						<Form.Label>Alasan</Form.Label>
 						<Form.Control as="textarea" rows={3} name="deskripsi" />
 					</Form.Group>
 

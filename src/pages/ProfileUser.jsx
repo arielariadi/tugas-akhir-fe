@@ -124,8 +124,10 @@ const ProfileUser = () => {
 				<h1 className="text-center" style={{ marginTop: '100px' }}>
 					Profile User
 				</h1>
-				<Row className="mt-5 border">
-					<Col style={{ borderRight: '1px solid #ccc' }}>
+				<Row className="mt-5 border profile-row">
+					<Col
+						className="profile-col-left"
+						style={{ borderRight: '1px solid #ccc' }}>
 						<div className="profile-main-wrapper-left">
 							<div className="user-image d-flex justify-content-center mt-5">
 								<img
@@ -141,7 +143,7 @@ const ProfileUser = () => {
 						</div>
 					</Col>
 
-					<Col className="mt-5">
+					<Col className="mt-5 profile-col-right">
 						<div className="profile-main-wrapper-right">
 							<Form.Group className="mb-3" controlId="namaLengkapId">
 								<Form.Label>Nama Lengkap</Form.Label>

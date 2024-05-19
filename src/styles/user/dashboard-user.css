@@ -2,6 +2,10 @@
 	margin-top: 100px;
 }
 
+.table-wrapper-blood-request .table {
+	width: 1200px;
+}
+
 .table-wrapper .table thead th,
 .table-wrapper-blood-request .table thead th {
 	text-align: center;

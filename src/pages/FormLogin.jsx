@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Button, Row, Col, Form, Container } from 'react-bootstrap';
 import { login } from '../services/auth.service';
-import { Link } from 'react-router-dom';
 
 import '../styles/component-styles/form-login.css';
 
@@ -67,6 +66,7 @@ const FormLogin = () => {
 									onChange={e => setEmail(e.target.value)}
 									name="email"
 									value={email}
+									autoComplete="off"
 								/>
 							</Form.Group>
 

@@ -120,6 +120,7 @@ section.hero-section {
 	font-family: 'Archivo', sans-serif;
 	text-align: justify;
 }
+/* End profile */
 
 /* services */
 .services {
@@ -157,12 +158,15 @@ section.hero-section {
 .services .services-content img {
 	width: 5rem;
 }
-
 /* End services */
 
 /* Syarat */
 .syarat {
 	height: auto;
+}
+
+.syarat section {
+	min-height: 75vh;
 }
 
 .syarat .syarat-header h4 {
@@ -205,10 +209,85 @@ section.hero-section {
 .syarat .syarat-content img {
 	width: 5rem;
 }
-
 /* End syarat */
 
-/* End profile */
+/* Alur pendaftaran */
+.alur-pendaftaran {
+	background-color: #fde2e2e5;
+	height: auto;
+	padding-bottom: 50px;
+	margin-top: 40px;
+}
+
+.alur-pendaftaran .alur-pendaftaran-header h4 {
+	color: var(--secondary-color);
+	font-weight: 700;
+	font-family: 'Archivo', sans-serif;
+	letter-spacing: 10px;
+	margin-top: 40px;
+}
+
+.alur-pendaftaran .alur-pendaftaran-header-detail h2 {
+	font-family: 'Rubik', sans-serif;
+	font-weight: 600;
+	line-height: 40px;
+	width: 44rem;
+}
+
+.alur-pendaftaran .alur-pendaftaran-header-detail p {
+	font-family: 'Archivo', sans-serif;
+	color: var(--secondary-color);
+	font-weight: 500;
+	width: 45rem;
+}
+
+.alur-pendaftaran .alur-pendaftaran-content .card {
+	flex: 1 1 calc(50% - 10px);
+	max-width: calc(50% - 10px);
+}
+
+.alur-pendaftaran .alur-pendaftaran-content .card .card-body {
+	display: flex;
+	align-items: center;
+}
+
+.alur-pendaftaran .alur-pendaftaran-content img {
+	width: 4rem;
+}
+/* End alur pendaftaran */
+
+/* Manfaat */
+.manfaat {
+	margin-top: 40px;
+}
+
+.manfaat .manfaat-header h4 {
+	color: var(--secondary-color);
+	font-weight: 700;
+	font-family: 'Archivo', sans-serif;
+	letter-spacing: 5px;
+}
+
+.manfaat .accordion-header button {
+	font-family: 'Rubik', sans-serif;
+	font-size: 1.1rem;
+	font-weight: 600;
+}
+
+.manfaat .accordion-body {
+	font-family: 'Rubik', sans-serif;
+	text-align: justify;
+}
+
+.manfaat .accordion-button:focus {
+	box-shadow: none;
+}
+
+.manfaat .accordion-button:not(.collapsed) {
+	color: black;
+	background-color: #fde2e2e5;
+}
+/* End manfaat */
 
 @media screen and (max-width: 992px) {
 	/* homepage */
@@ -240,9 +319,6 @@ section.hero-section {
 		font-size: 23px;
 	}
 
-	.services .services-content .card .card-text {
-		font-size: 15px;
-	}
 	/* End services */
 
 	/* Syarat */
@@ -274,7 +350,41 @@ section.hero-section {
 		flex: 1 1 calc(50% - 16px);
 		max-width: calc(100%);
 	}
+
 	/* End syarat */
+
+	/* Alur pendaftaran */
+	.alur-pendaftaran {
+		margin-top: 30px;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-header-detail h2 {
+		max-width: 90%;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-header-detail p {
+		max-width: 85%;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content .card {
+		flex: 1 1 calc(50% - 16px);
+		max-width: calc(100%);
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content img {
+		width: 2.8rem;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content .card .card-text {
+		text-align: justify;
+	}
+	/* End alur pendaftaran */
 }
 
 @media screen and (max-width: 575px) {
@@ -403,6 +513,51 @@ section.hero-section {
 		text-align: justify;
 	}
 	/* End syarat */
+
+	/* Alur pendaftaran */
+	.alur-pendaftaran {
+		margin-top: 30px;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-header h4 {
+		text-align: center;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-header-detail h2 {
+		font-size: 25px;
+		max-width: 100%;
+		line-height: 1.4rem;
+		margin-top: 15px;
+		text-align: center;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-header-detail p {
+		font-size: 17px;
+		text-align: center;
+		max-width: 100%;
+		margin-top: 15px;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content .card {
+		flex: 1 1 calc(50% - 16px);
+		max-width: calc(100%);
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content img {
+		width: 2.8rem;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content .card .card-text {
+		font-size: 14px;
+		text-align: justify;
+	}
+	/* End alur pendaftaran */
 }
 
 @media screen and (max-width: 475px) {
@@ -553,6 +708,52 @@ section.hero-section {
 		text-align: justify;
 	}
 	/* End syarat */
+
+	/* Alur pendaftaran */
+	.alur-pendaftaran {
+		margin-top: 30px;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-header h4 {
+		font-size: 20px;
+		text-align: center;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-header-detail h2 {
+		font-size: 22px;
+		max-width: 100%;
+		line-height: 1.4rem;
+		margin-top: 15px;
+		text-align: center;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-header-detail p {
+		font-size: 15px;
+		text-align: center;
+		max-width: 100%;
+		margin-top: 15px;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content .card {
+		flex: 1 1 calc(50% - 16px);
+		max-width: calc(100%);
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content img {
+		width: 2.8rem;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content .card .card-text {
+		font-size: 14px;
+		text-align: justify;
+	}
+	/* End alur pendaftaran */
 }
 
 @media screen and (max-width: 375px) {
@@ -619,7 +820,7 @@ section.hero-section {
 
 	.services .services-header-detail h2 {
 		font-size: 18px;
-		width: 20rem;
+		max-width: 100%;
 		line-height: 1.4rem;
 		margin-top: 15px;
 		text-align: center;
@@ -698,4 +899,51 @@ section.hero-section {
 		text-align: justify;
 	}
 	/* End syarat */
+
+	/* Alur pendaftaran */
+	.alur-pendaftaran {
+		margin-top: 30px;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-header h4 {
+		font-size: 18px;
+		text-align: center;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-header-detail h2 {
+		font-size: 18px;
+		max-width: 100%;
+		line-height: 1.4rem;
+		margin-top: 15px;
+		text-align: center;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-header-detail p {
+		font-size: 13px;
+		text-align: center;
+		max-width: 100%;
+		margin-top: 15px;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content .card {
+		flex: 1 1 calc(50% - 16px);
+		max-width: calc(100%);
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content img {
+		width: 2.8rem;
+	}
+
+	.alur-pendaftaran .alur-pendaftaran-content .card .card-text {
+		font-size: 14px;
+		text-align: justify;
+	}
+
+	/* End alur pendaftaran */
 }

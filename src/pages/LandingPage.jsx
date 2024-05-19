@@ -1,4 +1,12 @@
-import { Container, Row, Col, Button, Badge, Card } from 'react-bootstrap';
+import {
+	Container,
+	Row,
+	Col,
+	Button,
+	Badge,
+	Card,
+	Accordion,
+} from 'react-bootstrap';
 import '../styles/landing-page.css';
 import Lottie from 'lottie-react';
 import HeroLottie from '../assets/lottie/heroLottie.json';
@@ -233,7 +241,7 @@ const LandingPage = () => {
 				</section>
 			</div>
 			<div className="syarat" id="syarat">
-				<section className="w-100 min-vh-100 d-flex overflow-hidden hero-section">
+				<section className="w-100 d-flex overflow-hidden hero-section">
 					<Container>
 						<div className="syarat-header">
 							<h4 className="">SYARAT</h4>
@@ -339,6 +347,246 @@ const LandingPage = () => {
 								</Card.Body>
 							</Card>
 						</div>
+					</Container>
+				</section>
+			</div>
+			<div className="alur-pendaftaran" id="alurPendaftaran">
+				<section className="w-100 d-flex overflow-hidden hero-section">
+					<Container>
+						<div className="alur-pendaftaran-header">
+							<h4 className="">ALUR PENDAFTARAN</h4>
+						</div>
+
+						<div className="alur-pendaftaran-header-detail">
+							<h2>
+								Ketahui Alur Pendaftaran Donor Darah Pada Unit Donor Darah PMI
+								Kabupaten Lebak
+							</h2>
+
+							<p>
+								Proses pendaftaran donor darah secara online di Unit Donor Darah
+								PMI Kabupaten Lebak dirancang untuk memudahkan calon pendonor
+								dalam memberikan kontribusi yang berharga bagi masyarakat
+							</p>
+						</div>
+
+						<div className="alur-pendaftaran-content d-flex flex-wrap gap-3">
+							<Card>
+								<Card.Body>
+									<div className="card-image-alur-pendaftaran-wrapper">
+										<Card.Img
+											variant="top"
+											src="src/assets/img/number-1-icon.png"
+											className="d-flex mx-auto"
+										/>
+									</div>
+
+									<div className="card-content-syarat-wrapper">
+										<Card.Text className="ms-3">
+											Memilih tanggal donor darah terlebih dahulu pada saat
+											melakukan pendaftaran online
+										</Card.Text>
+									</div>
+								</Card.Body>
+							</Card>
+
+							<Card>
+								<Card.Body>
+									<div className="card-image-alur-pendaftaran-wrapper">
+										<Card.Img
+											variant="top"
+											src="src/assets/img/number-2-icon.png"
+											className="d-flex mx-auto"
+										/>
+									</div>
+
+									<div className="card-content-syarat-wrapper">
+										<Card.Text className="ms-3">
+											Menunggu konfirmasi dari admin apakah pendaftaran donor
+											darah tersebut diterima atau ditolak
+										</Card.Text>
+									</div>
+								</Card.Body>
+							</Card>
+
+							<Card>
+								<Card.Body>
+									<div className="card-image-alur-pendaftaran-wrapper">
+										<Card.Img
+											variant="top"
+											src="src/assets/img/number-3-icon.png"
+											className="d-flex mx-auto"
+										/>
+									</div>
+
+									<div className="card-content-syarat-wrapper">
+										<Card.Text className="ms-3">
+											Unduh bukti pendaftaran donor darah pada menu dashboard
+										</Card.Text>
+									</div>
+								</Card.Body>
+							</Card>
+
+							<Card>
+								<Card.Body>
+									<div className="card-image-alur-pendaftaran-wrapper">
+										<Card.Img
+											variant="top"
+											src="src/assets/img/number-4-icon.png"
+											className="d-flex mx-auto"
+										/>
+									</div>
+
+									<div className="card-content-syarat-wrapper">
+										<Card.Text className="ms-3">
+											Datang ke lokasi Unit Donor Darah PMI Kabupaten Lebak
+											sesuai tanggal pendaftaran
+										</Card.Text>
+									</div>
+								</Card.Body>
+							</Card>
+
+							<Card>
+								<Card.Body>
+									<div className="card-image-alur-pendaftaran-wrapper">
+										<Card.Img
+											variant="top"
+											src="src/assets/img/number-5-icon.png"
+											className="d-flex mx-auto"
+										/>
+									</div>
+
+									<div className="card-content-syarat-wrapper">
+										<Card.Text className="ms-3">
+											Tunjukkan bukti pendaftaran donor darah kepada petugas
+										</Card.Text>
+									</div>
+								</Card.Body>
+							</Card>
+
+							<Card>
+								<Card.Body>
+									<div className="card-image-alur-pendaftaran-wrapper">
+										<Card.Img
+											variant="top"
+											src="src/assets/img/number-6-icon.png"
+											className="d-flex mx-auto"
+										/>
+									</div>
+
+									<div className="card-content-syarat-wrapper">
+										<Card.Text className="ms-3">
+											Melakukan pemeriksaan suhu tubuh, anamnesa, tekanan darah,
+											hemoglobin, dan golongan darah (jika belum mengetahui)
+										</Card.Text>
+									</div>
+								</Card.Body>
+							</Card>
+						</div>
+					</Container>
+				</section>
+			</div>
+			<div className="manfaat" id="manfaat">
+				<section className="w-100 d-flex overflow-hidden hero-section">
+					<Container>
+						<div className="manfaat-header text-center">
+							<h4 className="">MANFAAT DONOR DARAH</h4>
+						</div>
+
+						<Accordion>
+							<Accordion.Item eventKey="0">
+								<Accordion.Header>
+									Menjaga Kesehatan Jantung dan Menurunkan Risiko Penyakit
+									Jantung
+								</Accordion.Header>
+								<Accordion.Body>
+									Donor darah secara rutin dapat membantu mengurangi kekentalan
+									darah, yang pada gilirannya dapat menurunkan risiko
+									penyumbatan arteri dan serangan jantung. Menurunkan tingkat
+									zat besi dalam darah melalui donor juga membantu mengurangi
+									risiko penyakit kardiovaskular.
+								</Accordion.Body>
+							</Accordion.Item>
+							<Accordion.Item eventKey="1">
+								<Accordion.Header>
+									Meningkatkan Produksi Sel Darah Baru
+								</Accordion.Header>
+								<Accordion.Body>
+									Setiap kali Anda mendonorkan darah, tubuh Anda bekerja untuk
+									menggantikan darah yang hilang, yang merangsang produksi sel
+									darah baru. Proses ini membantu menjaga kesehatan tubuh dan
+									memastikan bahwa sistem peredaran darah tetap berfungsi
+									optimal.
+								</Accordion.Body>
+							</Accordion.Item>
+							<Accordion.Item eventKey="2">
+								<Accordion.Header>
+									Membantu Menurunkan Berat Badan
+								</Accordion.Header>
+								<Accordion.Body>
+									Donor darah membakar kalori, yang dapat membantu dalam
+									pengelolaan berat badan. Setiap kali Anda mendonorkan darah,
+									tubuh membakar sekitar 650 kalori, sehingga bisa menjadi
+									bagian dari program pengendalian berat badan Anda.
+								</Accordion.Body>
+							</Accordion.Item>
+							<Accordion.Item eventKey="3">
+								<Accordion.Header>Mendeteksi Penyakit Serius</Accordion.Header>
+								<Accordion.Body>
+									Setiap kali Anda mendonorkan darah, darah Anda akan diperiksa
+									untuk berbagai penyakit seperti HIV, hepatitis B dan C,
+									sifilis, dan lainnya. Hal ini tidak hanya membantu memastikan
+									bahwa darah yang didonorkan aman untuk penerima, tetapi juga
+									membantu pendonor mengetahui status kesehatan mereka.
+								</Accordion.Body>
+							</Accordion.Item>
+							<Accordion.Item eventKey="4">
+								<Accordion.Header>Mengurangi Risiko Kanker</Accordion.Header>
+								<Accordion.Body>
+									Donor darah secara teratur dapat membantu mengurangi kadar zat
+									besi dalam tubuh. Kadar zat besi yang tinggi telah dikaitkan
+									dengan peningkatan risiko kanker tertentu. Dengan mendonorkan
+									darah, Anda bisa menjaga kadar zat besi dalam darah tetap
+									seimbang.
+								</Accordion.Body>
+							</Accordion.Item>
+							<Accordion.Item eventKey="5">
+								<Accordion.Header>
+									Meningkatkan Kesehatan Mental dan Kepuasan Diri
+								</Accordion.Header>
+								<Accordion.Body>
+									Mengetahui bahwa Anda telah membantu menyelamatkan nyawa
+									seseorang dapat memberikan rasa kebahagiaan dan kepuasan
+									tersendiri. Banyak pendonor darah merasa lebih baik secara
+									emosional dan memiliki tingkat stres yang lebih rendah setelah
+									mendonorkan darah.
+								</Accordion.Body>
+							</Accordion.Item>
+							<Accordion.Item eventKey="6">
+								<Accordion.Header>
+									Meningkatkan Kesehatan Keseluruhan
+								</Accordion.Header>
+								<Accordion.Body>
+									Donor darah membantu menjaga keseimbangan kadar zat besi dalam
+									tubuh. Kelebihan zat besi dapat merusak organ tubuh. Dengan
+									mendonorkan darah, Anda dapat menjaga keseimbangan zat besi
+									dan meningkatkan kesehatan secara keseluruhan.
+								</Accordion.Body>
+							</Accordion.Item>
+							<Accordion.Item eventKey="7">
+								<Accordion.Header>
+									Membantu Komunitas dan Menyelamatkan Nyawa
+								</Accordion.Header>
+								<Accordion.Body>
+									Setiap kali Anda mendonorkan darah, Anda berkontribusi pada
+									ketersediaan darah di rumah sakit dan bank darah. Satu donasi
+									darah dapat menyelamatkan hingga tiga nyawa. Dengan demikian,
+									donor darah adalah salah satu cara paling sederhana dan paling
+									berharga untuk memberikan kontribusi yang bermanfaat bagi
+									masyarakat.
+								</Accordion.Body>
+							</Accordion.Item>
+						</Accordion>
 					</Container>
 				</section>
 			</div>

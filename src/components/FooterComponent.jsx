@@ -64,6 +64,16 @@ const FoterComponent = () => {
 										<a href="#syarat">Syarat</a>
 									</li>
 								)}
+								{!userToken && (
+									<li>
+										<a href="#alurPendaftaran">Alur Pendaftaran</a>
+									</li>
+								)}
+								{!userToken && (
+									<li>
+										<a href="#manfaat">Manfaat</a>
+									</li>
+								)}
 							</ul>
 						</div>
 						<div className="kontak col-sm-6 col-md-3 item">

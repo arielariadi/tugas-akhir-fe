@@ -63,6 +63,12 @@ function NavbarComponent() {
 
 						{!userToken && <Nav.Link href="#syarat">Syarat</Nav.Link>}
 
+						{!userToken && (
+							<Nav.Link href="#alurPendaftaran">Alur Pendaftaran</Nav.Link>
+						)}
+
+						{!userToken && <Nav.Link href="#manfaat">Manfaat</Nav.Link>}
+
 						{userToken && <Nav.Link href="/dashboard-user">Dashboard</Nav.Link>}
 
 						{userToken && (

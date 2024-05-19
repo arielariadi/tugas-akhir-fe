@@ -189,15 +189,18 @@ const DaftarPermintaanDarah = () => {
 					<thead>
 						<tr>
 							<th>No</th>
-							<th style={{ width: '100px' }}>Nama Pemohon</th>
-							<th>Alamat</th>
-							<th>Jenis Kelamin</th>
+							<th style={{ width: '300px' }}>Nama Pemohon</th>
+							<th style={{ width: '200px' }}>Nama Pasien</th>
+							<th style={{ width: '300px' }}>Alamat Rumah</th>
+							<th>Desa</th>
+							<th>Kecamatan</th>
+							<th style={{ width: '100px' }}>Jenis Kelamin</th>
 							<th>Golongan Darah</th>
 							<th>Jumlah</th>
-							<th style={{ width: '200px' }}>Deskripsi</th>
+							<th style={{ width: '300px' }}>Deskripsi</th>
 							<th>Tanggal Permintaan</th>
 							<th style={{ width: '100px' }}>Surat Permohonan</th>
-							<th>Bukti Penerimaan</th>
+							<th style={{ width: '200px' }}>Bukti Penerimaan</th>
 							<th style={{ width: '100px' }}>Aksi</th>
 						</tr>
 					</thead>
@@ -210,7 +213,16 @@ const DaftarPermintaanDarah = () => {
 										{permintaanDarah.User.nama}
 									</td>
 									<td style={{ textAlign: 'center' }}>
+										{permintaanDarah.nama_pasien}
+									</td>
+									<td style={{ textAlign: 'center' }}>
+										{permintaanDarah.User.alamat_rumah}
+									</td>
+									<td style={{ textAlign: 'center' }}>
 										{permintaanDarah.User.desa}
+									</td>
+									<td style={{ textAlign: 'center' }}>
+										{permintaanDarah.User.kecamatan}
 									</td>
 									<td>{permintaanDarah.User.jenis_kelamin}</td>
 									<td>{permintaanDarah.GolDarah.gol_darah}</td>
