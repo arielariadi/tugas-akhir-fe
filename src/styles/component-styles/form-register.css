@@ -52,5 +52,35 @@
 }
 
 .container-fluid .image-wrapper-register img {
-	margin: 2.5rem 0 0 5.5rem;
+	margin: 8.5rem 0 0 5.5rem;
+}
+
+@media screen and (max-width: 992px) {
+	.container-fluid .image-wrapper-register {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 475px) {
+	.container-fluid .form-register-wrapper {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.container-fluid .form-register-wrapper .text-register-wrapper h1 {
+		font-size: 1.5rem;
+		font-weight: 700;
+		line-height: 24px;
+	}
+
+	.container-fluid .form-register-wrapper .button-back-register-wrapper {
+		font-size: 2rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.button-wrapper {
+		position: absolute;
+		bottom: -985px;
+	}
 }

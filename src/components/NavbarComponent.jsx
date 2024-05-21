@@ -49,8 +49,13 @@ function NavbarComponent() {
 			className={changeColor ? 'color-active' : ''}
 			fixed="top">
 			<Container>
-				<Navbar.Brand href="#home" className="text-danger fw-bold">
-					UDD PMI Lebak
+				<Navbar.Brand
+					href="#home"
+					className="text-danger fw-bold d-flex align-items-center ">
+					<div className="logo-wrapper">
+						<img src="src/assets/img/pmi-logo.png" alt="" />
+					</div>
+					<div className="logo-text-wrapper">UDD PMI Lebak</div>
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav ">

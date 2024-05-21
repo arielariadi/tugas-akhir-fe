@@ -150,7 +150,8 @@ const PendonorDarah = () => {
 					<thead>
 						<tr>
 							<th>No</th>
-							<th style={{ width: '200px' }}>Nama</th>
+							<th style={{ width: '100px' }}>NIK</th>
+							<th style={{ width: '500px' }}>Nama</th>
 							<th style={{ width: '100px' }}>Jenis Kelamin</th>
 							<th style={{ width: '270px' }}>Alamat Rumah</th>
 							<th>Desa</th>
@@ -167,6 +168,7 @@ const PendonorDarah = () => {
 						{pendonorData.map((pendonor, index) => (
 							<tr key={index + page * limit}>
 								<td>{index + 1 + page * limit}</td>
+								<td>{pendonor.User.nik}</td>
 								<td>{pendonor.User.nama}</td>
 								<td>{pendonor.User.jenis_kelamin}</td>
 								<td>{pendonor.User.alamat_rumah}</td>

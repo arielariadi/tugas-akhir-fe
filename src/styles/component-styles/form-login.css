@@ -114,11 +114,23 @@
 	.button-back-responsive-wrapper {
 		font-size: 1.9rem;
 	}
+
+	.button-back-responsive-wrapper {
+		font-size: 2rem;
+		color: white;
+		top: 20px;
+	}
 }
 
 @media screen and (max-width: 375px) {
 	.container-fluid .form-wrapper form {
 		width: 85%;
+	}
+
+	.button-back-responsive-wrapper {
+		font-size: 2rem;
+		color: white;
+		top: 20px;
 	}
 }
 

@@ -35,7 +35,7 @@ const DashboardUser = () => {
 	const [showPDF, setShowPDF] = useState(true);
 	const [selectedDonorId, setSelectedDonorId] = useState(null);
 
-	// Efek samping untuk memuat data pendonor saat komponen dimuat dan saat `page` atau `limit` berubah
+	// Efek samping untuk memuat data pendonor saat komponen dimuat dan saat 'page' atau 'limit' berubah
 	useEffect(() => {
 		const getDonorData = async () => {
 			try {
@@ -105,7 +105,9 @@ const DashboardUser = () => {
 								Tolong tunjukkan bukti pendaftaran ini kepada petugas
 							</Text>
 							<View key={selectedDonor.id_donor} style={{ marginLeft: 18 }}>
-								<Text style={[styles.textTitle, { marginTop: 20 }]}>Nama:</Text>
+								<Text style={[styles.textTitle, { marginTop: 20 }]}>NIK:</Text>
+								<Text style={styles.textData}>{selectedDonor.nik}</Text>
+								<Text style={styles.textTitle}>Nama:</Text>
 								<Text style={styles.textData}>{selectedDonor.nama_user}</Text>
 								<Text style={styles.textTitle}>Alamat Rumah:</Text>
 								<Text style={styles.textData}>
@@ -127,10 +129,10 @@ const DashboardUser = () => {
 								</Text>
 								<Text style={styles.textTitle}>Golongan Darah:</Text>
 								<Text style={styles.textData}>{selectedDonor.gol_darah}</Text>
-								<Text style={styles.textTitle}>Status:</Text>
+								{/* <Text style={styles.textTitle}>Status:</Text>
 								<Text style={styles.textData}>
 									{selectedDonor.status === 2 ? 'Diterima' : 'Ditolak'}
-								</Text>
+								</Text> */}
 							</View>
 						</View>
 					</Page>

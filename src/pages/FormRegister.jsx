@@ -69,9 +69,7 @@ const FormRegister = () => {
 			<Container fluid>
 				<Form onSubmit={handleRegister}>
 					<Row>
-						<Col
-							xs={6}
-							className="d-flex flex-column justify-content-center align-items-center">
+						<Col className="d-flex flex-column justify-content-center align-items-center">
 							<Row className="form-register-wrapper">
 								<div className="button-back-register-wrapper">
 									<a href="/">
@@ -144,7 +142,7 @@ const FormRegister = () => {
 										<Form.Control as="textarea" name="alamatRumah" rows={3} />
 									</Form.Group>
 
-									<Button className="button-wrapper" type="submit">
+									<Button className="button-wrapper mb-5" type="submit">
 										Submit
 									</Button>
 								</Col>
@@ -232,7 +230,7 @@ const FormRegister = () => {
 							</Row>
 						</Col>
 
-						<Col xs={6} className="image-wrapper-register min-vh-100 p-0">
+						<Col className="image-wrapper-register min-vh-100 p-0">
 							<img src="src/assets/img/login-image.png" alt="" />
 						</Col>
 					</Row>

@@ -91,22 +91,22 @@ const LandingPage = () => {
 							<p>
 								UDD PMI Kabupaten Lebak berdiri pada tanggal 2 Juni 1982 untuk
 								melayani kebutuhan darah masyarakat yang berada di kabupaten
-								Lebak. Pada tanggal 15 Oktober 2021 hari Jumat, Bupati Lebak Iti
-								Oktavia Jayabaya meresmikan gedung baru UDD PMI Lebak yang
-								beralamat di Jl Sentral No. 2 Rangkasbitung dengan ditandai
-								penandatanganan prasasti dan pengguntingan pita. Turut dihadiri
-								oleh Kepala UDD PMI Pusat, Ketua PMI Banten, Ketua PMI Lebak,
-								Konsultan UDD dari DKI Jakarta, Kepala UDD Lebak, Sekretaris
-								Daerah Kabupaten Lebak, Asda III, serta Kepala Dinas Kesehatan
-								Kabupaten. Pembangunan gedung baru memiliki fasilitas
-								diantaranya ruang tunggu kurir ataupun keluarga pasien yang
-								membutuhkan darah, ruang tunggu untuk pendonor, lahan parkir
-								yang memdai untuk kendaraan roda dua ataupun roda empat,
+								Lebak. Pada hari Jumat tanggal 15 Oktober 2021, Bupati Lebak Iti
+								Oktavia Jayabaya meresmikan gedung baru UDD PMI Kabupaten Lebak
+								yang beralamat di Jl. Sentral No. 2 Rangkasbitung dengan
+								ditandai penandatanganan prasasti dan pengguntingan pita. Turut
+								dihadiri oleh Kepala UDD PMI Pusat, Ketua PMI Banten, Ketua PMI
+								Lebak, Konsultan UDD dari DKI Jakarta, Kepala UDD Lebak,
+								Sekretaris Daerah Kabupaten Lebak, Asda III, serta Kepala Dinas
+								Kesehatan Kabupaten. Pembangunan gedung baru memiliki fasilitas
+								diantaranya adalah ruang tunggu kurir ataupun keluarga pasien
+								yang membutuhkan darah, ruang tunggu untuk pendonor, lahan
+								parkir yang memadai untuk kendaraan roda dua maupun roda empat,
 								laboratorium untuk pemeriksaan uji saring IMLTD menggunakan
 								metode CLIA, ruang pengambilan darah yang nyaman, dan sudah
-								dapat memproduksi komponen TC. Ini semua bertujuan meningkatkan
-								pelayanan darah dan kualitas darah untuk masyarakat kabupaten
-								Lebak.
+								dapat memproduksi komponen TC. Ini semua bertujuan untuk
+								meningkatkan pelayanan darah dan kualitas darah untuk masyarakat
+								kabupaten Lebak.
 							</p>
 						</div>
 
