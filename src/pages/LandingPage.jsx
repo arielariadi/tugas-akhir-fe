@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
 	Container,
 	Row,
@@ -10,8 +11,24 @@ import {
 import '../styles/landing-page.css';
 import Lottie from 'lottie-react';
 import HeroLottie from '../assets/lottie/heroLottie.json';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const LandingPage = () => {
+	useEffect(() => {
+		AOS.init({
+			disable: function () {
+				var maxWidth = 768;
+				return window.innerWidth < maxWidth;
+			},
+			duration: 1200,
+			easing: 'ease-in-out',
+			once: false,
+			mirror: true,
+			anchorPlacement: 'top-bottom',
+		});
+		AOS.refresh(); // Ensure AOS refreshes elements
+	}, []);
 	return (
 		<>
 			{' '}
@@ -19,7 +36,7 @@ const LandingPage = () => {
 				<section className="w-100 min-vh-100 d-flex align-items-center overflow-hidden hero-section">
 					<Container>
 						<Row className="header-box d-flex align-items-center">
-							<Col lg="6" className="p-4">
+							<Col lg="6" className="p-4" data-aos="fade-right">
 								<h1 className="mb-4">
 									<span className="slogan-1">Satu Tetes </span>
 									<br />
@@ -66,7 +83,10 @@ const LandingPage = () => {
 									</span>
 								</div>
 							</Col>
-							<Col lg="6" className="pt-lg-0 pt-5 d-flex justify-content-end">
+							<Col
+								lg="6"
+								className="pt-lg-0 pt-5 d-flex justify-content-end"
+								data-aos="fade-left">
 								<Lottie
 									animationData={HeroLottie}
 									loop={true}
@@ -79,15 +99,17 @@ const LandingPage = () => {
 			<div className="profile" id="profile">
 				<section className="w-100 min-vh-100 d-flex overflow-hidden hero-section">
 					<Container>
-						<div className="profile-header text-center">
+						<div className="profile-header text-center" data-aos="fade-up">
 							<h4 className="">PROFILE</h4>
 						</div>
 
-						<div className="profile-header-detail text-center">
+						<div
+							className="profile-header-detail text-center"
+							data-aos="fade-up">
 							<h2>UDD PMI Kabupaten Lebak</h2>
 						</div>
 
-						<div className="profile-content text-center">
+						<div className="profile-content text-center" data-aos="fade-up">
 							<p>
 								UDD PMI Kabupaten Lebak berdiri pada tanggal 2 Juni 1982 untuk
 								melayani kebutuhan darah masyarakat yang berada di kabupaten
@@ -110,7 +132,7 @@ const LandingPage = () => {
 							</p>
 						</div>
 
-						<Row className="visi-misi-wrapper">
+						<Row className="visi-misi-wrapper" data-aos="fade-up">
 							<Col className="visi">
 								<h4 className="text-center">VISI</h4>
 
@@ -145,11 +167,11 @@ const LandingPage = () => {
 			<div className="services" id="layanan">
 				<section className="w-100 min-vh-100 d-flex overflow-hidden hero-section">
 					<Container>
-						<div className="services-header">
+						<div className="services-header" data-aos="fade-up">
 							<h4 className="">LAYANAN</h4>
 						</div>
 
-						<div className="services-header-detail">
+						<div className="services-header-detail" data-aos="fade-up">
 							<h2>Memberikan Pelayanan Terbaik Dengan Fasilitas Yang Nyaman</h2>
 
 							<p>
@@ -159,7 +181,7 @@ const LandingPage = () => {
 						</div>
 
 						<div className="services-content d-flex justify-content-center gap-3">
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<Card.Img
 										variant="top"
@@ -179,7 +201,7 @@ const LandingPage = () => {
 								</Card.Body>
 							</Card>
 
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<Card.Img
 										variant="top"
@@ -199,7 +221,7 @@ const LandingPage = () => {
 								</Card.Body>
 							</Card>
 
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<Card.Img
 										variant="top"
@@ -218,7 +240,7 @@ const LandingPage = () => {
 								</Card.Body>
 							</Card>
 
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<Card.Img
 										variant="top"
@@ -243,11 +265,11 @@ const LandingPage = () => {
 			<div className="syarat" id="syarat">
 				<section className="w-100 d-flex overflow-hidden hero-section">
 					<Container>
-						<div className="syarat-header">
+						<div className="syarat-header" data-aos="fade-up">
 							<h4 className="">SYARAT</h4>
 						</div>
 
-						<div className="syarat-header-detail">
+						<div className="syarat-header-detail" data-aos="fade-up">
 							<h2>Apa Saja Syarat Donor Darah Yang Harus Diketahui</h2>
 
 							<p>
@@ -259,7 +281,7 @@ const LandingPage = () => {
 						</div>
 
 						<div className="syarat-content d-flex flex-wrap gap-3">
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<div className="card-image-syarat-wrapper">
 										<Card.Img
@@ -280,7 +302,7 @@ const LandingPage = () => {
 								</Card.Body>
 							</Card>
 
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<div className="card-image-syarat-wrapper">
 										<Card.Img
@@ -303,7 +325,7 @@ const LandingPage = () => {
 								</Card.Body>
 							</Card>
 
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<div className="card-image-syarat-wrapper">
 										<Card.Img
@@ -326,7 +348,7 @@ const LandingPage = () => {
 								</Card.Body>
 							</Card>
 
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<div className="card-image-syarat-wrapper">
 										<Card.Img
@@ -353,11 +375,11 @@ const LandingPage = () => {
 			<div className="alur-pendaftaran" id="alurPendaftaran">
 				<section className="w-100 d-flex overflow-hidden hero-section">
 					<Container>
-						<div className="alur-pendaftaran-header">
+						<div className="alur-pendaftaran-header" data-aos="fade-up">
 							<h4 className="">ALUR PENDAFTARAN</h4>
 						</div>
 
-						<div className="alur-pendaftaran-header-detail">
+						<div className="alur-pendaftaran-header-detail" data-aos="fade-up">
 							<h2>
 								Ketahui Alur Pendaftaran Donor Darah Pada Unit Donor Darah PMI
 								Kabupaten Lebak
@@ -371,7 +393,7 @@ const LandingPage = () => {
 						</div>
 
 						<div className="alur-pendaftaran-content d-flex flex-wrap gap-3">
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<div className="card-image-alur-pendaftaran-wrapper">
 										<Card.Img
@@ -390,7 +412,7 @@ const LandingPage = () => {
 								</Card.Body>
 							</Card>
 
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<div className="card-image-alur-pendaftaran-wrapper">
 										<Card.Img
@@ -409,7 +431,7 @@ const LandingPage = () => {
 								</Card.Body>
 							</Card>
 
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<div className="card-image-alur-pendaftaran-wrapper">
 										<Card.Img
@@ -427,7 +449,7 @@ const LandingPage = () => {
 								</Card.Body>
 							</Card>
 
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<div className="card-image-alur-pendaftaran-wrapper">
 										<Card.Img
@@ -446,7 +468,7 @@ const LandingPage = () => {
 								</Card.Body>
 							</Card>
 
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<div className="card-image-alur-pendaftaran-wrapper">
 										<Card.Img
@@ -464,7 +486,7 @@ const LandingPage = () => {
 								</Card.Body>
 							</Card>
 
-							<Card>
+							<Card data-aos="fade-up">
 								<Card.Body>
 									<div className="card-image-alur-pendaftaran-wrapper">
 										<Card.Img
@@ -489,11 +511,11 @@ const LandingPage = () => {
 			<div className="manfaat" id="manfaat">
 				<section className="w-100 d-flex overflow-hidden hero-section">
 					<Container>
-						<div className="manfaat-header text-center">
+						<div className="manfaat-header text-center" data-aos="fade-up">
 							<h4 className="">MANFAAT DONOR DARAH</h4>
 						</div>
 
-						<Accordion>
+						<Accordion data-aos="fade-up">
 							<Accordion.Item eventKey="0">
 								<Accordion.Header>
 									Menjaga Kesehatan Jantung dan Menurunkan Risiko Penyakit
