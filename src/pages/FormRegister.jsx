@@ -162,6 +162,31 @@ const FormRegister = () => {
 											<option value="Banjarsari">Banjarsari</option>
 											<option value="Bayah">Bayah</option>
 											<option value="Bojongmanik">Bojongmanik</option>
+											<option value="Cibadak">Cibadak</option>
+											<option value="Cibeber">Cibeber</option>
+											<option value="Cigemblong">Cigemblong</option>
+											<option value="Cihara">Cihara</option>
+											<option value="Cijaku">Cijaku</option>
+											<option value="Cikulur">Cikulur</option>
+											<option value="Cileles">Cileles</option>
+											<option value="Cilograng">Cilograng</option>
+											<option value="Cimarga">Cimarga</option>
+											<option value="Cipanas">Cipanas</option>
+											<option value="Cirinten">Cirinten</option>
+											<option value="Curugbitung">Curugbitung</option>
+											<option value="Gunungkencana">Gunungkencana</option>
+											<option value="Kalang Anyar">Kalang Anyar</option>
+											<option value="Lebak Gedong">Lebak Gedong</option>
+											<option value="Leuwidamar">Leuwidamar</option>
+											<option value="Maja">Maja</option>
+											<option value="Malingping">Malingping</option>
+											<option value="Muncang">Muncang</option>
+											<option value="Panggarangan">Panggarangan</option>
+											<option value="Rangkasbitung">Rangkasbitung</option>
+											<option value="Sajira">Sajira</option>
+											<option value="Sobang">Sobang</option>
+											<option value="Wanasalam">Wanasalam</option>
+											<option value="Warunggunung">Warunggunung</option>
 										</Form.Select>
 									</Form.Group>
 
