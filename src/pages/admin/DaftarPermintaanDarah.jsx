@@ -15,12 +15,14 @@ import rejectedBloodRequestService from '../../services/admin/rejectedBloodReque
 import Swal from 'sweetalert2';
 import '../../styles/admin/daftar-permintaan-darah.css';
 
+import * as XLSX from 'xlsx';
+
 const DaftarPermintaanDarah = () => {
 	const [permintaanDarahData, setPermintaanDarahData] = useState([]);
 	const [selectedImage, setSelectedImage] = useState(null);
 
 	const [page, setPage] = useState(0);
-	const [limit, setLimit] = useState(5);
+	const [limit, setLimit] = useState(10);
 	const [pages, setPages] = useState(0);
 	const [rows, setRows] = useState(0);
 	const [msg, setMsg] = useState('');
@@ -34,6 +36,9 @@ const DaftarPermintaanDarah = () => {
 	const [file, setFile] = useState();
 
 	const [selectedImageBuktiFoto, setSelectedImageBuktiFoto] = useState(null);
+
+	const [selectedMonth, setSelectedMonth] = useState('');
+	const [filteredData, setFilteredData] = useState([]);
 
 	const getPermintaanDarahData = async () => {
 		try {
@@ -59,6 +64,11 @@ const DaftarPermintaanDarah = () => {
 	useEffect(() => {
 		getPermintaanDarahData();
 	}, [page, limit]);
+
+	// Filter data berdasarkan bulan untuk export ke excel
+	useEffect(() => {
+		filterDataByMonth();
+	}, [permintaanDarahData, selectedMonth]);
 
 	const changePage = ({ selected }) => {
 		setPage(selected);
@@ -180,9 +190,88 @@ const DaftarPermintaanDarah = () => {
 		}
 	};
 
+	const handleMonthChange = event => {
+		setSelectedMonth(event.target.value);
+		console.log('Bulan dipilih:', event.target.value);
+	};
+
+	const filterDataByMonth = () => {
+		if (selectedMonth) {
+			const month = parseInt(selectedMonth.split('-')[1]);
+			const filtered = permintaanDarahData.filter(permintaanDarah => {
+				const donorMonth =
+					new Date(permintaanDarah.tanggal_request_darah).getMonth() + 1;
+				return donorMonth === month;
+			});
+			setFilteredData(filtered);
+			console.log('Data setelah filter berdasarkan bulan:', filtered);
+		} else {
+			setFilteredData(permintaanDarahData);
+		}
+	};
+
+	const exportToExcel = () => {
+		console.log('Data yang diekspor:', filteredData);
+
+		const worksheet = XLSX.utils.json_to_sheet(
+			filteredData.map((permintaanDarah, index) => ({
+				No: index + 1,
+				Nama: permintaanDarah.User.nama,
+				'Nama Pasien': permintaanDarah.nama_pasien,
+				'Rumah Sakit': permintaanDarah.rumah_sakit,
+				'Alamat Rumah': permintaanDarah.User.alamat_rumah,
+				Desa: permintaanDarah.User.desa,
+				Kecamatan: permintaanDarah.User.kecamatan,
+				Kota: permintaanDarah.User.kota,
+				'Golongan Darah': permintaanDarah.GolDarah.gol_darah,
+				'Jumlah Kantung Darah': permintaanDarah.jumlah_darah,
+				'Komponen Darah': permintaanDarah.komponen_darah,
+				Deskripsi: permintaanDarah.deskripsi,
+				'Tanggal Permintaan': formatData(permintaanDarah.tanggal_request_darah),
+				'Surat Permohonan': permintaanDarah.surat_permohonan_image
+					? `http://127.0.0.1:3000/images/${permintaanDarah.surat_permohonan_image}`
+					: 'N/A',
+				'Bukti Penerimaan': permintaanDarah.bukti_foto
+					? `http://127.0.0.1:3000/bukti-foto/${permintaanDarah.bukti_foto}`
+					: 'N/A',
+			}))
+		);
+
+		// Buat workbook dan tambahkan worksheet ke dalamnya
+		const workbook = XLSX.utils.book_new();
+		XLSX.utils.book_append_sheet(workbook, worksheet, 'Permintaan Darah');
+
+		// Ambil nama bulan dari selectedMonth (jika ada)
+		let monthName = '';
+		if (selectedMonth) {
+			const monthNumber = parseInt(selectedMonth.split('-')[1]);
+			const month = new Date(Date.UTC(2000, monthNumber - 1, 1));
+			monthName = month.toLocaleString('id-ID', { month: 'long' });
+		}
+
+		// Simpan workbook ke file dengan nama dinamis berdasarkan bulan yang dipilih
+		const fileName = `Permintaan_Darah_Bulan_${monthName}.xlsx`;
+		XLSX.writeFile(workbook, fileName);
+	};
+
 	return (
 		<div className="permintaan-darah-wrapper">
 			<h1>Permintaan Darah</h1>
+
+			<div className="filter-month-blood-request">
+				<Form.Group controlId="filterMonth">
+					<Form.Label>Filter Berdasarkan Bulan</Form.Label>
+					<Form.Control
+						type="month"
+						value={selectedMonth}
+						onChange={handleMonthChange}
+					/>
+				</Form.Group>
+
+				<Button onClick={exportToExcel} className="mt-3 btn-success">
+					Ekspor ke Excel
+				</Button>
+			</div>
 
 			<div className="table-wrapper" style={{ overflowX: 'auto' }}>
 				<Table striped className="blood-request-table">
@@ -191,12 +280,14 @@ const DaftarPermintaanDarah = () => {
 							<th>No</th>
 							<th style={{ width: '300px' }}>Nama Pemohon</th>
 							<th style={{ width: '200px' }}>Nama Pasien</th>
+							<th style={{ width: '200px' }}>Rumah Sakit</th>
 							<th style={{ width: '300px' }}>Alamat Rumah</th>
 							<th>Desa</th>
 							<th>Kecamatan</th>
-							<th style={{ width: '100px' }}>Jenis Kelamin</th>
+							<th>Kota</th>
 							<th>Golongan Darah</th>
 							<th>Jumlah</th>
+							<th>Komponen Darah</th>
 							<th style={{ width: '300px' }}>Deskripsi</th>
 							<th>Tanggal Permintaan</th>
 							<th style={{ width: '100px' }}>Surat Permohonan</th>
@@ -216,6 +307,9 @@ const DaftarPermintaanDarah = () => {
 										{permintaanDarah.nama_pasien}
 									</td>
 									<td style={{ textAlign: 'center' }}>
+										{permintaanDarah.rumah_sakit}
+									</td>
+									<td style={{ textAlign: 'center' }}>
 										{permintaanDarah.User.alamat_rumah}
 									</td>
 									<td style={{ textAlign: 'center' }}>
@@ -224,9 +318,12 @@ const DaftarPermintaanDarah = () => {
 									<td style={{ textAlign: 'center' }}>
 										{permintaanDarah.User.kecamatan}
 									</td>
-									<td>{permintaanDarah.User.jenis_kelamin}</td>
+									<td style={{ textAlign: 'center' }}>
+										{permintaanDarah.User.kota}
+									</td>
 									<td>{permintaanDarah.GolDarah.gol_darah}</td>
 									<td>{permintaanDarah.jumlah_darah}</td>
+									<td>{permintaanDarah.komponen_darah}</td>
 									<td>{permintaanDarah.deskripsi}</td>
 									<td>{formatData(permintaanDarah.tanggal_request_darah)}</td>
 									<td className="surat-permohonan">

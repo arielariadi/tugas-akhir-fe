@@ -90,8 +90,8 @@ const FoterComponent = () => {
 						<div className="col-md-6 item text">
 							<h3>UDD PMI Kabupaten Lebak</h3>
 							<p>
-								Jl. Sentral No.2, Rangkasbitung Bar., Kec. Rangkasbitung,
-								Kabupaten Lebak, Banten 42312
+								Jalan Sentral No. 2 Rangkasbitung Barat, Kecamatan
+								Rangkasbitung, Kabupaten Lebak, Banten 42312
 							</p>
 						</div>
 						<div className="col item social">

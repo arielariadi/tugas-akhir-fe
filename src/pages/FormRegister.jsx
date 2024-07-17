@@ -44,6 +44,22 @@ const FormRegister = () => {
 			no_hp: event.target.noHp.value,
 		};
 
+		// cek apakah semua form terisi
+		const isFormFilled = Object.values(data).every(
+			value => value.trim() !== ''
+		);
+
+		if (!isFormFilled) {
+			Swal.fire({
+				icon: 'warning',
+				title: 'Form Tidak Lengkap!',
+				text: 'Tolong isi semua formnya terlebih dahulu!',
+				showConfirmButton: true,
+				confirmButtonText: 'OK',
+			});
+			return;
+		}
+
 		try {
 			const response = await register(data);
 			console.log(response);

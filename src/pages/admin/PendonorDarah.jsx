@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button, Form } from 'react-bootstrap';
 // import pendonorDarahService from '../../services/admin/pendonorDarah.service';
 
 import '../../styles/admin/pendonor-darah.css';
@@ -12,17 +12,21 @@ import config from '../../services/config-api/config';
 import ReactPaginate from 'react-paginate';
 import Swal from 'sweetalert2';
 
+import * as XLSX from 'xlsx';
+
 import acceptedBloodDonorRegistrationService from '../../services/admin/acceptedBloodDonorRegistration.service';
 import rejectedBloodDonorRegistrationService from '../../services/admin/rejectedBloodDonorRegistration.service';
 
 const PendonorDarah = () => {
 	const [pendonorData, setPendonorData] = useState([]);
+	const [filteredData, setFilteredData] = useState([]);
 
 	const [page, setPage] = useState(0);
-	const [limit, setLimit] = useState(5);
+	const [limit, setLimit] = useState(10);
 	const [pages, setPages] = useState(0);
 	const [rows, setRows] = useState(0);
 	const [msg, setMsg] = useState('');
+	const [selectedMonth, setSelectedMonth] = useState('');
 
 	const [isButtonDisabledRegistration, setIsButtonDisabledRegistration] =
 		useState({});
@@ -51,6 +55,10 @@ const PendonorDarah = () => {
 	useEffect(() => {
 		getPendonorData();
 	}, [page, limit]);
+
+	useEffect(() => {
+		filterDataByMonth();
+	}, [pendonorData, selectedMonth]);
 
 	const changePage = ({ selected }) => {
 		setPage(selected);
@@ -141,11 +149,83 @@ const PendonorDarah = () => {
 		}
 	};
 
+	const handleMonthChange = event => {
+		setSelectedMonth(event.target.value);
+		console.log('Bulan dipilih:', event.target.value);
+	};
+
+	const filterDataByMonth = () => {
+		if (selectedMonth) {
+			const month = parseInt(selectedMonth.split('-')[1]);
+			const filtered = pendonorData.filter(pendonor => {
+				const donorMonth = new Date(pendonor.tgl_donor).getMonth() + 1;
+				return donorMonth === month;
+			});
+			setFilteredData(filtered);
+			console.log('Data setelah filter berdasarkan bulan:', filtered);
+		} else {
+			setFilteredData(pendonorData);
+		}
+	};
+
+	// Fungsi untuk mengekspor data ke format excel
+	const exportToExcel = () => {
+		console.log('Data yang diekspor:', filteredData);
+
+		const worksheet = XLSX.utils.json_to_sheet(
+			filteredData.map((pendonor, index) => ({
+				No: index + 1,
+				NIK: pendonor.User.nik,
+				Nama: pendonor.User.nama,
+				'Jenis Kelamin': pendonor.User.jenis_kelamin,
+				'Alamat Rumah': pendonor.User.alamat_rumah,
+				Desa: pendonor.User.desa,
+				Kecamatan: pendonor.User.kecamatan,
+				Kota: pendonor.User.kota,
+				Pekerjaan: pendonor.User.pekerjaan,
+				'No Hp': pendonor.User.no_hp,
+				'Tanggal Donor': formatData(pendonor.tgl_donor),
+				'Golongan Darah': pendonor.GolDarah.gol_darah,
+			}))
+		);
+
+		// Buat workbook dan tambahkan worksheet ke dalamnya
+		const workbook = XLSX.utils.book_new();
+		XLSX.utils.book_append_sheet(workbook, worksheet, 'Calon Pendonor Darah');
+
+		// Ambil nama bulan dari selectedMonth (jika ada)
+		let monthName = '';
+		if (selectedMonth) {
+			const monthNumber = parseInt(selectedMonth.split('-')[1]);
+			const month = new Date(Date.UTC(2000, monthNumber - 1, 1));
+			monthName = month.toLocaleString('id-ID', { month: 'long' });
+		}
+
+		// Simpan workbook ke file dengan nama dinamis berdasarkan bulan yang dipilih
+		const fileName = `Calon_Pendonor_Bulan_${monthName}.xlsx`;
+		XLSX.writeFile(workbook, fileName);
+	};
+
 	return (
 		<div className="pendonor-darah-wrapper">
-			<h1>Pendonor Darah</h1>
+			<h1>Calon Pendonor Darah</h1>
 
-			<div className="table-wrapper">
+			<div className="filter-month">
+				<Form.Group controlId="filterMonth">
+					<Form.Label>Filter Berdasarkan Bulan</Form.Label>
+					<Form.Control
+						type="month"
+						value={selectedMonth}
+						onChange={handleMonthChange}
+					/>
+				</Form.Group>
+
+				<Button onClick={exportToExcel} className="mt-3 btn-success">
+					Ekspor ke Excel
+				</Button>
+			</div>
+
+			<div className="table-wrapper" style={{ overflowX: 'auto' }}>
 				<Table striped>
 					<thead>
 						<tr>

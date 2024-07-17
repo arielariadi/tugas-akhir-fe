@@ -27,16 +27,21 @@ const SidebarAdmin = () => {
 
 						<a className="list-group-item py-2" href="/bank-darah">
 							<i className="bi bi-house fs-5 me-3"></i>
-							<span>Stok Bank Darah</span>
+							<span>Bank Darah</span>
 						</a>
 
-						<a className="list-group-item py-2" href="/pendonor-darah">
+						<a className="list-group-item py-2" href="/calon-pendonor">
 							<i className="bi bi-table fs-5 me-3"></i>
-							<span>Pendonor Darah</span>
+							<span>Calon Pendonor</span>
+						</a>
+
+						<a className="list-group-item py-2" href="/validasi-pendonor-darah">
+							<i className="bi bi-eject fs-5 me-3"></i>
+							<span>Validasi Pendonor</span>
 						</a>
 
 						<a className="list-group-item py-2" href="/permintaan-darah">
-							<i className="bi bi-speedometer2 fs-5 me-3"></i>
+							<i className="bi bi-envelope fs-5 me-3"></i>
 							<span>Permintaan Darah</span>
 						</a>
 

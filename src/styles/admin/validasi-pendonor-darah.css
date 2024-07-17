@@ -1,0 +1,18 @@
+.validasi-pendonor-darah-wrapper h1 {
+	margin-top: 60px;
+	margin-left: 35rem;
+}
+
+.validasi-pendonor-darah-wrapper .table-wrapper .table {
+	width: 2000px;
+	margin-left: 20rem;
+}
+
+.filter-month-validation-blood-donor {
+	margin-left: 20rem;
+	width: 300px;
+}
+
+.pagination-wrapper-get-validation-blood-donor {
+	margin-left: 19rem;
+}

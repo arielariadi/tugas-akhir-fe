@@ -15,6 +15,7 @@ import DaftarPermintaanDarah from './pages/admin/DaftarPermintaanDarah';
 import CariSukarelawan from './pages/CariSukarelawan';
 import ProfileUser from './pages/ProfileUser';
 import PendonorDarah from './pages/admin/PendonorDarah';
+import ValidasiPendonorDarah from './pages/admin/ValidasiPendonorDarah';
 
 import FooterComponent from './components/FooterComponent';
 
@@ -55,7 +56,11 @@ function App() {
 					<>
 						<Route path="/dashboard-admin" element={<DashboardAdmin />} />
 						<Route path="/bank-darah" element={<BankDarah />} />
-						<Route path="/pendonor-darah" element={<PendonorDarah />} />
+						<Route path="/calon-pendonor" element={<PendonorDarah />} />
+						<Route
+							path="/validasi-pendonor-darah"
+							element={<ValidasiPendonorDarah />}
+						/>
 						<Route
 							path="/permintaan-darah"
 							element={<DaftarPermintaanDarah />}

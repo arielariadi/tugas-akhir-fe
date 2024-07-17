@@ -79,3 +79,8 @@
 	margin: 5px;
 	align-self: flex-end;
 }
+
+.filter-month-blood-request {
+	margin-left: 20rem;
+	width: 300px;
+}

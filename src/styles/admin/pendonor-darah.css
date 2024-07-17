@@ -3,8 +3,8 @@
 	margin-left: 35rem;
 }
 
-.pendonor-darah-wrapper .table-wrapper {
-	width: 80rem;
+.pendonor-darah-wrapper .table-wrapper .table {
+	width: 1500px;
 	margin-left: 20rem;
 }
 
@@ -45,6 +45,11 @@
 	align-self: flex-end;
 }
 
+.filter-month {
+	margin-left: 20rem;
+	width: 300px;
+}
+
 .pagination-wrapper-get-pendonors {
-	margin-left: 0;
+	margin-left: 19rem;
 }

@@ -164,7 +164,7 @@ const JadwalDonorDarah = () => {
 									</Card.Text>
 								) : null}
 								<Card.Text>Email : udd.pmilebak@gmail.com</Card.Text>
-								<Card.Text>No HP : 08xxxxxxxx</Card.Text>
+								<Card.Text>No HP : 08-111-403-404</Card.Text>
 							</div>
 
 							<Button variant="primary" className="mt-2" onClick={handleShow}>
@@ -175,7 +175,7 @@ const JadwalDonorDarah = () => {
 								variant="danger"
 								className="mt-2 ms-2"
 								onClick={handleShowBankDarah}>
-								Bank Darah
+								Stok Darah
 							</Button>
 						</Card.Body>
 					</Card>
@@ -218,7 +218,7 @@ const JadwalDonorDarah = () => {
 				onHide={handleCloseBankDarah}
 				className="modal-bank-darah">
 				<Modal.Header closeButton>
-					<Modal.Title>Informasi Bank Darah</Modal.Title>
+					<Modal.Title>Informasi Detail Stok Darah</Modal.Title>
 				</Modal.Header>
 
 				<Modal.Body>

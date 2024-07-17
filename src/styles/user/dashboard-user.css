@@ -2,16 +2,20 @@
 	margin-top: 100px;
 }
 
+.table-wrapper .table,
+.table-wrapper-validation-blood-donor .table,
 .table-wrapper-blood-request .table {
 	width: 1200px;
 }
 
 .table-wrapper .table thead th,
+.table-wrapper-validation-blood-donor .table thead th,
 .table-wrapper-blood-request .table thead th {
 	text-align: center;
 }
 
 .table-wrapper .table tbody td,
+.table-wrapper-validation-blood-donor .table tbody td,
 .table-wrapper-blood-request .table tbody td {
 	text-align: center;
 }
@@ -34,8 +38,9 @@
 	transform: scale(1.1);
 }
 
+.table-wrapper-validation-blood-donor,
 .table-wrapper-blood-request {
-	margin-top: 5rem;
+	margin-top: 3rem;
 }
 
 .modal {
@@ -62,6 +67,7 @@
 	}
 
 	.dashboard-wrapper .table-wrapper-blood-request,
+	.dashboard-wrapper .table-wrapper-validation-blood-donor,
 	.dashboard-wrapper .table-wrapper {
 		overflow-x: auto;
 	}
@@ -85,7 +91,9 @@
 		margin-top: 3rem;
 	}
 
-	.dashboard-wrapper .table-wrapper-blood-request {
+	.dashboard-wrapper .table-wrapper-blood-request,
+	.dashboard-wrapper .table-wrapper-validation-blood-donor,
+	.dashboard-wrapper .table-wrapper-validation-blood-donor {
 		overflow-x: auto;
 	}
 
@@ -99,6 +107,8 @@
 
 	.dashboard-wrapper .table-wrapper .table th,
 	.dashboard-wrapper .table-wrapper .table td,
+	.dashboard-wrapper .table-wrapper-validation-blood-donor .table th,
+	.dashboard-wrapper .table-wrapper-validation-blood-donor .table td,
 	.dashboard-wrapper .table-wrapper-blood-request .table th,
 	.dashboard-wrapper .table-wrapper-blood-request .table td {
 		text-align: center;
@@ -148,8 +158,14 @@
 		width: 500px;
 	}
 
+	.dashboard-wrapper .table-wrapper-validation-blood-donor .table {
+		width: 150px;
+	}
+
 	.dashboard-wrapper .table-wrapper .table th,
 	.dashboard-wrapper .table-wrapper .table td,
+	.dashboard-wrapper .table-wrapper-validation-blood-donor .table th,
+	.dashboard-wrapper .table-wrapper-validation-blood-donor .table td,
 	.dashboard-wrapper .table-wrapper-blood-request .table th,
 	.dashboard-wrapper .table-wrapper-blood-request .table td {
 		text-align: center;

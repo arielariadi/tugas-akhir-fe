@@ -30,6 +30,12 @@ const DashboardUser = () => {
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [show, setShow] = useState(false);
 
+	const [validationBloodDonor, setValidationBloodDonor] = useState([]);
+	const [page3, setPage3] = useState(0);
+	const [limit3, setLimit3] = useState(5);
+	const [pages3, setPages3] = useState(0);
+	const [rows3, setRows3] = useState(0);
+
 	const [msg, setMsg] = useState('');
 
 	const [showPDF, setShowPDF] = useState(true);
@@ -171,6 +177,29 @@ const DashboardUser = () => {
 		getBloodRequestData();
 	}, [page2, limit2]);
 
+	useEffect(() => {
+		const getValidationBloodDonorData = async () => {
+			try {
+				const response = await axios.get(
+					`${config.API_URL}/v1/user/dashboardUser/userValidationBloodDonor/?page=${page3}&limit=${limit3}`,
+					{
+						headers: {
+							Authorization: `${localStorage.getItem('userToken')}`,
+						},
+					}
+				);
+				const responseData = response.data;
+				console.log('validationBloodDonor', responseData.pendonor_darah);
+				setValidationBloodDonor(responseData.pendonor_darah);
+				setPages3(responseData.totalPage);
+				setRows3(responseData.totalRows);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		getValidationBloodDonorData();
+	}, [page3, limit3]);
+
 	// Fungsi untuk mengubah halaman pagination
 	const changePage = ({ selected }) => {
 		setPage(selected);
@@ -183,6 +212,15 @@ const DashboardUser = () => {
 
 	const changePage2 = ({ selected }) => {
 		setPage2(selected);
+		if (selected === 4) {
+			setMsg('Data tidak ditemukan');
+		} else {
+			setMsg('');
+		}
+	};
+
+	const changePage3 = ({ selected }) => {
+		setPage3(selected);
 		if (selected === 4) {
 			setMsg('Data tidak ditemukan');
 		} else {
@@ -217,6 +255,40 @@ const DashboardUser = () => {
 			case 2:
 				statusVariant = 'success';
 				statusText = 'Diterima';
+				statusColor = 'white';
+				break;
+			default:
+				statusVariant = 'secondary';
+				statusText = 'Unknown';
+				statusColor = 'white';
+				break;
+		}
+		return (
+			<Badge bg={statusVariant} text={statusColor}>
+				{statusText}
+			</Badge>
+		);
+	};
+
+	const renderStatusValidationBloodDonor = status => {
+		let statusVariant = '';
+		let statusText = '';
+		let statusColor = '';
+
+		switch (status) {
+			case 2:
+				statusVariant = 'warning';
+				statusText = 'Belum Donor';
+				statusColor = 'black';
+				break;
+			case 3:
+				statusVariant = 'success';
+				statusText = 'Sudah Donor';
+				statusColor = 'white';
+				break;
+			case 4:
+				statusVariant = 'danger';
+				statusText = 'Gagal Donor';
 				statusColor = 'white';
 				break;
 			default:
@@ -319,6 +391,62 @@ const DashboardUser = () => {
 					</div>
 				</div>
 
+				<div className="table-wrapper-validation-blood-donor">
+					<h3>Validasi Pendonor</h3>
+
+					<Table striped>
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Lokasi Donor Darah</th>
+								<th>Tanggal Donor</th>
+								<th>Golongan Darah</th>
+								<th>Jumlah Kantung Darah</th>
+								<th>Alasan Gagal Donor</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							{validationBloodDonor &&
+								validationBloodDonor.map((bloodDonor, index) => (
+									<tr key={index + page3 * limit3}>
+										<td>{index + 1 + page3 * limit3}</td>
+										<td>{bloodDonor.lokasi_pmi}</td>
+										<td>{formatData(bloodDonor.tanggal_donor)}</td>
+										<td>{bloodDonor.gol_darah}</td>
+										<td>{bloodDonor.jumlah_kantung_darah}</td>
+										<td>{bloodDonor.alasan_gagal_donor}</td>
+										<td>
+											{renderStatusValidationBloodDonor(bloodDonor.status)}
+										</td>
+									</tr>
+								))}
+						</tbody>
+					</Table>
+
+					<div className="pagination-wrapper">
+						<p>Jumlah data: {rows3}</p>
+						<p>
+							Halaman {rows3 ? page3 + 1 : 0} dari {pages3}
+						</p>
+						<ReactPaginate
+							pageCount={pages3 || 0} // Menggunakan nilai pages atau 0 jika pages adalah falsy
+							onPageChange={changePage3}
+							containerClassName={'pagination'}
+							activeClassName={'active'}
+							pageLinkClassName={'page-link'}
+							previousLinkClassName={'page-link'}
+							nextLinkClassName={'page-link'}
+							breakLinkClassName={'page-link'}
+							disabledClassName={'disabled'}
+							marginPagesDisplayed={2}
+							pageRangeDisplayed={5}
+							previousLabel={'Previous'}
+							nextLabel={'Next'}
+						/>
+					</div>
+				</div>
+
 				<div className="table-wrapper-blood-request">
 					<h3>Permintaan Darah</h3>
 					<Table striped>
@@ -339,8 +467,8 @@ const DashboardUser = () => {
 						<tbody>
 							{bloodRequestData &&
 								bloodRequestData.map((bloodRequest, index) => (
-									<tr key={index + page * limit}>
-										<td>{index + 1 + page * limit}</td>
+									<tr key={index + page2 * limit2}>
+										<td>{index + 1 + page2 * limit2}</td>
 										<td>{bloodRequest.nama_pasien}</td>
 										<td>{bloodRequest.rumah_sakit}</td>
 										<td>{bloodRequest.gol_darah}</td>
@@ -377,7 +505,7 @@ const DashboardUser = () => {
 					<div className="pagination-wrapper">
 						<p>Jumlah data: {rows2}</p>
 						<p>
-							Halaman {rows2 ? page + 1 : 0} dari {pages2}
+							Halaman {rows2 ? page2 + 1 : 0} dari {pages2}
 						</p>
 						<ReactPaginate
 							pageCount={pages2 || 0} // Menggunakan nilai pages atau 0 jika pages adalah falsy
