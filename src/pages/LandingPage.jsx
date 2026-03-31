@@ -14,6 +14,8 @@ import HeroLottie from '../assets/lottie/heroLottie.json';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+import bloodDonationIcon from '../../src/assets/img/blood-donation-icon.png';
+
 const LandingPage = () => {
 	useEffect(() => {
 		AOS.init({
@@ -27,7 +29,7 @@ const LandingPage = () => {
 			mirror: true,
 			anchorPlacement: 'top-bottom',
 		});
-		AOS.refresh(); // Ensure AOS refreshes elements
+		AOS.refresh();
 	}, []);
 	return (
 		<>
@@ -185,7 +187,7 @@ const LandingPage = () => {
 								<Card.Body>
 									<Card.Img
 										variant="top"
-										src="src/assets/img/blood-donation-icon.png"
+										src={bloodDonationIcon}
 										className="d-flex mx-auto"
 									/>
 

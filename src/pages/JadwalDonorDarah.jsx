@@ -154,7 +154,7 @@ const JadwalDonorDarah = () => {
 								{detailPmi ? (
 									<Card.Text>Alamat : {detailPmi.alamat_pmi}</Card.Text>
 								) : null}
-								<Card.Text>Hari : {namaHariIni}</Card.Text>
+								{/* <Card.Text>Hari : {namaHariIni}</Card.Text> */}
 								{detailPmi &&
 								detailPmi.jadwal_jam_mulai &&
 								detailPmi.jadwal_jam_selesai ? (

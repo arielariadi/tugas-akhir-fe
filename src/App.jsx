@@ -22,18 +22,16 @@ import FooterComponent from './components/FooterComponent';
 // import 'bootstrap';
 
 function getUserToken() {
-	// Gantikan dengan implementasi sesuai kebutuhan
 	return localStorage.getItem('userToken');
 }
 
 function getAdminToken() {
-	// Gantikan dengan implementasi sesuai kebutuhan
 	return localStorage.getItem('adminToken');
 }
 
 function App() {
-	const userToken = getUserToken(); // Gantikan dengan implementasi sesuai kebutuhan
-	const adminToken = getAdminToken(); // Gantikan dengan implementasi sesuai kebutuhan
+	const userToken = getUserToken();
+	const adminToken = getAdminToken();
 
 	return (
 		<div>

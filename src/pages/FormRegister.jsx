@@ -208,7 +208,12 @@ const FormRegister = () => {
 
 									<Form.Group className="mb-3" controlId="kotaId">
 										<Form.Label>Kabupaten/Kota</Form.Label>
-										<Form.Control type="text" name="kota" />
+										<Form.Control
+											type="text"
+											name="kota"
+											value="Lebak"
+											disabled
+										/>
 									</Form.Group>
 
 									<Form.Group className="mb-3" controlId="pekerjaanId">
